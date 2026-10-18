@@ -14,7 +14,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
 <style>
 /* Layout: Toss-style single column (max 760px) of white sections on a grey canvas; the draggable desk stays as the hero. Light theme only, on purpose. */
 :root{
@@ -282,57 +281,16 @@ canvas.ink{position:absolute;inset:0;z-index:3;pointer-events:none}
 .perf th{color:var(--g500);font-weight:600}
 .perf td.ok{color:#03B26C;font-weight:600}
 @media(max-width:560px){.pipe .ar{display:none}.pipe .nd{flex-basis:100%}}
-/* Quest layer: pixel Su walks a side rail as you scroll; each section is a checkpoint. */
-.px{font-family:"Press Start 2P",monospace;letter-spacing:0;-webkit-font-smoothing:none}
-.qrail{position:fixed;z-index:30;top:84px;bottom:28px;width:204px;left:max(10px,calc(50% - 380px - 226px));pointer-events:none;display:none;opacity:0;transform:translateX(-12px);transition:opacity .35s,transform .35s}
-.qrail.in{opacity:1;transform:none}
-@media (min-width:1220px){.qrail{display:block}}
-.qhud{margin-left:56px;display:flex;flex-direction:column;gap:7px;background:var(--white);border:1px solid var(--g200);border-radius:16px;padding:12px 12px 11px}
-.qhud .row{display:flex;justify-content:space-between;align-items:center;font-size:8px;color:var(--g500)}
-.qhud .row b{color:var(--g900);font-weight:400}
-.qbar{height:8px;border-radius:2px;background:var(--g100);box-shadow:inset 0 0 0 1px var(--g200);overflow:hidden}
-.qbar i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--blue) 0 6px,#5b9cff 6px 8px);transition:width .2s steps(6)}
-.qpath{position:absolute;left:0;right:0;top:92px;bottom:0}
-.qpath:before{content:"";position:absolute;left:79px;top:14px;bottom:14px;border-left:2px dashed var(--g300)}
-.qnode{position:absolute;left:62px;display:flex;align-items:center;gap:10px;transform:translateY(-50%)}
-.qnode canvas{width:32px;height:32px;image-rendering:pixelated;background:var(--g100);border:2px solid var(--g200);border-radius:8px;padding:2px;box-sizing:content-box;opacity:.45;filter:grayscale(1);transition:opacity .3s,filter .3s,border-color .3s}
-.qnode span{font-size:13px;font-weight:600;color:var(--g500);transition:color .3s}
-.qnode small{display:block;font-size:7px;color:var(--g300);margin-top:3px}
-.qnode.on canvas{opacity:1;filter:none;border-color:var(--g300)}
-.qnode.on span{color:var(--g700)}
-.qnode.done small{color:#03B26C}
-.qnode.qcur canvas{border-color:var(--blue)}
-.hero{position:absolute;left:-30px;width:96px;height:116px;transform:translateY(-62%);transition:top .12s linear;z-index:2}
-.hero canvas,.qmob canvas{width:96px;height:116px;image-rendering:pixelated;display:block}
-.hero:after{content:"";position:absolute;left:24px;right:30px;bottom:-3px;height:5px;border-radius:50%;background:rgba(0,0,0,.45)}
-.bub{position:absolute;left:72px;bottom:96px;z-index:3;width:max-content;max-width:170px;background:var(--g900);color:var(--g100);font-size:12.5px;font-weight:600;line-height:1.45;padding:8px 10px;border-radius:10px 10px 10px 2px;opacity:0;transform:translateY(4px);transition:opacity .25s,transform .25s}
-.bub.show{opacity:1;transform:none}
-.qtoast{position:fixed;z-index:60;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--white);border:2px solid var(--blue);border-radius:12px;padding:12px 16px 12px 12px;display:flex;gap:12px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,.45);transition:opacity .3s,transform .3s cubic-bezier(.2,.8,.2,1);max-width:calc(100vw - 32px)}
-.qtoast.show{opacity:1;transform:translate(-50%,0)}
-.qtoast canvas{width:36px;height:36px;image-rendering:pixelated;flex:none}
-.qtoast .px{font-size:9px;color:var(--blue);display:block;margin-bottom:6px}
-.qtoast b{display:block;font-size:15px;color:var(--g900)}
-.qtoast em{font-style:normal;display:block;font-size:13px;color:var(--g600);margin-top:2px}
-.qmob{position:fixed;z-index:30;left:max(10px,env(safe-area-inset-left,0px));bottom:max(10px,env(safe-area-inset-bottom,0px));pointer-events:none;display:block;opacity:0;transition:opacity .35s}
-.qmob.in{opacity:1}
-.qmob .bub{left:64px;bottom:90px;font-size:12px}
-.qmob .lv{position:absolute;left:4px;top:-12px;font-size:7px;color:var(--g500);background:var(--white);border:1px solid var(--g200);border-radius:4px;padding:3px 4px}
-.qmob canvas{width:72px!important;height:87px!important}
-@media (min-width:1220px){.qmob{display:none}}
-@media (max-width:560px){.qmob canvas{width:72px;height:87px}.qmob .bub{left:52px;bottom:70px}.qtoast{top:66px;bottom:auto;transform:translate(-50%,-16px);padding:8px 12px 8px 8px;gap:10px}.qtoast.show{transform:translate(-50%,0)}.qtoast canvas{width:28px;height:28px}.qtoast .px{font-size:7px;margin-bottom:4px}.qtoast b{font-size:14px}.qtoast em{display:none}}
-.qtag{display:inline-block;font-size:7px;line-height:1;padding:4px 5px;border-radius:4px;margin-left:8px;vertical-align:2px;background:var(--blue-soft);color:#7fb2ff}
-.qtag.clear{background:rgba(3,178,108,.14);color:#2fd38f}
-@media (prefers-reduced-motion:reduce){.hero{transition:none}}
 </style>
 
 <nav class="nav" aria-label="섹션"><div class="nav-in"><b>Su Gim</b><ul><li><a href="#career">경력</a></li><li><a href="#ai">AI로 일하기</a></li><li class="hide-s"><a href="#about">소개</a></li><li><a href="#contact">연락</a></li></ul></div></nav>
-<div class="off"><div class="off-in"><span class="off-l">퇴근 후의 나</span><span class="off-c">🎒 백패킹</span><span class="off-c">⛺ 캠핑</span><span class="off-c">⚽ 풋살</span><span class="off-c">🎧 DJing</span><span class="off-c">🍽️ 맛집 탐방</span><span class="off-c">🚗 테슬라 덕질</span><span class="off-c">📈 투자 공부</span><span class="off-c">🐶 강아지 젤리</span><span class="off-c">🧪 사이드 프로젝트</span></div></div>
+<div class="off"><div class="off-in"><span class="off-l">관심사</span><span class="off-c">🎒 백패킹</span><span class="off-c">⛺ 캠핑</span><span class="off-c">⚽ 풋살</span><span class="off-c">🎧 DJing</span><span class="off-c">🍽️ 맛집 탐방</span><span class="off-c">🚗 테슬라 덕질</span><span class="off-c">📈 투자 공부</span><span class="off-c">🐶 강아지 젤리</span><span class="off-c">🧪 사이드 프로젝트</span></div></div>
 
 <header class="desk" id="desk" aria-label="소개">
   <div class="desk-title">
     <span class="eyebrow">Su Gim · Product Maker</span>
-    <h1>기획부터 런칭, 운영까지<br>끝까지 책임집니다</h1>
-    <p>PM·PO 5년. 서비스 기획, 이해관계자 협업, 런칭과 운영까지 공급자와 사용자를 잇는 서비스를 만들어 왔습니다.</p>
+    <h1>기획부터 런칭, 운영까지<br>책임감 있게 만들어 왔습니다</h1>
+    <p>5년간 PM, PO로 일하며 서비스 기획부터 이해관계자 협업, 런칭 및 운영까지 담당해 왔습니다.</p>
   </div>
 
   <div class="obj icon-obj" data-x="9" data-y="14" data-r="-8" style="width:110px"><svg viewBox="0 0 96 96" aria-label="커피 머그"><rect x="14" y="26" width="52" height="58" rx="8" fill="#FFFFFF" stroke="#C4C4CF" stroke-width="3"/><path d="M66 40h8a12 12 0 0 1 0 24h-8" fill="none" stroke="#C4C4CF" stroke-width="3"/><rect x="14" y="44" width="52" height="14" fill="#3182F6"/><path d="M30 8c-4 6 4 8 0 14M44 6c-4 6 4 8 0 14" fill="none" stroke="#D1D6DB" stroke-width="3" stroke-linecap="round"/></svg></div>
@@ -340,7 +298,7 @@ canvas.ink{position:absolute;inset:0;z-index:3;pointer-events:none}
   <div class="obj icon-obj" data-x="20" data-y="38" data-r="24" data-m="hide" style="width:150px"><svg viewBox="0 0 150 30" aria-label="연필"><rect x="18" y="6" width="104" height="18" fill="#FFD15B" stroke="#C4C4CF" stroke-width="2.5"/><rect x="122" y="6" width="18" height="18" rx="3" fill="#FF8FA3" stroke="#C4C4CF" stroke-width="2.5"/><path d="M18 6L2 15l16 9z" fill="#F5E6CF" stroke="#C4C4CF" stroke-width="2.5" stroke-linejoin="round"/><path d="M2 15l6-3v6z" fill="#C4C4CF"/></svg></div>
   <div class="obj chat m-hide" data-x="69" data-y="8" data-r="3"><div class="ch"># daily-report</div><div class="row"><span class="av">🤖</span><div><b>Report Bot</b><small>오전 9:00</small><div>📊 어제 매출 리포트가 도착했어요<br>GMV · 매출 · TOP 5 · 월 목표</div><div class="bar"><i></i></div></div></div></div>
   <div class="obj chart m-hide" data-x="72" data-y="36" data-r="-3"><b>화면 정의서</b> · v1.2<svg viewBox="0 0 200 92" aria-hidden="true"><rect x="2" y="2" width="56" height="88" rx="8" fill="none" stroke="#4D4D59" stroke-width="2"/><rect x="10" y="12" width="40" height="18" rx="3" fill="#3182F6" opacity=".7"/><rect x="10" y="36" width="40" height="6" rx="3" fill="#4D4D59"/><rect x="10" y="48" width="28" height="6" rx="3" fill="#4D4D59"/><rect x="10" y="72" width="40" height="10" rx="4" fill="#3182F6"/><path d="M62 46h20" stroke="#80808F" stroke-width="2" marker-end="url(#ah)"/><defs><marker id="ah" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#80808F"/></marker></defs><rect x="88" y="2" width="56" height="88" rx="8" fill="none" stroke="#4D4D59" stroke-width="2"/><rect x="96" y="12" width="40" height="40" rx="4" fill="#4D4D59"/><rect x="96" y="58" width="40" height="6" rx="3" fill="#4D4D59"/><rect x="96" y="72" width="40" height="10" rx="4" fill="#3182F6"/><circle cx="160" cy="18" r="8" fill="#F04452"/><text x="160" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">1</text><rect x="172" y="12" width="26" height="5" rx="2" fill="#80808F"/><rect x="172" y="21" width="20" height="5" rx="2" fill="#4D4D59"/><circle cx="160" cy="44" r="8" fill="#F04452"/><text x="160" y="48" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">2</text><rect x="172" y="38" width="26" height="5" rx="2" fill="#80808F"/><rect x="172" y="47" width="16" height="5" rx="2" fill="#4D4D59"/></svg></div>
-  <div class="obj ticket m-hide" data-x="74" data-y="62" data-r="5" style="width:250px"><span class="tag" style="background:var(--blue-soft);color:var(--blue)">HOW I WORK</span><div style="margin-top:8px;line-height:1.6">문제 정의 → 기획 → 협업·개발<br>→ 런칭 → 운영·개선</div></div>
+  <div class="obj ticket m-hide" data-x="74" data-y="62" data-r="5" style="width:250px"><span class="tag" style="background:var(--blue-soft);color:var(--blue)">HOW I WORK</span><div style="margin-top:8px;line-height:1.6">문제 정의 → 기획 → 협업, 개발<br>→ 런칭 → 운영, 개선</div></div>
   <div class="obj icon-obj" data-x="64" data-y="72" data-r="-12" style="width:84px"><svg viewBox="0 0 92 92" aria-label="돋보기"><circle cx="38" cy="38" r="26" fill="#E3F1F8" stroke="#C4C4CF" stroke-width="5"/><path d="M57 57l26 26" stroke="#C4C4CF" stroke-width="9" stroke-linecap="round"/><path d="M26 30a14 14 0 0 1 12-8" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/></svg></div>
   <div class="obj keycap" data-x="30" data-y="9" data-r="10">⌘</div>
   <div class="obj sticky pink" data-x="88" data-y="84" data-r="9">ship it! 🚀</div>
@@ -364,9 +322,9 @@ canvas.ink{position:absolute;inset:0;z-index:3;pointer-events:none}
     <h2 class="sec-t" id="now-t">진행 중인 프로젝트</h2>
     <p class="sec-s">프린트베이커리</p>
     <ul class="rows">
-      <li class="rowi"><span class="ic">📡</span><div><b>트렌드 레이더</b><span>리빙·선물·전시 트렌드를 읽고, 소싱할 상품과 지금 밀어야 할 상품을 고르는 리포트 체계</span></div></li>
-      <li class="rowi"><span class="ic">💬</span><div><b>1:1 아트 컨설팅</b><span>고가 작품을 오래 보는 고객에게 상담을 연결해 구매로 이어지게 하는 기능</span></div></li>
-      <li class="rowi"><span class="ic">📊</span><div><b>통합 대시보드</b><span>Cafe24와 GA4 데이터를 한곳에 모으고, 검색어 데이터까지 붙이는 중</span></div></li>
+      <li class="rowi"><span class="ic">📡</span><div><b>트렌드 레이더</b><span>리빙, 선물, 전시 트렌드를 기반으로 소싱 및 노출 상품을 선정하기 위한 리포트 구축</span></div></li>
+      <li class="rowi"><span class="ic">💬</span><div><b>1:1 아트 컨설팅</b><span>고가 작품 구매를 고민하는 고객에게 1:1 상담을 연결해 구매 전환을 높이기 위한 기능 기획</span></div></li>
+      <li class="rowi"><span class="ic">📊</span><div><b>통합 대시보드</b><span>Cafe24, GA4 데이터 통합 및 검색어 데이터 연동 진행 중</span></div></li>
     </ul>
   </section>
 
@@ -379,51 +337,51 @@ canvas.ink{position:absolute;inset:0;z-index:3;pointer-events:none}
       <div class="stat"><b>+90%</b><span>리뉴얼 후 매출</span></div>
     </div>
     <div class="list">
-      <button type="button" class="li press" data-case="pbg"><span class="logo" style="background:#3A3A46"><span class="co-logo">PB</span></span><span class="t"><b>프린트베이커리</b><span class="d">아트와 라이프스타일을 파는 커머스</span><span class="m">Product Owner · 2025.12 –</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
-      <button type="button" class="li press" data-case="reclle"><span class="logo" style="background:#03B26C"><span class="co-logo">re</span></span><span class="t"><b>리클</b><span class="d">안 입는 옷을 수거하는 앱</span><span class="m">Product Owner · 2025.06 – 2025.12</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
-      <button type="button" class="li press" data-case="trip"><span class="logo" style="background:#6B4CF6"><span class="co-logo">tb</span></span><span class="t"><b>트립비토즈</b><span class="d">여행 숏폼과 숙소 예약을 잇는 앱</span><span class="m">Product Manager · 2021.09 – 2024.06</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      <button type="button" class="li press" data-case="pbg"><span class="logo" style="background:#3A3A46"><span class="co-logo">PB</span></span><span class="t"><b>프린트베이커리</b><span class="d">아트, 라이프스타일 커머스</span><span class="m">Product Owner · 2025.12 –</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      <button type="button" class="li press" data-case="reclle"><span class="logo" style="background:#03B26C"><span class="co-logo">re</span></span><span class="t"><b>리클</b><span class="d">중고의류 수거 서비스</span><span class="m">Product Owner · 2025.06 – 2025.12</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      <button type="button" class="li press" data-case="trip"><span class="logo" style="background:#6B4CF6"><span class="co-logo">tb</span></span><span class="t"><b>트립비토즈</b><span class="d">여행 숏폼 기반 숙소 예약 앱</span><span class="m">Product Manager · 2021.09 – 2024.06</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
       <button type="button" class="li press" data-case="wider"><span class="logo" style="background:#3182F6"><span class="co-logo">wp</span></span><span class="t"><b>와이더플래닛</b><span class="d">광고 타게팅 플랫폼, 타게팅 게이츠</span><span class="m">Product Manager · 2021.03 – 2021.09</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
   </section>
 
   <section class="card" id="ai" aria-labelledby="ai-t">
     <h2 class="sec-t" id="ai-t">AI 활용 방식</h2>
-    <p class="sec-s">AI는 자료 조사에 기본으로 쓰고, 반복되는 업무는 간단한 사내 도구로 만들어 효율을 높입니다. 개발자의 일을 대신하는 것이 아니라, 복잡하지 않은 범위 안에서 선을 지켜 활용합니다.</p>
+    <p class="sec-s">자료 조사를 비롯해 반복 업무를 줄이는 사내 도구 제작에 AI를 활용하고 있습니다. 개발자의 업무를 대체하는 것이 아닌, 복잡하지 않은 범위 내에서 보안 원칙을 지켜 활용합니다.</p>
     <div class="research">
       <b>자료 조사</b>
       <ol>
-        <li><span>1</span><div><b>질문 정의</b>결정해야 할 것과 필요한 근거 정리</div></li>
-        <li><span>2</span><div><b>수집</b>공식 문서·공개 통계·경쟁 서비스·검색 트렌드를 AI로 폭넓게 수집</div></li>
-        <li><span>3</span><div><b>검증</b>원문 직접 확인, 수치는 2곳 이상 교차 검증</div></li>
-        <li><span>4</span><div><b>정리</b>표·장표로 정리하고 결론과 다음 액션 도출</div></li>
+        <li><span>1</span><div><b>질문 정의</b>의사결정 사항 및 필요 근거 정리</div></li>
+        <li><span>2</span><div><b>수집</b>공식 문서, 공개 통계, 경쟁 서비스, 검색 트렌드 등을 AI를 활용해 수집</div></li>
+        <li><span>3</span><div><b>검증</b>원문 확인 및 수치는 2개 이상 출처로 교차 검증</div></li>
+        <li><span>4</span><div><b>정리</b>표, 장표로 정리 후 결론 및 다음 액션 도출</div></li>
       </ol>
     </div>
-    <h3 class="sub-h">업무 도구 만들기</h3>
-    <p class="sub-p">서비스 개발이 아닌, 팀의 반복 업무를 줄이는 도구만 만듭니다.</p>
+    <h3 class="sub-h">생산성 높이기</h3>
+    <p class="sub-p">서비스 개발이 아닌, 반복 업무를 줄이는 사내 도구를 만들어 팀의 생산성을 높이고 AI 활용 역량을 키워 왔습니다.</p>
     <div class="steps">
       <div class="step"><b>1. 정의</b>해결할 문제와 측정 지표 정의</div>
-      <div class="step"><b>2. 구현</b>AI로 코드·문서 초안 작성</div>
-      <div class="step"><b>3. 사내 연동</b>내부 서버·사내 시스템에 연동</div>
+      <div class="step"><b>2. 구현</b>AI를 활용해 코드, 문서 초안 작성</div>
+      <div class="step"><b>3. 사내 연동</b>내부 서버 및 사내 시스템 연동</div>
       <div class="step"><b>4. 확인</b>지표로 효과 검증 후 개선</div>
     </div>
-    <div class="sec-box"><b>원칙</b><ul><li>복잡하지 않은 사내 도구·데이터 정리·리포트까지만 직접 구현</li><li>서비스 핵심 기능과 운영 시스템은 개발팀·외주 개발사가 담당, 저는 요구사항·스펙으로 협업</li><li>공식 공개 API와 오픈소스 범위 안에서만 개발</li><li>인증 키·원본 데이터는 내부 서버에만 보관, 외부 반출 없음</li><li>권한이 있는 인원만 접근 가능하도록 제한</li></ul></div>
+    <div class="sec-box"><b>원칙</b><ul><li>사내 도구, 데이터 정리, 리포트 등 복잡하지 않은 범위까지만 직접 구현</li><li>서비스 핵심 기능 및 운영 시스템은 개발팀, 외주 개발사가 담당하며 요구사항과 스펙 정의로 협업</li><li>공식 공개 API 및 오픈소스 범위 내에서만 개발</li><li>인증 키와 원본 데이터는 내부 서버에만 보관</li><li>권한이 있는 인원만 접근 가능하도록 제한</li></ul></div>
     <div class="uses">
-      <article class="use"><span class="tag">데이터</span><h3>통합 데이터 대시보드</h3><div class="why"><span>배경</span>매출(Cafe24)과 행동 데이터(GA4)가 분리돼 있고 광고·봇 트래픽이 섞여 지표 신뢰도가 낮았음. 서비스 개발 우선순위에 들기 어려운 내부 도구.</div><div class="how"><span>방법</span>AI로 두 데이터 연동을 구현해 내부 서버에 연결. 광고·봇을 제외한 퍼널을 매일 확인하는 사내 대시보드로 운영 중.</div></article>
-      <article class="use"><span class="tag">자동화</span><h3>일일 매출 리포트 자동화</h3><div class="why"><span>배경</span>일일 매출을 매일 수기로 집계·공유하면서 시간이 들고 집계 오류가 발생.</div><div class="how"><span>방법</span>AI로 집계 로직을 만들어 내부 서버에서 매일 실행. GMV·매출·TOP 5·목표 달성률을 매일 아침 사내 메신저로 발송.</div></article>
-      <article class="use"><span class="tag">사내 도구</span><h3>경비환급 자동화</h3><div class="why"><span>배경</span>매월 영수증을 보며 경비환급신청서를 수기로 작성.</div><div class="how"><span>방법</span>무료 OCR과 AI로 영수증을 인식하고 분류 규칙에 따라 엑셀 자동 작성. 전 팀이 로그인 없이 사용.</div></article>
-      <article class="use"><span class="tag">리서치</span><h3>트렌드 레이더</h3><div class="why"><span>배경</span>트렌드 수요에 늦게 대응해 소싱·상품 노출 타이밍을 놓치는 문제.</div><div class="how"><span>방법</span>AI로 리빙·선물·전시 트렌드와 검색·영상 데이터를 수집·정리해 일/주/월 리포트로 제공. 소싱·노출 결정은 담당자가 판단.</div></article>
-      <article class="use"><span class="tag">기획</span><h3>HTML 프로토타입</h3><div class="why"><span>배경</span>정적인 화면만으로는 흐름과 인터랙션 전달이 어려워 리뷰가 길어지고 개발 후 수정이 발생.</div><div class="how"><span>방법</span>AI로 클릭 가능한 HTML 프로토타입을 먼저 만들고 피그마로 옮겨 화면·스펙과 함께 전달.</div></article>
+      <article class="use"><span class="tag">데이터</span><h3>통합 데이터 대시보드</h3><div class="why"><span>배경</span>매출(Cafe24)과 행동 데이터(GA4)가 분리되어 있고, 광고 및 봇 트래픽이 섞여 지표 신뢰도가 낮음. 서비스 개발 우선순위에서 밀리는 내부 도구.</div><div class="how"><span>방법</span>AI를 활용해 두 데이터를 연동하고 내부 서버에 연결. 광고, 봇 트래픽을 제외한 퍼널을 매일 확인할 수 있는 사내 대시보드로 운영 중.</div></article>
+      <article class="use"><span class="tag">자동화</span><h3>일일 매출 리포트 자동화</h3><div class="why"><span>배경</span>일일 매출을 매일 수기로 집계 및 공유하며 시간 소요와 집계 오류 발생.</div><div class="how"><span>방법</span>AI를 활용해 집계 로직을 구현하고 내부 서버에서 매일 실행. GMV, 매출, TOP 5, 목표 달성률을 매일 아침 사내 메신저로 발송.</div></article>
+      <article class="use"><span class="tag">사내 도구</span><h3>경비환급 자동화</h3><div class="why"><span>배경</span>매월 영수증을 보며 경비환급신청서를 수기로 작성.</div><div class="how"><span>방법</span>무료 OCR과 AI를 활용해 영수증 인식 후 분류 규칙에 따라 엑셀 자동 작성. 전 팀에서 별도 로그인 없이 사용.</div></article>
+      <article class="use"><span class="tag">리서치</span><h3>트렌드 레이더</h3><div class="why"><span>배경</span>트렌드 수요에 대한 대응이 늦어 소싱 및 상품 노출 시점을 놓치는 문제 발생.</div><div class="how"><span>방법</span>AI를 활용해 리빙, 선물, 전시 트렌드와 검색, 영상 데이터를 수집 및 정리해 일/주/월 리포트로 제공. 소싱 및 노출 여부는 담당자가 최종 판단.</div></article>
+      <article class="use"><span class="tag">기획</span><h3>HTML 프로토타입</h3><div class="why"><span>배경</span>정적인 화면만으로는 흐름과 인터랙션 전달이 어려워 리뷰 기간이 길어지고, 개발 이후 수정 사항 발생.</div><div class="how"><span>방법</span>AI를 활용해 클릭 가능한 HTML 프로토타입을 먼저 제작한 후 피그마로 옮겨 화면, 스펙과 함께 전달.</div></article>
     </div>
     <div class="tools" aria-label="자주 쓰는 도구"><span>Claude</span><span>Gemini</span><span>Slack</span><span>GA4</span><span>SQL</span><span>Figma</span><span>Jira</span></div>
   
     <h3 class="sub-h">앱 만들기</h3>
-    <p class="sub-p">업무 밖에서는 필요하다고 느낀 서비스를 AI와 함께 직접 앱으로 만들어 봅니다. 기획부터 화면, 기능까지 혼자 끝까지 만들어 보면서 프로덕트 감각을 넓힙니다.</p>
-    <div class="etc"><span class="ic" style="background:var(--blue-soft)">🎒</span><div><b>아웃도어 앱 <span class="wip">개발 중</span></b><span>백패킹·캠핑을 다니며 필요했던 기능을 담은 앱. Claude Code로 개발하고 있습니다.</span></div></div>
+    <p class="sub-p">업무 외적으로는 필요하다고 느낀 서비스를 AI를 활용해 직접 앱으로 만들고 있습니다. 기획부터 화면, 기능 구현까지 직접 진행하며 프로덕트에 대한 이해를 넓히고 있습니다.</p>
+    <div class="etc"><span class="ic" style="background:var(--blue-soft)">🎒</span><div><b>아웃도어 앱 <span class="wip">개발 중</span></b><span>백패킹, 캠핑을 다니며 필요했던 기능을 담은 앱으로, Claude Code를 활용해 개발 중입니다.</span></div></div>
   </section>
 
   <section class="card" id="etc" aria-labelledby="etc-t">
     <h2 class="sec-t" id="etc-t">프리랜서</h2>
-    <div class="etc" style="margin-top:14px"><span class="ic">✎</span><div><b>웹사이트 기획·제작 프리랜서</b><span>2017–2025 · 미국 브랜드 룩북, 시애틀 무용단·주얼리숍, 국제 학회 웹사이트</span></div></div>
+    <div class="etc" style="margin-top:14px"><span class="ic">✎</span><div><b>웹사이트 기획 및 제작 프리랜서</b><span>2017 – 2025 | 미국 A사 홀리데이 룩북, 시애틀 무용단 및 주얼리숍, 국제 학회 웹사이트 제작</span></div></div>
   </section>
 
   <section class="card about" id="about" aria-labelledby="about-t">
@@ -431,15 +389,15 @@ canvas.ink{position:absolute;inset:0;z-index:3;pointer-events:none}
     <p class="lead">문제 해결을 통해 사람들에게 더 좋은 서비스를 제공하는 일에 관심이 많은 김수입니다.</p>
     <p>다양한 이해관계자들과 효율적으로 협업해 빠르게 성장하는 시장에서 프로젝트를 이끌고 프로덕트를 출시했습니다. 유저 피드백과 데이터를 분석해 사용자 중심의 서비스를 지속적으로 개선해 왔으며, 프로덕트 라이프사이클 전반을 경험하며 책임감 있게 프로덕트를 만들어 왔습니다.</p>
     <div class="strengths">
-      <div class="str"><span class="ic">🔍</span><div><b>데이터 기반 문제 정의</b><p>데이터 분석과 유저 리서치를 기반으로 현상을 파악하고 문제를 정의합니다.</p><span class="ev"><b>사례</b>트립비토즈 리뉴얼: 예약 후 앱 삭제 현상을 데이터로 확인하고, 문제를 재방문할 이유의 부재로 재정의.</span></div></div>
-      <div class="str"><span class="ic">⚡</span><div><b>효율적인 문제 해결</b><p>정해진 리소스 내에서 최대한 효율적으로 문제를 해결합니다.</p><span class="ev"><b>사례</b>프린트베이커리: 개발 우선순위에 들기 어려운 사내 대시보드·매출 리포트를 AI로 구현해 사내 시스템에 연동.</span></div></div>
-      <div class="str"><span class="ic">🎯</span><div><b>오너십</b><p>문제를 파악한 순간부터 해결하는 순간까지 오너십을 가지고 임합니다.</p><span class="ev"><b>사례</b>트립비토즈 푸시: 리뉴얼 때 놓친 데이터 구조 문제를 운영 중 발견, 정책부터 재설계해 완료.</span></div></div>
-      <div class="str"><span class="ic">🤝</span><div><b>협업과 커뮤니케이션</b><p>디자이너·개발자·외주 개발사·의사결정권자와 화면 기획, 기능 명세, 정책서로 소통합니다.</p><span class="ev"><b>사례</b>트립비토즈 운영: KPI 기준 우선순위 설정, 개발·QA와 월별 배포 일정 관리.</span></div></div>
+      <div class="str"><span class="ic">🔍</span><div><b>데이터 기반 문제 정의</b><p>데이터 분석과 유저 리서치를 기반으로 현상을 파악하고 문제를 정의합니다.</p><span class="ev"><b>사례</b>트립비토즈 리뉴얼: 예약 후 앱 삭제 현상을 데이터로 확인하고, 재방문할 이유가 없다는 것을 핵심 문제로 정의.</span></div></div>
+      <div class="str"><span class="ic">⚡</span><div><b>효율적인 문제 해결</b><p>정해진 리소스 내에서 최대한 효율적으로 문제를 해결합니다.</p><span class="ev"><b>사례</b>프린트베이커리: 개발 우선순위에서 밀리는 사내 대시보드와 매출 리포트를 AI를 활용해 구현하고 사내 시스템에 연동.</span></div></div>
+      <div class="str"><span class="ic">🎯</span><div><b>오너십</b><p>문제를 파악한 순간부터 해결하는 순간까지 오너십을 가지고 임합니다.</p><span class="ev"><b>사례</b>트립비토즈 푸시: 운영 중 발견한 데이터 구조 문제를 정책부터 재설계해 해결.</span></div></div>
+      <div class="str"><span class="ic">🤝</span><div><b>협업과 커뮤니케이션</b><p>디자이너, 개발자, 외주 개발사, 의사결정권자와 화면 기획서, 기능 명세서, 정책서를 통해 소통합니다.</p><span class="ev"><b>사례</b>트립비토즈 운영: KPI 기준 우선순위 설정 및 개발, QA와 월별 배포 일정 관리.</span></div></div>
     </div>
     <h3 class="sub-t">동료들이 말하는 나</h3>
     <div class="chips"><span>팀플레이어</span><span>숲을 보는</span><span>외향적인</span><span>실행력</span><span>지식 전도자</span><span>책임감</span><span>도전적인</span><span>소통의 왕</span><span>시간 중시</span><span>융통성</span></div>
     <h3 class="sub-t">학력</h3>
-    <ul class="edu"><li><b>한양대학교 대학원 아트테크놀로지학과 석사</b><span>2017.03 – 2021.02 · 인지심리학·UX 전공</span><span class="thesis">졸업 논문 「확장된 기술수용이론을 활용한 디지털 리터러시 능력이 키오스크 기술 수용 의도에 미치는 영향에 대한 연구」</span></li><li><b>동국대학교 정보경영학과 학사</b><span>2012.03 – 2017.02</span></li></ul>
+    <ul class="edu"><li><b>한양대학교 대학원 아트테크놀로지학과 석사</b><span>2017.03 – 2021.02 | 인지심리학, UX 전공</span><span class="thesis">졸업 논문 「확장된 기술수용이론을 활용한 디지털 리터러시 능력이 키오스크 기술 수용 의도에 미치는 영향에 대한 연구」</span></li><li><b>동국대학교 정보경영학과 학사</b><span>2012.03 – 2017.02</span></li></ul>
     <p class="closing">앞으로도 오너십을 가지고 더 나은 프로덕트, 더 나아가 효율적인 로드맵 설정으로 비즈니스 목표 달성에 기여하고자 합니다.</p>
   </section>
 
@@ -466,36 +424,36 @@ canvas.ink{position:absolute;inset:0;z-index:3;pointer-events:none}
       <div class="head"><span class="icon" style="background:#3A3A46"><span class="co-logo">PB</span></span><div><h3>프린트베이커리</h3><div class="meta">Product Owner | 2025.12 – 재직 중</div></div></div>
       <p class="co-intro">아트 작품과 라이프스타일 상품을 판매하는 커머스. 프로덕트 기획, 데이터 분석, 아트 커머스 특성상 발생하는 주문 데이터 처리를 담당합니다.</p>
       <section class="proj">
-      <h4>프린트베이커리 리뉴얼</h4><div class="meta">아트·라이프 몰 리뉴얼 | 2026.04 – 2026.08</div>
+      <h4>프린트베이커리 리뉴얼</h4><div class="meta">아트, 라이프 몰 리뉴얼 | 2026.04 – 2026.08</div>
       <div class="kpis"><div class="kpi"><b>+107%</b><span>방문자 (리뉴얼 전후)</span></div><div class="kpi"><b>+81%</b><span>회원가입 (리뉴얼 전후)</span></div></div>
-      <div class="blk"><div class="k">문제</div><div class="v"><p>아트·라이프 상품이 한 흐름에 섞여 탐색 동선이 부족하고, 가입·구매까지의 단계가 많음.</p></div></div>
-      <div class="blk"><div class="k">한 일</div><div class="v"><ul><li>아트·라이프 메인을 카테고리별로 나눠 새로 설계</li><li>주간 랭킹·신상·트렌딩 섹션과 랭킹 페이지로 탐색 동선 확장. 아트는 작가·작품명·가격, 라이프는 브랜드·할인율·별점처럼 카드 정보를 다르게 설계</li><li>카카오·네이버·아이디 로그인을 한 화면에 둔 통합 로그인으로 가입 장벽을 낮춤</li><li>구매하기를 장바구니와 분리해 주문서로 바로 가게 개선</li><li>새 메인의 슬롯마다 GA4 이벤트를 심어 리뉴얼 효과를 잴 수 있게 설계</li></ul></div></div>
+      <div class="blk"><div class="k">문제</div><div class="v"><p>아트와 라이프 상품이 구분 없이 노출되어 탐색 동선이 부족하고, 가입 및 구매까지의 단계가 많음.</p></div></div>
+      <div class="blk"><div class="k">한 일</div><div class="v"><ul><li>아트, 라이프 카테고리별 메인 페이지 신규 설계</li><li>주간 랭킹, 신상, 트렌딩 섹션 및 랭킹 페이지 추가로 탐색 동선 확장. 아트는 작가, 작품명, 가격 / 라이프는 브랜드, 할인율, 별점으로 카드 정보 차별화</li><li>카카오, 네이버, 아이디 로그인을 한 화면에 제공하는 통합 로그인으로 가입 장벽 완화</li><li>구매하기와 장바구니를 분리해 주문서로 바로 이동하도록 개선</li><li>신규 메인 슬롯별 GA4 이벤트 설정으로 리뉴얼 성과 측정 체계 구축</li></ul></div></div>
       <div class="blk"><div class="k">결과</div><div class="v"><p>리뉴얼 전후 비교 방문자 107%, 회원가입 81% 증가.</p></div></div>
       </section>
       <section class="proj">
       <h4>통합 데이터 대시보드 구축</h4><div class="meta">통합 데이터 대시보드 | 2026 – 진행 중 | 기여도 100%</div>
       <div class="kpis"><div class="kpi"><b>121개</b><span>메인 진열 슬롯 성과 추적</span></div><div class="kpi"><b>매일</b><span>Slack 매출 리포트 자동 발송</span></div><div class="kpi"><b>2종</b><span>지표 오염원 분리 (광고·봇)</span></div></div>
-      <div class="blk"><div class="k">문제 상황</div><div class="v"><p>매출(Cafe24)과 행동 데이터(GA4)가 분리돼 한 화면에서 성과 판단 불가. 메인 진열 슬롯별 성과를 알 수 없고, 일일 매출은 수기로 집계.</p></div></div>
-      <div class="blk"><div class="k">문제 정의</div><div class="v"><p>지표 자체의 신뢰도가 낮음.</p><ul><li>제휴 광고 유입과 해외 봇 트래픽(평균 체류 약 2초)이 섞여 전환율과 퍼널이 왜곡됨</li><li>구매하기·장바구니 버튼 구조가 바뀌면서 퍼널 정의가 어긋남</li></ul></div></div>
+      <div class="blk"><div class="k">문제 상황</div><div class="v"><p>매출(Cafe24)과 행동 데이터(GA4)가 분리되어 한 화면에서 성과 판단 불가. 메인 진열 슬롯별 성과 파악이 어렵고, 일일 매출은 수기로 집계.</p></div></div>
+      <div class="blk"><div class="k">문제 정의</div><div class="v"><p>지표 자체의 신뢰도가 낮음.</p><ul><li>제휴 광고 유입과 해외 봇 트래픽(평균 체류 약 2초)이 섞여 전환율 및 퍼널 왜곡</li><li>구매하기, 장바구니 버튼 구조 변경으로 기존 퍼널 정의와 불일치</li></ul></div></div>
       <figure class="fig"><div class="flow"><div><b>모으기</b>Cafe24 OAuth API + GA4 연동, 토큰 자동 갱신과 캐싱</div><div><b>걸러내기</b>광고 유입 필터 분리, 봇 트래픽 플래그, 퍼널 재정의</div><div><b>보여주기</b>AARRR 대시보드 + 매일 아침 Slack 매출 리포트</div></div><figcaption>데이터 흐름 설계</figcaption></figure>
-      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>Cafe24 API와 GA4를 연동한 AARRR 통합 대시보드 구축</li><li>아트 61개·라이프 60개 진열 슬롯을 매핑해 슬롯 단위 클릭·매출 추적</li><li>광고 유입 분리와 봇 트래픽 플래그, 바뀐 버튼 구조에 맞춘 퍼널 재정의</li><li>GMV·매출총액·TOP 5·목표 달성률 리포트를 내부 서버에서 매일 자동 발송</li><li>개발팀 리소스를 쓰지 않는 범위에서 AI로 API 연동을 구현해 내부 서버에 연동</li></ul></div></div>
-      <div class="blk"><div class="k">결과</div><div class="v"><ul><li>의사결정권자와 운영·MD 담당자가 매일 같은 숫자로 성과를 확인</li><li>통합 데이터로 손익 구조의 문제와 알림 과다로 인한 회원 탈퇴 급증을 발견</li><li>탐색 확장(랭킹·신상·트렌딩)을 우선 과제로 정하는 근거가 됨</li></ul></div></div>
-      <div class="blk"><div class="k">배운 것</div><div class="v"><p>대시보드 구축보다 지표 정의가 먼저라는 것. 데이터 오염 요인을 먼저 제거해야 의사결정에 쓰일 수 있습니다.</p></div></div>
+      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>Cafe24 API와 GA4를 연동한 AARRR 통합 대시보드 구축</li><li>아트 61개, 라이프 60개 진열 슬롯 매핑으로 슬롯 단위 클릭 및 매출 추적</li><li>광고 유입 분리, 봇 트래픽 플래그 처리 및 변경된 버튼 구조에 맞춘 퍼널 재정의</li><li>GMV, 매출총액, TOP 5, 목표 달성률 리포트 내부 서버에서 매일 자동 발송</li><li>개발팀 리소스 투입 없이 AI를 활용해 API 연동 구현 및 내부 서버 연동</li></ul></div></div>
+      <div class="blk"><div class="k">결과</div><div class="v"><ul><li>의사결정권자와 운영, MD 담당자가 동일한 데이터로 매일 성과 확인</li><li>통합 데이터를 통해 손익 구조 문제 및 알림 과다로 인한 회원 탈퇴 급증 발견</li><li>탐색 확장(랭킹, 신상, 트렌딩)을 우선 과제로 선정하는 근거로 활용</li></ul></div></div>
+      <div class="blk"><div class="k">배운 것</div><div class="v"><p>대시보드 구축보다 지표 정의가 우선되어야 하며, 데이터 오염 요인을 먼저 제거해야 의사결정에 활용할 수 있다는 점을 배웠습니다.</p></div></div>
       </section>
       <section class="proj">
       <h4>아트 커머스 주문 데이터 처리</h4><div class="meta">운영 데이터 | 2025.12 – 재직 중</div>
-      <div class="blk"><div class="k">문제</div><div class="v"><p>작품마다 사이즈·액자·에디션 옵션이 다르고, 매입·위탁 상품이 혼재하며, 수장고에서 직접 출고. 일반 커머스보다 주문 데이터가 복잡해 정산·분석이 어려움.</p></div></div>
-      <div class="blk"><div class="k">한 일</div><div class="v"><ul><li>Cafe24 상품과 ERP(이카운트) 품목을 맞추는 맵핑 작업을 설계하고 진행</li><li>흩어진 주문 알림 데이터를 분석 가능한 시트로 구조화</li><li>수장고 출발 기준 거리·권역별 운송료를 바탕으로 고객 배송비 정책 설계</li><li>자사몰·외부 입점 매출 비중, 매입·위탁 매출 같은 월별 경영 자료 추출</li></ul></div></div>
+      <div class="blk"><div class="k">문제</div><div class="v"><p>작품마다 사이즈, 액자, 에디션 옵션이 다르고 매입, 위탁 상품이 혼재하며 수장고에서 직접 출고. 일반 커머스보다 주문 데이터가 복잡해 정산 및 분석이 어려움.</p></div></div>
+      <div class="blk"><div class="k">한 일</div><div class="v"><ul><li>Cafe24 상품과 ERP(이카운트) 품목을 맞추는 맵핑 작업을 설계하고 진행</li><li>흩어진 주문 알림 데이터를 분석 가능한 시트로 구조화</li><li>수장고 출발 기준 거리 및 권역별 운송료를 바탕으로 고객 배송비 정책 설계</li><li>자사몰 및 외부 입점 매출 비중, 매입 및 위탁 매출 등 월별 경영 자료 추출</li></ul></div></div>
       </section>
     </article>
     <article class="case" data-id="reclle">
       <div class="head"><span class="icon" style="background:#03B26C"><span class="co-logo">re</span></span><div><h3>리클</h3><div class="meta">Product Owner | 2025.06 – 2025.12</div></div></div>
       <p class="co-intro">중고의류 방문 수거 서비스. 사용자 앱, 수거 기사 앱, 어드민, 매장 POS를 담당했습니다.</p>
       <section class="proj">
-      <h4>비회원 웹 수거 신청</h4><div class="meta">2025 | 기획·런칭</div>
+      <h4>비회원 웹 수거 신청</h4><div class="meta">2025 | 기획 및 런칭</div>
       <div class="kpis"><div class="kpi"><b>50%+</b><span>수거율</span></div></div>
-      <div class="blk"><div class="k">문제</div><div class="v"><p>수거 신청에 앱 설치·회원가입이 필요해 신청 단계 이탈이 많음.</p></div></div>
-      <div class="blk"><div class="k">한 일</div><div class="v"><p>회원가입 없이 웹에서 수거를 신청하는 페이지 기획·런칭.</p></div></div>
+      <div class="blk"><div class="k">문제</div><div class="v"><p>수거 신청 시 앱 설치 및 회원가입이 필요해 신청 단계 이탈률이 높음.</p></div></div>
+      <div class="blk"><div class="k">한 일</div><div class="v"><p>회원가입 없이 웹에서 수거를 신청할 수 있는 페이지 기획 및 런칭.</p></div></div>
       <figure class="fig"><div class="mock-row">
         <div class="mock"><div class="bar"><span>9:41</span><span>리클 웹</span></div><h5>가입 없이<br>수거 신청하기</h5><div class="sub">앱 설치 없이 1분이면 끝나요</div><div class="fld"><b>수거 주소</b>서울시 ○○구 ○○로</div><div class="fld"><b>수거 희망일</b>내일 오전</div><div class="fld"><b>수거 봉투</b>2개</div><div class="cta">신청하기</div></div>
         <div class="mock"><div class="bar"><span>9:42</span><span>리클 웹</span></div><h5>신청이 완료됐어요</h5><div class="sub">문 앞에 봉투를 놓아 주세요</div><div class="fld"><b>수거 예정</b>내일 오전 9시–12시</div><div class="fld"><b>알림</b>문자로 진행 상황을 보내드려요</div><div class="cta" style="background:var(--g100);color:var(--g700)">앱으로 정산 받기</div></div>
@@ -503,24 +461,24 @@ canvas.ink{position:absolute;inset:0;z-index:3;pointer-events:none}
       <div class="blk"><div class="k">결과</div><div class="v"><p>수거율 50% 이상 달성.</p></div></div>
       </section>
       <section class="proj">
-      <h4>상품 가격 자동 산정 AI 모델</h4><div class="meta">2025 | 기획·배포</div>
+      <h4>상품 가격 자동 산정 AI 모델</h4><div class="meta">2025 | 기획 및 배포</div>
       <div class="blk"><div class="k">문제</div><div class="v"><p>수거한 중고의류 가격을 담당자가 시세를 찾아보며 수작업으로 산정.</p></div></div>
-      <div class="blk"><div class="k">한 일</div><div class="v"><ul><li>중고 거래 시세를 웹 크롤링으로 모으고, 브랜드·카테고리·상태 기준으로 가격을 예측하는 모델 기획</li><li>모델을 API로 감싸 어드민과 서비스에서 바로 가격을 조회하는 구조 설계</li><li>로그인 인증을 거친 요청만 가격 예측을 호출할 수 있도록 접근 제한</li><li>배포 전 응답 속도 부하 테스트로 실제 운영 가능 여부 검증</li></ul></div></div>
+      <div class="blk"><div class="k">한 일</div><div class="v"><ul><li>중고 거래 시세를 웹 크롤링으로 모으고, 브랜드, 카테고리, 상태 기준으로 가격을 예측하는 모델 기획</li><li>모델을 API로 제공해 어드민과 서비스에서 바로 가격을 조회할 수 있는 구조 설계</li><li>로그인 인증을 거친 요청만 가격 예측을 호출할 수 있도록 접근 제한</li><li>배포 전 응답 속도 부하 테스트로 실제 운영 가능 여부 검증</li></ul></div></div>
       <figure class="fig"><div class="pipe">
         <div class="nd"><b>시세 수집</b>중고 거래 시세 크롤링</div><span class="ar">→</span>
-        <div class="nd"><b>정제·학습</b>브랜드·카테고리·상태별 정리 후 모델 학습</div><span class="ar">→</span>
-        <div class="nd"><b>예측 API</b>FastAPI로 감싸 컨테이너 배포 (AWS ECS)</div><span class="ar">→</span>
-        <div class="nd"><b>조회</b>어드민·서비스에서 예상 가격 확인</div>
+        <div class="nd"><b>정제 및 학습</b>브랜드, 카테고리, 상태별 정리 후 모델 학습</div><span class="ar">→</span>
+        <div class="nd"><b>예측 API</b>FastAPI 기반 컨테이너 배포 (AWS ECS)</div><span class="ar">→</span>
+        <div class="nd"><b>조회</b>어드민, 서비스에서 예상 가격 확인</div>
       </div><figcaption>가격 산정 흐름</figcaption></figure>
       <figure class="fig"><table class="perf"><thead><tr><th>요청</th><th>결과</th><th>응답 시간</th></tr></thead><tbody>
         <tr><td>로그인 (토큰 발급)</td><td class="ok">200 OK</td><td>정상</td></tr>
         <tr><td>가격 예측</td><td class="ok">200 OK</td><td>약 25–48ms</td></tr>
-      </tbody></table><figcaption>JMeter API 응답 테스트 · 전 요청 성공</figcaption></figure>
+      </tbody></table><figcaption>JMeter API 응답 테스트 결과 (전 요청 성공)</figcaption></figure>
       <figure class="fig"><div class="mock-row">
         <div class="mock"><div class="bar"><span>9:41</span><span>가격 확인</span></div><h5>이 옷, 얼마일까?</h5><div class="sub">브랜드와 상태만 고르면 돼요</div><div class="fld"><b>브랜드</b>예) 브랜드명 검색</div><div class="fld"><b>카테고리</b>아우터 · 코트</div><div class="seg"><span>새 것</span><span class="on">좋음</span><span>보통</span></div><div class="cta">예상 가격 보기</div></div>
         <div class="mock"><div class="bar"><span>9:42</span><span>가격 확인</span></div><h5>예상 매입 가격</h5><div class="sub">비슷한 중고 거래 시세를 모아 계산했어요</div><div class="price"><small>예시 값</small><b>○○,○○○원</b></div><div class="fld" style="margin-top:8px"><b>참고한 시세</b>최근 거래 ○○건</div><div class="src">크롤링한 시세 데이터 기반</div></div>
       </div><figcaption class="mock-note">재구성 화면 · 실제 서비스와 다를 수 있음</figcaption></figure>
-      <div class="blk"><div class="k">결과</div><div class="v"><p>가격 예측 API 배포. 부하 테스트에서 전 요청 성공, 예측 응답 50ms 이내로 실시간 조회 가능 확인.</p></div></div>
+      <div class="blk"><div class="k">결과</div><div class="v"><p>가격 예측 API 배포. 부하 테스트 결과 전 요청 성공 및 예측 응답 50ms 이내로 실시간 조회 가능 확인.</p></div></div>
       </section>
     </article>
     <article class="case" data-id="trip">
@@ -530,42 +488,42 @@ canvas.ink{position:absolute;inset:0;z-index:3;pointer-events:none}
       <h4>앱 리뉴얼 프로젝트</h4><div class="meta">앱 리뉴얼 | 2021.09 – 2022.11 | 기여도 50%</div>
       <div class="kpis"><div class="kpi"><b>+56.55%</b><span>MAU (목표 +20%)</span></div><div class="kpi"><b>+10%</b><span>리텐션 (6개월)</span></div><div class="kpi"><b>+50%</b><span>체류시간</span></div><div class="kpi"><b>+90%</b><span>매출 (22→23년)</span></div></div>
       <div class="blk"><div class="k">문제 상황</div><div class="v"><p>메타서치로 최저가를 찾고 앱으로 결제하는 패턴이 고착된 시장. OTA 앱 유지율 10% 미만, 유저 90%가 체크아웃 후 앱 삭제. 숏폼은 쿠폰을 노린 어뷰징 용도로 사용됨.</p></div></div>
-      <div class="blk"><div class="k">문제 정의</div><div class="v"><p>커뮤니티 기능의 부재로 숏폼과 예약을 잇는 고리가 없음. ‘매일은 아니지만 자주 들어오는, 삭제되지 않는 OTA’를 목표로 가설 수립.</p><ul><li>커뮤니티와 게이미피케이션을 넣으면 유입과 리텐션이 늘어난다</li><li>여행 정보를 한곳에 모으면 체류시간이 늘어난다</li><li>숏폼을 커머스와 이으면 매출이 늘어난다</li></ul></div></div>
-      <figure class="fig"><div class="row"><img src="img/shots/rank-board.jpg" alt="랭킹 화면" loading="lazy"><img src="img/shots/rank-mission.jpg" alt="여행 미션 화면" loading="lazy"><img src="img/shots/rank-badge.jpg" alt="활동 배지 화면" loading="lazy"></div><figcaption>가설 1 · ‘랭커가 되어 여행을 떠나세요’ 랭킹, 여행 미션, 활동 배지</figcaption></figure>
-      <figure class="fig"><div class="row"><img src="img/shots/con-feed.jpg" alt="피드 화면" loading="lazy"><img src="img/shots/con-record.jpg" alt="여행 기록 화면" loading="lazy"><img src="img/shots/con-triptalk.jpg" alt="트립톡 화면" loading="lazy"><img src="img/shots/con-chat.jpg" alt="지역 채팅 화면" loading="lazy"><img src="img/shots/con-bookmark.jpg" alt="북마크 화면" loading="lazy"></div><figcaption>가설 2 · 피드, 여행 기록, 트립톡, 지역 채팅, 북마크</figcaption></figure>
-      <figure class="fig"><div class="row"><img src="img/shots/com-feedcard.jpg" alt="영상에 태그된 숙소" loading="lazy"><img src="img/shots/com-recommend.jpg" alt="지역 추천 숙소" loading="lazy"><img src="img/shots/com-hotel.jpg" alt="숙소 상세" loading="lazy"><img src="img/shots/com-videos.jpg" alt="숙소 영상 리뷰" loading="lazy"></div><figcaption>가설 3 · 영상에 태그된 숙소, 지역 추천 숙소, 숙소 페이지 영상 리뷰</figcaption></figure>
-      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>앱 활동으로 랭킹 포인트를 쌓아 리워드를 받는 구조. 포인트는 다른 유저와의 상호작용에서만 쌓이게 설계</li><li>예약 유저에게 랭킹 부스터를 줘서 커머스로 되돌아오게 연결</li><li>여행 전·중·후를 잇는 콘텐츠 구조와 관리용 어드민 기획</li><li>화면 기획·기능 명세·정책서·TC 작성</li></ul></div></div>
+      <div class="blk"><div class="k">문제 정의</div><div class="v"><p>커뮤니티 기능이 없어 숏폼과 예약 간 연결 고리가 부족함. ‘매일은 아니지만 자주 들어오는, 삭제되지 않는 OTA’를 목표로 가설 수립.</p><ul><li>커뮤니티와 게이미피케이션을 넣으면 유입과 리텐션이 늘어난다</li><li>여행 정보를 한곳에 모으면 체류시간이 늘어난다</li><li>숏폼을 커머스와 이으면 매출이 늘어난다</li></ul></div></div>
+      <figure class="fig"><div class="row"><img src="img/shots/rank-board.jpg" alt="랭킹 화면" loading="lazy"><img src="img/shots/rank-mission.jpg" alt="여행 미션 화면" loading="lazy"><img src="img/shots/rank-badge.jpg" alt="활동 배지 화면" loading="lazy"></div><figcaption>가설 1: ‘랭커가 되어 여행을 떠나세요’ 랭킹, 여행 미션, 활동 배지</figcaption></figure>
+      <figure class="fig"><div class="row"><img src="img/shots/con-feed.jpg" alt="피드 화면" loading="lazy"><img src="img/shots/con-record.jpg" alt="여행 기록 화면" loading="lazy"><img src="img/shots/con-triptalk.jpg" alt="트립톡 화면" loading="lazy"><img src="img/shots/con-chat.jpg" alt="지역 채팅 화면" loading="lazy"><img src="img/shots/con-bookmark.jpg" alt="북마크 화면" loading="lazy"></div><figcaption>가설 2: 피드, 여행 기록, 트립톡, 지역 채팅, 북마크</figcaption></figure>
+      <figure class="fig"><div class="row"><img src="img/shots/com-feedcard.jpg" alt="영상에 태그된 숙소" loading="lazy"><img src="img/shots/com-recommend.jpg" alt="지역 추천 숙소" loading="lazy"><img src="img/shots/com-hotel.jpg" alt="숙소 상세" loading="lazy"><img src="img/shots/com-videos.jpg" alt="숙소 영상 리뷰" loading="lazy"></div><figcaption>가설 3: 영상에 태그된 숙소, 지역 추천 숙소, 숙소 페이지 영상 리뷰</figcaption></figure>
+      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>앱 활동으로 랭킹 포인트를 쌓아 리워드를 받는 구조. 포인트는 다른 유저와의 상호작용에서만 쌓이게 설계</li><li>예약 유저에게 랭킹 부스터를 지급해 커머스로의 재유입 유도</li><li>여행 전, 중, 후를 잇는 콘텐츠 구조 및 관리용 어드민 기획</li><li>화면 기획서, 기능 명세서, 정책서, TC 작성</li></ul></div></div>
       <div class="blk"><div class="k">결과</div><div class="v"><p>KPI(MAU +20%)의 2배 이상 달성, 12개월 기준 인당 평균 재구매율 50% 이상 증가.</p></div></div>
       </section>
       <section class="proj">
       <h4>푸시 시스템 구축 및 개선</h4><div class="meta">푸시 시스템 | 2023.09 – 2023.12 | 기여도 100%</div>
       <div class="kpis"><div class="kpi"><b>+15%</b><span>유저 재진입율</span></div><div class="kpi"><b>0 → 주 1회+</b><span>마케팅 푸시 발송</span></div><div class="kpi"><b>3종</b><span>동적 알림 추가</span></div></div>
       <div class="blk"><div class="k">문제 상황</div><div class="v"><p>로컬 발송 방식으로 푸시 오발송이 잦아 유저들이 알림을 오류로 인식. 재진입을 유도할 동적 알림과 마케팅 푸시 부재.</p></div></div>
-      <div class="blk"><div class="k">문제 정의</div><div class="v"><p>로컬 푸시는 정해진 시점·위치에서만 발송 가능하고 이력이 남지 않음.</p></div></div>
+      <div class="blk"><div class="k">문제 정의</div><div class="v"><p>로컬 푸시는 정해진 시점, 위치에서만 발송 가능하고 이력이 남지 않음.</p></div></div>
       <figure class="fig"><div class="row flat"><img src="img/shots/push-booking.jpg" alt="예약·플레이·이벤트 알림" loading="lazy"><img src="img/shots/push-friend.jpg" alt="친구 활동 알림" loading="lazy"></div><figcaption>예약(체크인 전후), 플레이(호텔 키우기), 친구 활동 알림</figcaption></figure>
-      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>화면보다 정책부터 설계. 알림의 주체를 기기가 아닌 유저로, 전송 성공·실패·열람을 남기는 테이블 구조 정의</li><li>FCM 서버 발송으로 전환하고 동적 알림 3종 추가</li><li>수신자 조건·내용·랜딩을 설정하는 발송 어드민과 딥링크 관리 페이지</li><li>광고성 정보 수신 동의 약관 정리와 데이터 마이그레이션</li></ul></div></div>
+      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>화면보다 정책을 우선 설계. 알림 주체를 기기에서 유저로 변경하고, 전송 성공, 실패, 열람 이력을 남기는 테이블 구조 정의</li><li>FCM 서버 발송으로 전환하고 동적 알림 3종 추가</li><li>수신자 조건, 내용, 랜딩을 설정하는 발송 어드민 및 딥링크 관리 페이지 기획</li><li>광고성 정보 수신 동의 약관 정리 및 데이터 마이그레이션</li></ul></div></div>
       <figure class="fig"><img class="wide" src="img/shots/doc-admin.jpg" alt="푸시 어드민 화면설계서" loading="lazy"><figcaption>푸시 어드민 화면설계서</figcaption></figure>
       <figure class="fig"><img class="wide" src="img/shots/doc-policy.jpg" alt="광고성 정보 수신 동의 정책서" loading="lazy"><figcaption>광고성 정보 수신 동의 정책서와 데이터 구조 정의</figcaption></figure>
-      <div class="blk"><div class="k">결과</div><div class="v"><p>푸시 오발송 개선, 성과 측정 가능. 마케팅 푸시 0건에서 주 1회 이상 발송.</p></div></div>
+      <div class="blk"><div class="k">결과</div><div class="v"><p>푸시 오발송 개선 및 성과 측정 가능. 마케팅 푸시 0건에서 주 1회 이상 발송.</p></div></div>
       </section>
       <section class="proj">
       <h4>핵심 지표 대시보드와 GA4</h4><div class="meta">데이터 | 2022.12 – 2023.04 | 기여도 100%</div>
-      <div class="blk"><div class="k">한 일</div><div class="v"><p>MAU·WAU·DAU, 리텐션, 신규 가입, 체류시간과 영상 지표(업로드·좋아요·시청 시간) 대시보드 구축, GA4 페이지뷰·이벤트 설계로 행동 분석 체계 확립.</p></div></div>
+      <div class="blk"><div class="k">한 일</div><div class="v"><p>MAU/WAU/DAU, 리텐션, 신규 가입, 체류시간 및 영상 지표(업로드 수, 좋아요 수, 시청 시간) 대시보드 구축. GA4 페이지뷰 및 이벤트 셋팅으로 사용자 행동 분석 체계 확립.</p></div></div>
       </section>
       <section class="proj">
-      <h4>앱 운영 및 프로젝트 관리</h4><div class="meta">앱 운영·프로젝트 관리 | 2022.12 – 2024.06 | 기여도 100%</div>
+      <h4>앱 운영 및 프로젝트 관리</h4><div class="meta">앱 운영 및 프로젝트 관리 | 2022.12 – 2024.06 | 기여도 100%</div>
       <div class="kpis"><div class="kpi"><b>100%</b><span>버그 처리율</span></div><div class="kpi"><b>90%+</b><span>백로그 처리율</span></div><div class="kpi"><b>매월</b><span>정기 앱 배포</span></div></div>
-      <div class="blk"><div class="k">문제 상황</div><div class="v"><p>신규 기능 런칭이 이어지며 VOC·버그·개선건 처리 지연.</p></div></div>
-      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>개선건을 모아 KPI 기준 상·중·하 우선순위로 분류</li><li>리소스를 파악해 일정을 잡고, 기획 후 Jira 티켓으로 개발 요청</li><li>개발·QA를 마치면 월별 마이너 업데이트로 배포</li></ul></div></div>
-      <figure class="fig"><img class="wide" src="img/shots/doc-gantt.jpg" alt="월별 마이너 업데이트 일정표" loading="lazy"><figcaption>iOS·AOS 월별 마이너 업데이트 일정표</figcaption></figure>
+      <div class="blk"><div class="k">문제 상황</div><div class="v"><p>신규 기능 런칭이 이어지며 VOC, 버그, 개선건 처리 지연.</p></div></div>
+      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>개선건을 모아 KPI 기준 상, 중, 하 우선순위로 분류</li><li>리소스 파악 후 일정 수립, 기획 후 Jira 티켓으로 개발 요청</li><li>개발 및 QA 완료 후 월별 마이너 업데이트로 배포</li></ul></div></div>
+      <figure class="fig"><img class="wide" src="img/shots/doc-gantt.jpg" alt="월별 마이너 업데이트 일정표" loading="lazy"><figcaption>iOS/AOS 월별 마이너 업데이트 일정표</figcaption></figure>
       <div class="blk"><div class="k">결과</div><div class="v"><p>버그 처리율 100%, 백로그 처리율 90% 이상.</p></div></div>
       </section>
     </article>
     <article class="case" data-id="wider">
       <div class="head"><span class="icon" style="background:#3182F6"><span class="co-logo">wp</span></span><div><h3>와이더플래닛</h3><div class="meta">Product Manager | 2021.03 – 2021.09</div></div></div>
-      <p class="co-intro">광고 타게팅 플랫폼 타게팅 게이츠 서비스 기획·운영.</p>
+      <p class="co-intro">광고 타게팅 플랫폼 타게팅 게이츠 서비스 기획 및 운영.</p>
       <section class="proj">
-      <h4>타게팅 게이츠 서비스 기획·운영</h4><div class="meta">2021.03 – 2021.09</div>
+      <h4>타게팅 게이츠 서비스 기획 및 운영</h4><div class="meta">2021.03 – 2021.09</div>
       <div class="blk"><div class="k">한 일</div><div class="v"><ul><li>UX 개선과 신규 광고 서비스 도입 기획</li><li>Jira로 일정 관리</li><li>협력사 요구사항 처리와 기능 개선</li></ul></div></div>
       </section>
     </article>
@@ -617,81 +575,7 @@ canvas.ink{position:absolute;inset:0;z-index:3;pointer-events:none}
   document.getElementById('copy').addEventListener('click',function(){var b=this,lab=b.textContent,t='iamsucool@gmail.com',em=document.getElementById('email');function sel(){var r=document.createRange();r.selectNodeContents(em);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='주소를 선택했어요. 복사해 주세요';setTimeout(function(){b.textContent=lab},2000)}try{navigator.clipboard.writeText(t).then(function(){b.textContent='복사했어요';setTimeout(function(){b.textContent=lab},1600)},sel)}catch(e){sel()}});
 })();
 </script>
-<aside class="qrail" id="qrail" aria-hidden="true">
-  <div class="qhud"><div class="row px"><b id="q-lv">LV.1</b><span id="q-cnt">0/7</span></div><div class="qbar"><i id="q-exp"></i></div><div class="row px"><span>EXP</span><span id="q-pct">0%</span></div></div>
-  <div class="qpath" id="qpath"><div class="hero" id="qhero"><canvas width="48" height="58"></canvas><div class="bub" id="qbub"></div></div></div>
-</aside>
-<div class="qmob" id="qmob" aria-hidden="true"><span class="lv px" id="q-lv2">LV.1</span><canvas width="48" height="58"></canvas><div class="bub" id="qbub2"></div></div>
-<div class="qtoast" id="qtoast" role="status" aria-live="polite"><canvas width="12" height="12"></canvas><div><span class="px">QUEST CLEAR</span><b id="qt-t"></b><em id="qt-s"></em></div></div>
-<script>
-(function(){
-const SPR={"pal":{"A":"#0e1222","B":"#22305a","C":"#e7ecf4","D":"#34477e","E":"#a6b0c2","F":"#ffffff","G":"#7a4728","H":"#a5683a","I":"#4d2a16","J":"#16203f","K":"#dfa57d","L":"#2a1610","M":"#7b4423","N":"#c27c45","O":"#ec8f86","P":"#8f4337","Q":"#3182f6","R":"#1d5ccc","S":"#1d1f30","T":"#2b2d42","U":"#3b3e59","V":"#f2c14e","W":"#b8861f","X":"#6e4528","Y":"#4a2d18","Z":"#c08159","a":"#5b3a22","b":"#37314c","c":"#7a5032","d":"#4f3220"},"frames":{"idle0":["................................................","....................AAAAAAAA...........A........",".................AAABBBBBBBBAAA.......ACAA......","...............AABBBBBBBBBBBBBBAA....ACCCCA.....","..............ABDDDDDDDDBBBBBBBBBA...ACCCCA.....","...........AAADDDDDDDDDDDDBBBBBBBBA.ACCCCCCA....",".........AABDDDDDDDDBBBBBBDDBBBBBBBAACCCEEEEA...","........ABBDDDDDDDBBBBBBBBBBDBBBBBBBCCCCEEEEA...",".......ABBDDDDDDBBBBBBBBBBBBBBBBBBBBBCCFEEEEA...","......ABBDDDDDDBBBBBBBBBBBBBBBBBBBBBBBCFEEEEA...","......ABBDDDDDBBBBBBGGGGGGGGBBBBBBBBBBCFEEEEA...",".....ABBBDDDDDBBGGGGGGGGGGGGGGGGBBBBBBBFEEEEA...",".....ABBBDDDDBBGGGGGGHGGGGGGGGGGGBBBBBBBEEEEA...","....ABBBBDDDDBGGGHGGGHGGGGGHGGGGGGBBBBBBEEEEA...","....ABBBBBDDBGGGGHGGGHGGGGGHGGHGGGGBBBBBEEEEA...","....ABBBBBBDGGGGGHGGGGHGGGGHGGHGGGGGBBBBBEEEA...","....ABBBBBBBGGGGGGHGGGHGIGGGHGHGGGGGBBBBBEEEA...","....ABBBBBBBGGGGGGHIGGHGIGGGHIGHGGGGBBBBBEEEA...","....ABBBBBBGGGGGGGHIGGGGIGGGHIGHGGGGGBBBBEEEA...","....ABBBBBBGGGGGGGGIGGGGIGGGGIGHGGGGGBBBBEEEA...",".....ABBBBBBGGGGGGGIGGGGIGGGGIGGHGGGBBBBJEEEA...",".....ABBBBBBGGGGGGGIGGGGGGGGGIGGGGGGBBBBJEEEA...","......AJBBBBGGGKGGGGGGGGGGGGGKGGGGGGBBBJJEEEA...","......AJBBBBGGGKGKGGGKKKKGKKKKGGGGGGBBBJJEEEA...","......AJJBBBGGGGLLLLKKKKKGLLLLKGGGGGBBBJJJEEA...","......AJJBBBGGGLLFFMKKKKKKMFFMLLGGGGBBJJJJEEA...",".....AJJJJBBGGGGLFMMKKKKKKMFMMLKGGGGBBJJJJEEA...",".....AJJJJBBGGGKLMMMKKKKKKMMMMLKKGGGBBJJJJEEA...",".....AJJJJJBGGGKLNNFKKKKKKMNNFLKKGGGBJJJJJEEA...",".....AJJJJJBGGGKLNNNKKKKKKMNNNLKKGGGBJJJJJEEA...",".....AJJJJJJGGGKKKKKKKKKKKKKKKKKKGGGJJJJJJJEA...",".....AJJJJJJGGOOKKKKKKKKKKKKKKKOOGGGJJJJJJJEA...","....AJJJJJJJJGBJKKKKKKKPPKKKKKKKJBGAJJJJJJJEA...","....AJJJJJJJJGBBJKKKKKKKKKKKKKKJBBGJJJJFEEEEA...","....AJJJJJJJJJQBBKKKKKKKKKKKKKKBBQQJCCCFEEEEA...",".....AAAAAAAAQQQQBKKKKKKKKKKKKBQQQAACCCFEEEEA...","..........ARQQRRRRRKKKKKKKKKKQQQRRAACCCFEEEEA...",".........ARQSSRRRRRRRKKKKKKQQRRQRRAACCCFEEEEA...",".......AAQQQSSSSSSSSTTTTUUTQQRRQTTTACCCCEEEEA...","......ARQQQQSSSSSSSSTTTTUUTQQRRTTTTTCCCCEEEEAAAA",".....ARQQQQQSSSSSSSSTTTTUUTQQRRTTTTTTVVVVVWWWWWW",".....ARQQQQQSSSSSSSTTTTTUUTTTRRTTTTTTVVVVVWWWWWW","....ARRQQQQQSSSSXXXXXXXVVXXXXXXXTTTTKKKKKAAAAAAA","....ARQQQQQRKKKKYYYYYYYVVYYXXXXYYTTTKKKKKA......","....ARQQQRRRKKKKSSSTTTTTUUTXXXXTTTTTKKKKKA......","....ARQRRRRRKKKKSSSTTTTTTTTXXXXTTTAAZZZZZA......","...ARRRAARRRAASSSSSTTTTTTTTYYYYTTTA.AAaaaA......","...ARAA.ARRA..AAAbbbbbbAAbbbbbbAAA...AaaaA......","....A....ARA....AbbbbbbAAbbbbbbA.....AaaaA......","..........A.....AbbbbbbAAbbbbbbA.....AVVVA......","...............AcccccccAAcccccccA....AVVVA......","...............AcccccccAAcccccccA.....AAA.......","...............AcccccccAAcccccccA...............","...............AdddddddAAdddddddA...............","...............AdddddddAAdddddddA...............","................AAAAAAA..AAAAAAA................","................................................","................................................"],"idle1":["....................AAAAAAAA...........A........",".................AAABBBBBBBBAAA.......ACAA......","...............AABBBBBBBBBBBBBBAA....ACCCCA.....","..............ABDDDDDDDDBBBBBBBBBA...ACCCCA.....","...........AAADDDDDDDDDDDDBBBBBBBBA.ACCCCCCA....",".........AABDDDDDDDDBBBBBBDDBBBBBBBAACCCEEEEA...","........ABBDDDDDDDBBBBBBBBBBDBBBBBBBCCCCEEEEA...",".......ABBDDDDDDBBBBBBBBBBBBBBBBBBBBBCCFEEEEA...","......ABBDDDDDDBBBBBBBBBBBBBBBBBBBBBBBCFEEEEA...","......ABBDDDDDBBBBBBGGGGGGGGBBBBBBBBBBCFEEEEA...",".....ABBBDDDDDBBGGGGGGGGGGGGGGGGBBBBBBBFEEEEA...",".....ABBBDDDDBBGGGGGGHGGGGGGGGGGGBBBBBBBEEEEA...","....ABBBBDDDDBGGGHGGGHGGGGGHGGGGGGBBBBBBEEEEA...","....ABBBBBDDBGGGGHGGGHGGGGGHGGHGGGGBBBBBEEEEA...","....ABBBBBBDGGGGGHGGGGHGGGGHGGHGGGGGBBBBBEEEA...","....ABBBBBBBGGGGGGHGGGHGIGGGHGHGGGGGBBBBBEEEA...","....ABBBBBBBGGGGGGHIGGHGIGGGHIGHGGGGBBBBBEEEA...","....ABBBBBBGGGGGGGHIGGGGIGGGHIGHGGGGGBBBBEEEA...","....ABBBBBBGGGGGGGGIGGGGIGGGGIGHGGGGGBBBBEEEA...",".....ABBBBBBGGGGGGGIGGGGIGGGGIGGHGGGBBBBJEEEA...",".....ABBBBBBGGGGGGGIGGGGGGGGGIGGGGGGBBBBJEEEA...","......AJBBBBGGGKGGGGGGGGGGGGGKGGGGGGBBBJJEEEA...","......AJBBBBGGGKGKGGGKKKKGKKKKGGGGGGBBBJJEEEA...","......AJJBBBGGGGLLLLKKKKKGLLLLKGGGGGBBBJJJEEA...","......AJJBBBGGGLLFFMKKKKKKMFFMLLGGGGBBJJJJEEA...",".....AJJJJBBGGGGLFMMKKKKKKMFMMLKGGGGBBJJJJEEA...",".....AJJJJBBGGGKLMMMKKKKKKMMMMLKKGGGBBJJJJEEA...",".....AJJJJJBGGGKLNNFKKKKKKMNNFLKKGGGBJJJJJEEA...",".....AJJJJJBGGGKLNNNKKKKKKMNNNLKKGGGBJJJJJEEA...",".....AJJJJJJGGGKKKKKKKKKKKKKKKKKKGGGJJJJJJJEA...",".....AJJJJJJGGOOKKKKKKKKKKKKKKKOOGGGJJJJJJJEA...","....AJJJJJJJJGBJKKKKKKKPPKKKKKKKJBGAJJJJJJJEA...","....AJJJJJJJJGBBJKKKKKKKKKKKKKKJBBGJJJJFEEEEA...","....AJJJJJJJJJQBBKKKKKKKKKKKKKKBBQQJCCCFEEEEA...",".....AAAAAAAAQQQQBKKKKKKKKKKKKBQQQAACCCFEEEEA...","..........ARQQRRRRRKKKKKKKKKKQQQRRAACCCFEEEEA...",".........ARQSSRRRRRRRKKKKKKQQRRQRRAACCCFEEEEA...",".......AAQQQSSSSSSSSTTTTUUTQQRRQTTTACCCCEEEEA...","......ARQQQQSSSSSSSSTTTTUUTQQRRTTTTTCCCCEEEEAAAA",".....ARQQQQQSSSSSSSSTTTTUUTQQRRTTTTTTVVVVVWWWWWW",".....ARQQQQQSSSSSSSTTTTTUUTTTRRTTTTTTVVVVVWWWWWW","....ARRQQQQQSSSSXXXXXXXVVXXXXXXXTTTTKKKKKAAAAAAA","....ARQQQQQRKKKKYYYYYYYVVYYXXXXYYTTTKKKKKA......","....ARQQQRRRKKKKSSSTTTTTUUTXXXXTTTTTKKKKKA......","....ARQRRRRRKKKKSSSTTTTTTTTXXXXTTTAAZZZZZA......","...ARRRAARRRAASSSSSTTTTTTTTYYYYTTTA.AAaaaA......","...ARAA.ARRA..AAAbbbbbbAAbbbbbbAAA...AaaaA......","....A....ARA....AbbbbbbAAbbbbbbA.....AaaaA......","..........A.....AbbbbbbAAbbbbbbA.....AVVVA......","................AbbbbbbAAbbbbbbA.....AVVVA......","...............AcccccccAAcccccccA.....AAA.......","...............AcccccccAAcccccccA...............","...............AcccccccAAcccccccA...............","...............AdddddddAAdddddddA...............","...............AdddddddAAdddddddA...............","................AAAAAAA..AAAAAAA................","................................................","................................................"],"walk0":["................................................","....................AAAAAAAA...........A........",".................AAABBBBBBBBAAA.......ACAA......","...............AABBBBBBBBBBBBBBAA....ACCCCA.....","..............ABDDDDDDDDBBBBBBBBBA...ACCCCA.....","...........AAADDDDDDDDDDDDBBBBBBBBA.ACCCCCCA....",".........AABDDDDDDDDBBBBBBDDBBBBBBBAACCCEEEEA...","........ABBDDDDDDDBBBBBBBBBBDBBBBBBBCCCCEEEEA...",".......ABBDDDDDDBBBBBBBBBBBBBBBBBBBBBCCFEEEEA...","......ABBDDDDDDBBBBBBBBBBBBBBBBBBBBBBBCFEEEEA...","......ABBDDDDDBBBBBBGGGGGGGGBBBBBBBBBBCFEEEEA...",".....ABBBDDDDDBBGGGGGGGGGGGGGGGGBBBBBBBFEEEEA...",".....ABBBDDDDBBGGGGGGHGGGGGGGGGGGBBBBBBBEEEEA...","....ABBBBDDDDBGGGHGGGHGGGGGHGGGGGGBBBBBBEEEEA...","....ABBBBBDDBGGGGHGGGHGGGGGHGGHGGGGBBBBBEEEEA...","....ABBBBBBDGGGGGHGGGGHGGGGHGGHGGGGGBBBBBEEEA...","....ABBBBBBBGGGGGGHGGGHGIGGGHGHGGGGGBBBBBEEEA...","....ABBBBBBBGGGGGGHIGGHGIGGGHIGHGGGGBBBBBEEEA...","....ABBBBBBGGGGGGGHIGGGGIGGGHIGHGGGGGBBBBEEEA...","....ABBBBBBGGGGGGGGIGGGGIGGGGIGHGGGGGBBBBEEEA...",".....ABBBBBBGGGGGGGIGGGGIGGGGIGGHGGGBBBBJEEEA...",".....ABBBBBBGGGGGGGIGGGGGGGGGIGGGGGGBBBBJEEEA...","......AJBBBBGGGKGGGGGGGGGGGGGKGGGGGGBBBJJEEEA...","......AJBBBBGGGKGKGGGKKKKGKKKKGGGGGGBBBJJEEEA...","......AJJBBBGGGGLLLLKKKKKGLLLLKGGGGGBBBJJJEEA...","......AJJBBBGGGLLFFMKKKKKKMFFMLLGGGGBBJJJJEEA...",".....AJJJJBBGGGGLFMMKKKKKKMFMMLKGGGGBBJJJJEEA...",".....AJJJJBBGGGKLMMMKKKKKKMMMMLKKGGGBBJJJJEEA...",".....AJJJJJBGGGKLNNFKKKKKKMNNFLKKGGGBJJJJJEEA...",".....AJJJJJBGGGKLNNNKKKKKKMNNNLKKGGGBJJJJJEEA...",".....AJJJJJJGGGKKKKKKKKKKKKKKKKKKGGGJJJJJJJEA...",".....AJJJJJJGGOOKKKKKKKKKKKKKKKOOGGGJJJJJJJEA...","....AJJJJJJJJGBJKKKKKKKPPKKKKKKKJBGAJJJJJJJEA...","....AJJJJJJJJGBBJKKKKKKKKKKKKKKJBBGJJJJFEEEEA...","....AJJJJJJJJJQBBKKKKKKKKKKKKKKBBQQJCCCFEEEEA...",".....AAAAAAAAQQQQBKKKKKKKKKKKKBQQQAACCCFEEEEA...","..........ARQQRRRRRKKKKKKKKKKQQQRRAACCCFEEEEA...",".........ARQSSRRRRRRRKKKKKKQQRRQRRAACCCFEEEEA...",".......AAQQQSSSSSSSSTTTTUUTQQRRQTTTACCCCEEEEA...","......ARQQQQSSSSSSSSTTTTUUTQQRRTTTTTCCCCEEEEAAAA",".....ARQQQQQSSSSSSSSTTTTUUTQQRRTTTTTTVVVVVWWWWWW",".....ARQQQQQSSSSSSSTTTTTUUTTTRRTTTTTTVVVVVWWWWWW",".....ARQQQQQSSSSXXXXXXXVVXXXXXXXTTTTKKKKKAAAAAAA","....ARRQQQQRKKKKYYYYYYYVVYYXXXXYYTTTKKKKKA......","....ARQQQQRRKKKKSSSTTTTTUUTXXXXTTTTTKKKKKA......","....ARQQRRRRKKKKSSSTTTTTTTTXXXXTTTAAZZZZZA......","....ARQRARRRAASSSSSTTTTTTTTYYYYTTTA.AAaaaA......","...ARRAAARRA..AAAbbbbbbAAbbbbbbAAA...AaaaA......","...ARA...ARA....AbbbbbbAAbbbbbbA.....AaaaA......","....A.....A....AcccccccAAbbbbbbA.....AVVVA......","...............AcccccccAAbbbbbbA.....AVVVA......","...............AcccccccAAcccccccA.....AAA.......","...............AdddddddAAcccccccA...............","...............AdddddddAAcccccccA...............","................AAAAAAA.AdddddddA...............","........................AdddddddA...............",".........................AAAAAAA................","................................................"],"walk1":["................................................","....................AAAAAAAA...........A........",".................AAABBBBBBBBAAA.......ACAA......","...............AABBBBBBBBBBBBBBAA....ACCCCA.....","..............ABDDDDDDDDBBBBBBBBBA...ACCCCA.....","...........AAADDDDDDDDDDDDBBBBBBBBA.ACCCCCCA....",".........AABDDDDDDDDBBBBBBDDBBBBBBBAACCCEEEEA...","........ABBDDDDDDDBBBBBBBBBBDBBBBBBBCCCCEEEEA...",".......ABBDDDDDDBBBBBBBBBBBBBBBBBBBBBCCFEEEEA...","......ABBDDDDDDBBBBBBBBBBBBBBBBBBBBBBBCFEEEEA...","......ABBDDDDDBBBBBBGGGGGGGGBBBBBBBBBBCFEEEEA...",".....ABBBDDDDDBBGGGGGGGGGGGGGGGGBBBBBBBFEEEEA...",".....ABBBDDDDBBGGGGGGHGGGGGGGGGGGBBBBBBBEEEEA...","....ABBBBDDDDBGGGHGGGHGGGGGHGGGGGGBBBBBBEEEEA...","....ABBBBBDDBGGGGHGGGHGGGGGHGGHGGGGBBBBBEEEEA...","....ABBBBBBDGGGGGHGGGGHGGGGHGGHGGGGGBBBBBEEEA...","....ABBBBBBBGGGGGGHGGGHGIGGGHGHGGGGGBBBBBEEEA...","....ABBBBBBBGGGGGGHIGGHGIGGGHIGHGGGGBBBBBEEEA...","....ABBBBBBGGGGGGGHIGGGGIGGGHIGHGGGGGBBBBEEEA...","....ABBBBBBGGGGGGGGIGGGGIGGGGIGHGGGGGBBBBEEEA...",".....ABBBBBBGGGGGGGIGGGGIGGGGIGGHGGGBBBBJEEEA...",".....ABBBBBBGGGGGGGIGGGGGGGGGIGGGGGGBBBBJEEEA...","......AJBBBBGGGKGGGGGGGGGGGGGKGGGGGGBBBJJEEEA...","......AJBBBBGGGKGKGGGKKKKGKKKKGGGGGGBBBJJEEEA...","......AJJBBBGGGGLLLLKKKKKGLLLLKGGGGGBBBJJJEEA...","......AJJBBBGGGLLFFMKKKKKKMFFMLLGGGGBBJJJJEEA...",".....AJJJJBBGGGGLFMMKKKKKKMFMMLKGGGGBBJJJJEEA...",".....AJJJJBBGGGKLMMMKKKKKKMMMMLKKGGGBBJJJJEEA...",".....AJJJJJBGGGKLNNFKKKKKKMNNFLKKGGGBJJJJJEEA...",".....AJJJJJBGGGKLNNNKKKKKKMNNNLKKGGGBJJJJJEEA...",".....AJJJJJJGGGKKKKKKKKKKKKKKKKKKGGGJJJJJJJEA...",".....AJJJJJJGGOOKKKKKKKKKKKKKKKOOGGGJJJJJJJEA...","....AJJJJJJJJGBJKKKKKKKPPKKKKKKKJBGAJJJJJJJEA...","....AJJJJJJJJGBBJKKKKKKKKKKKKKKJBBGJJJJFEEEEA...","....AJJJJJJJJJQBBKKKKKKKKKKKKKKBBQQJCCCFEEEEA...",".....AAAAAAAAQQQQBKKKKKKKKKKKKBQQQAACCCFEEEEA...","...........AQQRRRRRKKKKKKKKKKQQQRRAACCCFEEEEA...",".........AAQSSRRRRRRRKKKKKKQQRRQRRAACCCFEEEEA...","........ARQQSSSSSSSSTTTTUUTQQRRQTTTACCCCEEEEA...",".......ARQQQSSSSSSSSTTTTUUTQQRRTTTTTCCCCEEEEAAAA","......ARQQQQSSSSSSSSTTTTUUTQQRRTTTTTTVVVVVWWWWWW","......ARQQQQSSSSSSSTTTTTUUTTTRRTTTTTTVVVVVWWWWWW","......ARQQQQSSSSXXXXXXXVVXXXXXXXTTTTKKKKKAAAAAAA",".....ARRQQQRKKKKYYYYYYYVVYYXXXXYYTTTKKKKKA......",".....ARQQQRRKKKKSSSTTTTTUUTXXXXTTTTTKKKKKA......",".....ARQQRRRKKKKSSSTTTTTTTTXXXXTTTAAZZZZZA......",".....ARQRRRRAASSSSSTTTTTTTTYYYYTTTA.AAaaaA......","....ARRAAARA..AAAbbbbbbAAbbbbbbAAA...AaaaA......","....ARA..ARA....AbbbbbbAAbbbbbbA.....AaaaA......",".....A....A.....AbbbbbbAAcccccccA....AVVVA......","................AbbbbbbAAcccccccA....AVVVA......","...............AcccccccAAcccccccA.....AAA.......","...............AcccccccAAdddddddA...............","...............AcccccccAAdddddddA...............","...............AdddddddA.AAAAAAA................","...............AdddddddA........................","................AAAAAAA.........................","................................................"]}};const ICO={"pal":{"K":"#0d0d12","T":"#3182F6","t":"#1b5bd0","Y":"#f2c14e","y":"#c7922a","R":"#f0654a","r":"#c2402b","W":"#e9ecf2","w":"#aab0bd","G":"#6b7184","g":"#4a4f60","N":"#8a5f35","n":"#5e3f22","F":"#ffd76a","O":"#ff9a3c","L":"#03B26C","l":"#028a54","C":"#e8d4a8","c":"#bfa577"},"icons":{"tent":["............",".....KK.....","....KTTK....","...KTTttK...","...KTTKtK...","..KTTKKKtK..","..KTTKnKtK..",".KTTTKnKttK.",".KTTKKnKKtK.","KKKKKKKKKKKK","............","............"],"scroll":["............",".KKKKKKKKK..","KCCCCCCCCcK.","KcKCCCCCCcK.",".KCKKKKKCcK.",".KCCCCCCCcK.",".KCKKKKCCcK.",".KCCCCCCCcK.",".KCKKKKKCcK.",".KCCCCCCCCcK","..KKKKKKKcCK","..........K."],"sword":["..........KK",".........KWK","........KWwK",".......KWwK.","......KWwK..","..K..KWwK...","..KKKWwK....","...KyKK.....","..KyYK......",".KnKKyK.....","KnnK.KK.....","KKK........."],"hammer":["............","..KKKKKK....",".KGGGGGgK...",".KGGGGGgKK..",".KgggggKnK..","..KKKKKnK...","......KnK...",".....KnK....","....KnK.....","...KnK......","...KK.......","............"],"coin":["............","....KKKK....","...KYYYYK...","..KYFYYYyK..","..KFYYYYyK..","..KFYYYYyK..","..KYYYYYyK..","..KYYYYyyK..","...KyyyyK...","....KKKK....","............","............"],"fire":["............",".....K......","....KOK.....","....KOOK.K..","...KORFOKOK.","...KRFFROOK.","..KORFFFROK.","..KORFFFROK.","...KKKKKKK..",".KNNnKKNNnK.","KnNNNNNNNnnK",".KKKKKKKKKK."],"flag":["..KK........","..KWKKKKK...","..KWTTTTTK..","..KWTTTTTTK.","..KWTTTTTK..","..KWKKKKK...","..KWK.......","..KWK.......","..KWK.......",".KKgKK......","KGGGGGK.....","KKKKKKK....."]}};
-  var Q=[
-    {sel:'#desk',icon:'tent',name:'출발',say:'모험을 시작합니다',clear:'출발 준비 완료',sub:'PM·PO 5년 차 Product Maker'},
-    {sel:'#now',icon:'scroll',name:'진행 중 퀘스트',say:'프린트베이커리에서 퀘스트 3개 진행 중',clear:'진행 중 퀘스트 확인',sub:'트렌드 레이더 · 1:1 아트 컨설팅 · 통합 대시보드'},
-    {sel:'#career',icon:'sword',name:'경력',say:'4개 회사, 10개 프로젝트를 지나왔습니다',clear:'경력 던전 클리어',sub:'보상 · MAU +56.55%, 매출 +90%'},
-    {sel:'#ai',icon:'hammer',name:'AI 공방',say:'AI로 생산성을 높이기 위한 다양한 시도를 합니다',clear:'AI 공방 입장',sub:'공개 API·오픈소스만, 데이터는 내부에'},
-    {sel:'#etc',icon:'coin',name:'프리랜서',say:'웹사이트 기획·제작 의뢰도 받아 왔습니다',clear:'프리랜서 의뢰 완료',sub:'2017–2025 · 웹사이트 기획·제작'},
-    {sel:'#about',icon:'fire',name:'캠프',say:'잠깐 쉬어 갑니다. 캠핑 중',clear:'캠프 도착',sub:'Product Maker 김수 소개'},
-    {sel:'#contact',icon:'flag',name:'다음 파티',say:'함께할 파티를 찾고 있습니다',clear:'마지막 지점 도착',sub:'이메일로 연락 주세요'}
-  ];
-  function hex(h){return[parseInt(h.substr(1,2),16),parseInt(h.substr(3,2),16),parseInt(h.substr(5,2),16)]}
-  function paint(cv,rows,pal,rim){var w=rows[0].length,h=rows.length,c=cv.getContext('2d'),im=c.createImageData(w,h),d=im.data;
-    function at(x,y){return y>=0&&y<h&&x>=0&&x<w&&rows[y][x]!=='.'}
-    for(var y=0;y<h;y++)for(var x=0;x<w;x++){var ch=rows[y][x],i=(y*w+x)*4;
-      if(ch!=='.'){var p=hex(pal[ch]);d[i]=p[0];d[i+1]=p[1];d[i+2]=p[2];d[i+3]=255}
-      else if(rim&&(at(x+1,y)||at(x-1,y)||at(x,y+1)||at(x,y-1))){d[i]=70;d[i+1]=73;d[i+2]=88;d[i+3]=150}}
-    c.putImageData(im,0,0)}
-  var heroCv=[document.querySelector('#qhero canvas'),document.querySelector('#qmob canvas')];
-  var F=SPR.frames,curF='';
-  function frame(n){if(n===curF)return;curF=n;heroCv.forEach(function(cv){cv.getContext('2d').clearRect(0,0,48,58);paint(cv,F[n],SPR.pal,true)})}
-  frame('idle0');
-  var path=document.getElementById('qpath'),hero=document.getElementById('qhero'),secs=[],nodes=[];
-  Q.forEach(function(q,i){var s=document.querySelector(q.sel);secs.push(s);
-    var n=document.createElement('div');n.className='qnode';n.style.top=(6+i*(88/(Q.length-1)))+'%';
-    var cv=document.createElement('canvas');cv.width=12;cv.height=12;paint(cv,ICO.icons[q.icon],ICO.pal,false);
-    var t=document.createElement('span');t.innerHTML=q.name+'<small class="px">'+(i===0?'START':'STAGE '+i)+'</small>';
-    n.appendChild(cv);n.appendChild(t);path.appendChild(n);nodes.push(n)});
-  var bub=[document.getElementById('qbub'),document.getElementById('qbub2')],bt;
-  function say(txt){bub.forEach(function(b){b.textContent=txt;b.classList.add('show')});clearTimeout(bt);bt=setTimeout(function(){bub.forEach(function(b){b.classList.remove('show')})},3200)}
-  var toast=document.getElementById('qtoast'),tcv=toast.querySelector('canvas'),tt;
-  function clearToast(q){tcv.getContext('2d').clearRect(0,0,12,12);paint(tcv,ICO.icons[q.icon],ICO.pal,false);
-    document.getElementById('qt-t').textContent=q.clear;document.getElementById('qt-s').textContent=q.sub;
-    toast.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('show')},2400)}
-  var reached=0,stage=-1,walkT=0,idleT,lastY=scrollY,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function tops(){return secs.map(function(s){return s.getBoundingClientRect().top+scrollY})}
-  function update(){
-    var T=tops(),probe=scrollY+innerHeight*.45,max=document.documentElement.scrollHeight-innerHeight;
-    var atEnd=scrollY>=max-4,i=0;for(var k=0;k<T.length;k++)if(probe>=T[k])i=k;
-    var t=i<T.length-1?Math.min(1,(probe-T[i])/(T[i+1]-T[i])):0;
-    if(atEnd){i=T.length-1;t=0}
-    var p=6+(i+t)*(88/(Q.length-1));hero.style.top=p+'%';
-    var dk=secs[0].getBoundingClientRect().bottom,inn=dk<innerHeight*.35;document.getElementById('qrail').classList.toggle('in',inn);document.getElementById('qmob').classList.toggle('in',inn);
-    var pct=Math.round(max>0?scrollY/max*100:100);
-    document.getElementById('q-exp').style.width=pct+'%';document.getElementById('q-pct').textContent=pct+'%';
-    if(i!==stage){
-      if(i>reached){for(var r=reached+1;r<=i;r++)nodes[r-1]&&nodes[r-1].classList.add('done');if(i>0)clearToast(Q[i-1]);reached=i}
-      stage=i;say(Q[i].say)}
-    nodes.forEach(function(n,k){n.classList.toggle('on',k<=reached);n.classList.toggle('qcur',k===i);
-      n.querySelector('small').textContent=n.classList.contains('done')?'CLEAR':(k===0?'START':'STAGE '+k)});
-    var lv='LV.'+(reached+1);document.getElementById('q-lv').textContent=lv;document.getElementById('q-lv2').textContent=lv;
-    document.getElementById('q-cnt').textContent=(reached+(atEnd?1:0))+'/'+Q.length;
-    if(atEnd&&!nodes[Q.length-1].classList.contains('done')){nodes[Q.length-1].classList.add('done');clearToast(Q[Q.length-1])}
-  }
-  var raf=0;
-  addEventListener('scroll',function(){
-    if(!reduce){var dy=Math.abs(scrollY-lastY);walkT+=dy;if(walkT>28){walkT=0;frame(curF==='walk0'?'walk1':'walk0')}
-      clearTimeout(idleT);idleT=setTimeout(function(){frame('idle0')},160)}
-    lastY=scrollY;if(!raf)raf=requestAnimationFrame(function(){raf=0;update()})},{passive:true});
-  addEventListener('resize',update);
-  if(!reduce)setInterval(function(){if(curF==='idle0')frame('idle1');else if(curF==='idle1')frame('idle0')},600);
-  update();setTimeout(function(){say(Q[0].say)},700);
-  /* chapter tags on the company list: oldest first */
-  var ch={wider:['CH.1','clear'],trip:['CH.2','clear'],reclle:['CH.3','clear'],pbg:['CH.4 진행 중','']};
-  Object.keys(ch).forEach(function(k){var m=document.querySelector('[data-case="'+k+'"] .m');if(!m)return;var s=document.createElement('span');
-    s.className='qtag px'+(ch[k][1]?' clear':'');s.textContent=ch[k][1]?ch[k][0]+' CLEAR':ch[k][0].replace(' 진행 중','')+' NOW';m.appendChild(s)});
-})();
-</script>
+
 
 </body>
 </html>
