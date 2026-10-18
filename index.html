@@ -177,7 +177,10 @@ canvas.ink{position:absolute;inset:0;z-index:3;pointer-events:none}
 .li b{display:block;font-size:17px;font-weight:600;line-height:1.4}
 .li .d{display:block;font-size:14.5px;color:var(--g600);line-height:1.5}
 .li .m{display:block;font-size:13px;color:var(--g500);margin-top:1px}
-.li .chev{flex:none;width:20px;height:20px;stroke:var(--g300);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.li .more{flex:none;font-size:13.5px;font-weight:600;color:#7fb2ff;background:var(--blue-soft);padding:7px 12px;border-radius:999px;white-space:nowrap;transition:background .15s}
+.li:hover .more{background:#24375a}
+@media (max-width:560px){.li{flex-wrap:wrap;row-gap:10px}.li .t{flex:1 1 calc(100% - 64px)}.li .more{margin-left:64px;padding:6px 12px}}
+.li .chev{display:none;flex:none;width:20px;height:20px;stroke:var(--g300);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 /* AI section */
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0 0 28px;counter-reset:st}
@@ -281,16 +284,61 @@ canvas.ink{position:absolute;inset:0;z-index:3;pointer-events:none}
 .perf th{color:var(--g500);font-weight:600}
 .perf td.ok{color:#03B26C;font-weight:600}
 @media(max-width:560px){.pipe .ar{display:none}.pipe .nd{flex-basis:100%}}
+
+/* impact cards */
+.wins{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.win{display:flex;flex-direction:column;gap:6px;background:var(--g50);border-radius:18px;padding:20px 20px 18px;transition:background .15s}
+.win:hover{background:#30303B}
+.win .co{font-size:13px;color:var(--g500);font-weight:600}
+.win .num{font-size:28px;font-weight:700;color:var(--blue);letter-spacing:-.02em;line-height:1.2;font-variant-numeric:tabular-nums}
+.win .num small{font-size:15px;color:var(--g600);font-weight:600;margin-left:6px;letter-spacing:0}
+.win p{margin:0;font-size:15px;color:var(--g700);line-height:1.6;flex:1}
+.win .go{font-size:13.5px;font-weight:600;color:#7fb2ff;margin-top:4px}
+@media (max-width:560px){.wins{grid-template-columns:1fr}.win .num{font-size:25px}}
+/* compact AI */
+.mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 20px}
+.mini div{background:var(--g50);border-radius:16px;padding:16px}
+.mini b{display:block;font-size:15.5px;font-weight:700;margin-bottom:4px}
+.mini span{font-size:14px;color:var(--g600);line-height:1.55;display:block}
+@media (max-width:620px){.mini{grid-template-columns:1fr}}
+.linkbtn{display:inline-flex;align-items:center;gap:4px;font-weight:600;font-size:15px;color:#7fb2ff;background:var(--blue-soft);padding:11px 16px;border-radius:12px}
+.linkbtn:hover{background:#24375A}
+.free{display:flex;gap:12px;align-items:center;margin-top:14px;padding:14px 8px 0;border-top:1px solid var(--g200);font-size:14.5px;color:var(--g600)}
+.free b{color:var(--g900);font-weight:600}
+a.li{color:inherit}
+.str p{margin:0!important}
+/* detail pages */
+.subnav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 0}
+.subnav::-webkit-scrollbar{display:none}
+.subnav a{flex:none;padding:9px 15px;border-radius:999px;background:var(--white);color:var(--g600);font-size:14.5px;font-weight:600}
+.subnav a[aria-current]{background:var(--g900);color:var(--g100)}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:14.5px;font-weight:600;color:var(--g600);padding:6px 2px}
+.back:hover{color:var(--g900)}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.toc a{font-size:14px;font-weight:600;background:var(--g50);padding:8px 12px;border-radius:10px;color:var(--g700)}
+.toc a:hover{background:#30303B}
+.proj{scroll-margin-top:72px}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pager a{background:var(--white);border-radius:18px;padding:18px 20px;display:block}
+.pager a:hover{background:#26262E}
+.pager small{display:block;font-size:13px;color:var(--g500);margin-bottom:2px}
+.pager b{font-size:16.5px;font-weight:700}
+.pager .nx{text-align:right;grid-column:2}
+.cta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.cta p{margin:0;font-size:16px;color:var(--g700)}
+.cta .btn{width:auto;padding:0 22px;height:48px;font-size:15.5px}
+.nowbox{margin-top:8px}
+.col>*{min-width:0}
 </style>
 
-<nav class="nav" aria-label="섹션"><div class="nav-in"><b>Su Gim</b><ul><li><a href="#career">경력</a></li><li><a href="#ai">AI로 일하기</a></li><li class="hide-s"><a href="#about">소개</a></li><li><a href="#contact">연락</a></li></ul></div></nav>
+<nav class="nav" aria-label="섹션"><div class="nav-in"><b>Su Gim</b><ul><li><a href="#impact">성과</a></li><li><a href="#career">경력</a></li><li><a href="#ai">AI 활용</a></li><li class="hide-s"><a href="#about">소개</a></li><li><a href="#contact">연락</a></li></ul></div></nav>
 <div class="off"><div class="off-in"><span class="off-l">관심사</span><span class="off-c">🎒 백패킹</span><span class="off-c">⛺ 캠핑</span><span class="off-c">⚽ 풋살</span><span class="off-c">🎧 DJing</span><span class="off-c">🍽️ 맛집 탐방</span><span class="off-c">🚗 테슬라 덕질</span><span class="off-c">📈 투자 공부</span><span class="off-c">🐶 강아지 젤리</span><span class="off-c">🧪 사이드 프로젝트</span></div></div>
 
 <header class="desk" id="desk" aria-label="소개">
   <div class="desk-title">
     <span class="eyebrow">Su Gim · Product Maker</span>
-    <h1>기획부터 런칭, 운영까지<br>책임감 있게 만들어 왔습니다</h1>
-    <p>5년간 PM, PO로 일하며 서비스 기획부터 이해관계자 협업, 런칭 및 운영까지 담당해 왔습니다.</p>
+    <h1>기획부터 런칭, 운영까지<br>책임지는 Product Maker</h1>
+    <p>광고, 여행, 중고의류, 아트 커머스 4개 서비스에서 5년간 PM, PO로 일했습니다. 트립비토즈 앱 리뉴얼 후 MAU 56.55%, 프린트베이커리 사이트 리뉴얼 후 방문자 107% 증가를 이끌었습니다.</p>
   </div>
 
   <div class="obj icon-obj" data-x="9" data-y="14" data-r="-8" style="width:110px"><svg viewBox="0 0 96 96" aria-label="커피 머그"><rect x="14" y="26" width="52" height="58" rx="8" fill="#FFFFFF" stroke="#C4C4CF" stroke-width="3"/><path d="M66 40h8a12 12 0 0 1 0 24h-8" fill="none" stroke="#C4C4CF" stroke-width="3"/><rect x="14" y="44" width="52" height="14" fill="#3182F6"/><path d="M30 8c-4 6 4 8 0 14M44 6c-4 6 4 8 0 14" fill="none" stroke="#D1D6DB" stroke-width="3" stroke-linecap="round"/></svg></div>
@@ -314,96 +362,62 @@ canvas.ink{position:absolute;inset:0;z-index:3;pointer-events:none}
   <div class="scrollcue" aria-hidden="true">︾</div>
 </header>
 
-
 <main class="col" id="main">
   <div class="cur" id="su" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M1 1l13 5-6 2-2 6z" fill="#3182F6"/></svg><span>Su</span></div>
 
-  <section class="card" id="now" aria-labelledby="now-t">
-    <h2 class="sec-t" id="now-t">진행 중인 프로젝트</h2>
-    <p class="sec-s">프린트베이커리</p>
-    <ul class="rows">
-      <li class="rowi"><span class="ic">📡</span><div><b>트렌드 레이더</b><span>리빙, 선물, 전시 트렌드를 기반으로 소싱 및 노출 상품을 선정하기 위한 리포트 구축</span></div></li>
-      <li class="rowi"><span class="ic">💬</span><div><b>1:1 아트 컨설팅</b><span>고가 작품 구매를 고민하는 고객에게 1:1 상담을 연결해 구매 전환을 높이기 위한 기능 기획</span></div></li>
-      <li class="rowi"><span class="ic">📊</span><div><b>통합 대시보드</b><span>Cafe24, GA4 데이터 통합 및 검색어 데이터 연동 진행 중</span></div></li>
-    </ul>
+  <section class="card" id="impact" aria-labelledby="impact-t">
+    <h2 class="sec-t" id="impact-t">핵심 성과</h2>
+    <p class="sec-s">직접 기획하고 출시한 프로젝트의 결과입니다.</p>
+    <div class="wins">
+      <a class="win" href="work-trip.html#renewal"><span class="co">트립비토즈 | 앱 리뉴얼</span><b class="num">MAU +56.55%<small>목표 +20%</small></b><p>예약 후 삭제되던 여행 앱에 커뮤니티와 랭킹을 도입해 다시 찾는 앱으로 개편. 매출 +90%</p><span class="go">자세히 보기 ›</span></a>
+      <a class="win" href="work-pbg.html#renewal"><span class="co">프린트베이커리 | 사이트 리뉴얼</span><b class="num">방문자 +107%<small>가입 +81%</small></b><p>아트, 라이프 메인 분리와 랭킹 탐색 동선, 통합 로그인으로 탐색과 가입 장벽 개선</p><span class="go">자세히 보기 ›</span></a>
+      <a class="win" href="work-reclle.html#web"><span class="co">리클 | 비회원 웹 수거 신청</span><b class="num">수거율 50%+</b><p>앱 설치와 회원가입 없이 웹에서 바로 수거를 신청할 수 있도록 신청 단계 축소</p><span class="go">자세히 보기 ›</span></a>
+      <a class="win" href="work-trip.html#push"><span class="co">트립비토즈 | 푸시 시스템</span><b class="num">재진입율 +15%</b><p>오발송되던 로컬 푸시를 서버 발송으로 전환하고, 마케팅 푸시를 0건에서 주 1회 이상으로</p><span class="go">자세히 보기 ›</span></a>
+    </div>
   </section>
 
   <section class="card" id="career" aria-labelledby="career-t">
     <h2 class="sec-t" id="career-t">경력</h2>
-    <p class="sec-s">회사를 누르면 프로젝트별 상세 내용을 볼 수 있습니다.</p>
-    <div class="stats">
-      <div class="stat"><b>5년+</b><span>PM · PO 경력</span></div>
-      <div class="stat"><b>+56.55%</b><span>리뉴얼 후 MAU</span></div>
-      <div class="stat"><b>+90%</b><span>리뉴얼 후 매출</span></div>
-    </div>
+    <p class="sec-s">PM, PO 5년+. 회사를 선택하면 프로젝트별 상세 내용을 볼 수 있습니다.</p>
     <div class="list">
-      <button type="button" class="li press" data-case="pbg"><span class="logo" style="background:#3A3A46"><span class="co-logo">PB</span></span><span class="t"><b>프린트베이커리</b><span class="d">아트, 라이프스타일 커머스</span><span class="m">Product Owner · 2025.12 –</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
-      <button type="button" class="li press" data-case="reclle"><span class="logo" style="background:#03B26C"><span class="co-logo">re</span></span><span class="t"><b>리클</b><span class="d">중고의류 수거 서비스</span><span class="m">Product Owner · 2025.06 – 2025.12</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
-      <button type="button" class="li press" data-case="trip"><span class="logo" style="background:#6B4CF6"><span class="co-logo">tb</span></span><span class="t"><b>트립비토즈</b><span class="d">여행 숏폼 기반 숙소 예약 앱</span><span class="m">Product Manager · 2021.09 – 2024.06</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
-      <button type="button" class="li press" data-case="wider"><span class="logo" style="background:#3182F6"><span class="co-logo">wp</span></span><span class="t"><b>와이더플래닛</b><span class="d">광고 타게팅 플랫폼, 타게팅 게이츠</span><span class="m">Product Manager · 2021.03 – 2021.09</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      <a class="li press" href="work-pbg.html"><span class="logo" style="background:#3A3A46"><span class="co-logo">PB</span></span><span class="t"><b>프린트베이커리</b><span class="d">아트, 라이프스타일 커머스</span><span class="m">Product Owner · 2025.12 –</span></span><span class="more">프로젝트 3개<span class="w"> 보기</span></span></a>
+      <a class="li press" href="work-reclle.html"><span class="logo" style="background:#03B26C"><span class="co-logo">re</span></span><span class="t"><b>리클</b><span class="d">중고의류 수거 서비스</span><span class="m">Product Owner · 2025.06 – 2025.12</span></span><span class="more">프로젝트 2개<span class="w"> 보기</span></span></a>
+      <a class="li press" href="work-trip.html"><span class="logo" style="background:#6B4CF6"><span class="co-logo">tb</span></span><span class="t"><b>트립비토즈</b><span class="d">여행 숏폼 기반 숙소 예약 앱</span><span class="m">Product Manager · 2021.09 – 2024.06</span></span><span class="more">프로젝트 4개<span class="w"> 보기</span></span></a>
+      <a class="li press" href="work-wider.html"><span class="logo" style="background:#3182F6"><span class="co-logo">wp</span></span><span class="t"><b>와이더플래닛</b><span class="d">광고 타게팅 플랫폼, 타게팅 게이츠</span><span class="m">Product Manager · 2021.03 – 2021.09</span></span><span class="more">프로젝트 1개<span class="w"> 보기</span></span></a>
     </div>
+    <div class="free"><span>✎</span><span><b>웹사이트 기획 및 제작 프리랜서</b> 2017 – 2025 | 미국 브랜드 룩북, 시애틀 무용단, 국제 학회 웹사이트</span></div>
   </section>
 
   <section class="card" id="ai" aria-labelledby="ai-t">
-    <h2 class="sec-t" id="ai-t">AI 활용 방식</h2>
-    <p class="sec-s">자료 조사를 비롯해 반복 업무를 줄이는 사내 도구 제작에 AI를 활용하고 있습니다. 개발자의 업무를 대체하는 것이 아닌, 복잡하지 않은 범위 내에서 보안 원칙을 지켜 활용합니다.</p>
-    <div class="research">
-      <b>자료 조사</b>
-      <ol>
-        <li><span>1</span><div><b>질문 정의</b>의사결정 사항 및 필요 근거 정리</div></li>
-        <li><span>2</span><div><b>수집</b>공식 문서, 공개 통계, 경쟁 서비스, 검색 트렌드 등을 AI를 활용해 수집</div></li>
-        <li><span>3</span><div><b>검증</b>원문 확인 및 수치는 2개 이상 출처로 교차 검증</div></li>
-        <li><span>4</span><div><b>정리</b>표, 장표로 정리 후 결론 및 다음 액션 도출</div></li>
-      </ol>
+    <h2 class="sec-t" id="ai-t">AI 활용</h2>
+    <p class="sec-s">우선순위에서 밀리는 사내 업무는 AI로 직접 해결하고, 서비스 핵심 기능은 개발팀과 협업합니다.</p>
+    <div class="mini">
+      <div><b>매출 보고 자동화</b><span>매일 오전 1시간 이상 걸리던 매출 집계와 보고를 자동 리포트로 대체</span></div>
+      <div><b>정산 기간 단축</b><span>사람이 하면 일주일 걸리던 정산을 3일로 단축</span></div>
+      <div><b>통합 대시보드</b><span>필요한 지표를 정의하고 매출을 수치화해 예측. 도입 이후 월평균 거래액 45% 증가</span></div>
+      <div><b>HTML 프로토타입</b><span>클릭 가능한 프로토타입으로 기획부터 리뷰까지 기능별 최대 2일 이상 단축</span></div>
     </div>
-    <h3 class="sub-h">생산성 높이기</h3>
-    <p class="sub-p">서비스 개발이 아닌, 반복 업무를 줄이는 사내 도구를 만들어 팀의 생산성을 높이고 AI 활용 역량을 키워 왔습니다.</p>
-    <div class="steps">
-      <div class="step"><b>1. 정의</b>해결할 문제와 측정 지표 정의</div>
-      <div class="step"><b>2. 구현</b>AI를 활용해 코드, 문서 초안 작성</div>
-      <div class="step"><b>3. 사내 연동</b>내부 서버 및 사내 시스템 연동</div>
-      <div class="step"><b>4. 확인</b>지표로 효과 검증 후 개선</div>
-    </div>
-    <div class="sec-box"><b>원칙</b><ul><li>사내 도구, 데이터 정리, 리포트 등 복잡하지 않은 범위까지만 직접 구현</li><li>서비스 핵심 기능 및 운영 시스템은 개발팀, 외주 개발사가 담당하며 요구사항과 스펙 정의로 협업</li><li>공식 공개 API 및 오픈소스 범위 내에서만 개발</li><li>인증 키와 원본 데이터는 내부 서버에만 보관</li><li>권한이 있는 인원만 접근 가능하도록 제한</li></ul></div>
-    <div class="uses">
-      <article class="use"><span class="tag">데이터</span><h3>통합 데이터 대시보드</h3><div class="why"><span>배경</span>매출(Cafe24)과 행동 데이터(GA4)가 분리되어 있고, 광고 및 봇 트래픽이 섞여 지표 신뢰도가 낮음. 서비스 개발 우선순위에서 밀리는 내부 도구.</div><div class="how"><span>방법</span>AI를 활용해 두 데이터를 연동하고 내부 서버에 연결. 광고, 봇 트래픽을 제외한 퍼널을 매일 확인할 수 있는 사내 대시보드로 운영 중.</div></article>
-      <article class="use"><span class="tag">자동화</span><h3>일일 매출 리포트 자동화</h3><div class="why"><span>배경</span>일일 매출을 매일 수기로 집계 및 공유하며 시간 소요와 집계 오류 발생.</div><div class="how"><span>방법</span>AI를 활용해 집계 로직을 구현하고 내부 서버에서 매일 실행. GMV, 매출, TOP 5, 목표 달성률을 매일 아침 사내 메신저로 발송.</div></article>
-      <article class="use"><span class="tag">사내 도구</span><h3>경비환급 자동화</h3><div class="why"><span>배경</span>매월 영수증을 보며 경비환급신청서를 수기로 작성.</div><div class="how"><span>방법</span>무료 OCR과 AI를 활용해 영수증 인식 후 분류 규칙에 따라 엑셀 자동 작성. 전 팀에서 별도 로그인 없이 사용.</div></article>
-      <article class="use"><span class="tag">리서치</span><h3>트렌드 레이더</h3><div class="why"><span>배경</span>트렌드 수요에 대한 대응이 늦어 소싱 및 상품 노출 시점을 놓치는 문제 발생.</div><div class="how"><span>방법</span>AI를 활용해 리빙, 선물, 전시 트렌드와 검색, 영상 데이터를 수집 및 정리해 일/주/월 리포트로 제공. 소싱 및 노출 여부는 담당자가 최종 판단.</div></article>
-      <article class="use"><span class="tag">기획</span><h3>HTML 프로토타입</h3><div class="why"><span>배경</span>정적인 화면만으로는 흐름과 인터랙션 전달이 어려워 리뷰 기간이 길어지고, 개발 이후 수정 사항 발생.</div><div class="how"><span>방법</span>AI를 활용해 클릭 가능한 HTML 프로토타입을 먼저 제작한 후 피그마로 옮겨 화면, 스펙과 함께 전달.</div></article>
-    </div>
-    <div class="tools" aria-label="자주 쓰는 도구"><span>Claude</span><span>Gemini</span><span>Slack</span><span>GA4</span><span>SQL</span><span>Figma</span><span>Jira</span></div>
-  
-    <h3 class="sub-h">앱 만들기</h3>
-    <p class="sub-p">업무 외적으로는 필요하다고 느낀 서비스를 AI를 활용해 직접 앱으로 만들고 있습니다. 기획부터 화면, 기능 구현까지 직접 진행하며 프로덕트에 대한 이해를 넓히고 있습니다.</p>
-    <div class="etc"><span class="ic" style="background:var(--blue-soft)">🎒</span><div><b>아웃도어 앱 <span class="wip">개발 중</span></b><span>백패킹, 캠핑을 다니며 필요했던 기능을 담은 앱으로, Claude Code를 활용해 개발 중입니다.</span></div></div>
-  </section>
-
-  <section class="card" id="etc" aria-labelledby="etc-t">
-    <h2 class="sec-t" id="etc-t">프리랜서</h2>
-    <div class="etc" style="margin-top:14px"><span class="ic">✎</span><div><b>웹사이트 기획 및 제작 프리랜서</b><span>2017 – 2025 | 미국 A사 홀리데이 룩북, 시애틀 무용단 및 주얼리숍, 국제 학회 웹사이트 제작</span></div></div>
+    <a class="linkbtn" href="ai.html">AI 활용 방식과 보안 원칙 보기 ›</a>
   </section>
 
   <section class="card about" id="about" aria-labelledby="about-t">
     <h2 class="sec-t" id="about-t">소개</h2>
-    <p class="lead">문제 해결을 통해 사람들에게 더 좋은 서비스를 제공하는 일에 관심이 많은 김수입니다.</p>
-    <p>다양한 이해관계자들과 효율적으로 협업해 빠르게 성장하는 시장에서 프로젝트를 이끌고 프로덕트를 출시했습니다. 유저 피드백과 데이터를 분석해 사용자 중심의 서비스를 지속적으로 개선해 왔으며, 프로덕트 라이프사이클 전반을 경험하며 책임감 있게 프로덕트를 만들어 왔습니다.</p>
+    <p class="lead">문제를 데이터로 확인하고, 직접 해결해 숫자로 증명하는 PM 김수입니다.</p>
     <div class="strengths">
-      <div class="str"><span class="ic">🔍</span><div><b>데이터 기반 문제 정의</b><p>데이터 분석과 유저 리서치를 기반으로 현상을 파악하고 문제를 정의합니다.</p><span class="ev"><b>사례</b>트립비토즈 리뉴얼: 예약 후 앱 삭제 현상을 데이터로 확인하고, 재방문할 이유가 없다는 것을 핵심 문제로 정의.</span></div></div>
-      <div class="str"><span class="ic">⚡</span><div><b>효율적인 문제 해결</b><p>정해진 리소스 내에서 최대한 효율적으로 문제를 해결합니다.</p><span class="ev"><b>사례</b>프린트베이커리: 개발 우선순위에서 밀리는 사내 대시보드와 매출 리포트를 AI를 활용해 구현하고 사내 시스템에 연동.</span></div></div>
-      <div class="str"><span class="ic">🎯</span><div><b>오너십</b><p>문제를 파악한 순간부터 해결하는 순간까지 오너십을 가지고 임합니다.</p><span class="ev"><b>사례</b>트립비토즈 푸시: 운영 중 발견한 데이터 구조 문제를 정책부터 재설계해 해결.</span></div></div>
-      <div class="str"><span class="ic">🤝</span><div><b>협업과 커뮤니케이션</b><p>디자이너, 개발자, 외주 개발사, 의사결정권자와 화면 기획서, 기능 명세서, 정책서를 통해 소통합니다.</p><span class="ev"><b>사례</b>트립비토즈 운영: KPI 기준 우선순위 설정 및 개발, QA와 월별 배포 일정 관리.</span></div></div>
+      <div class="str"><span class="ic">🔍</span><div><b>데이터 기반 문제 정의</b><p>감이 아닌 데이터로 현상을 먼저 확인하고, 그 원인을 문제로 정의합니다.</p></div></div>
+      <div class="str"><span class="ic">⚡</span><div><b>효율적인 문제 해결</b><p>개발 리소스가 부족해도 일을 멈추지 않고, 지금 가능한 방법으로 해결합니다.</p></div></div>
+      <div class="str"><span class="ic">🎯</span><div><b>오너십</b><p>출시 이후에 발견한 문제도 직접 원인을 찾고 끝까지 해결합니다.</p></div></div>
+      <div class="str"><span class="ic">🤝</span><div><b>협업과 커뮤니케이션</b><p>디자이너, 개발자, 외주 개발사, 의사결정권자와 기획서, 명세서, 정책서로 소통합니다.</p></div></div>
     </div>
     <h3 class="sub-t">동료들이 말하는 나</h3>
     <div class="chips"><span>팀플레이어</span><span>숲을 보는</span><span>외향적인</span><span>실행력</span><span>지식 전도자</span><span>책임감</span><span>도전적인</span><span>소통의 왕</span><span>시간 중시</span><span>융통성</span></div>
     <h3 class="sub-t">학력</h3>
     <ul class="edu"><li><b>한양대학교 대학원 아트테크놀로지학과 석사</b><span>2017.03 – 2021.02 | 인지심리학, UX 전공</span><span class="thesis">졸업 논문 「확장된 기술수용이론을 활용한 디지털 리터러시 능력이 키오스크 기술 수용 의도에 미치는 영향에 대한 연구」</span></li><li><b>동국대학교 정보경영학과 학사</b><span>2012.03 – 2017.02</span></li></ul>
-    <p class="closing">앞으로도 오너십을 가지고 더 나은 프로덕트, 더 나아가 효율적인 로드맵 설정으로 비즈니스 목표 달성에 기여하고자 합니다.</p>
   </section>
 
   <section class="card" id="contact" aria-labelledby="contact-t">
     <h2 class="sec-t" id="contact-t">연락처</h2>
-    <p class="sec-s" style="margin-bottom:0">포트폴리오는 PDF로 받으실 수 있습니다.</p>
+    <p class="sec-s" style="margin-bottom:0">맡은 프로덕트가 비즈니스 성과로 이어지도록 끝까지 책임지겠습니다.</p>
     <div class="contact">
       <button type="button" class="btn primary press" id="copy">이메일 주소 복사하기</button>
       <a class="btn sub press" href="pdf/sugim-portfolio.pdf" target="_blank" rel="noopener">포트폴리오 PDF</a>
@@ -414,122 +428,6 @@ canvas.ink{position:absolute;inset:0;z-index:3;pointer-events:none}
 </main>
 
 <div class="cur you" id="you" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M1 1l13 5-6 2-2 6z"/></svg><span>You</span></div>
-
-<div class="sheet-bg" id="sheetbg" hidden></div>
-<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-label="회사별 프로젝트">
-  <div class="sheet-in">
-    <div class="sheet-top"><span class="sheet-label">경력</span><button type="button" id="close">닫기</button></div>
-
-    <article class="case" data-id="pbg">
-      <div class="head"><span class="icon" style="background:#3A3A46"><span class="co-logo">PB</span></span><div><h3>프린트베이커리</h3><div class="meta">Product Owner | 2025.12 – 재직 중</div></div></div>
-      <p class="co-intro">아트 작품과 라이프스타일 상품을 판매하는 커머스. 프로덕트 기획, 데이터 분석, 아트 커머스 특성상 발생하는 주문 데이터 처리를 담당합니다.</p>
-      <section class="proj">
-      <h4>프린트베이커리 리뉴얼</h4><div class="meta">아트, 라이프 몰 리뉴얼 | 2026.04 – 2026.08</div>
-      <div class="kpis"><div class="kpi"><b>+107%</b><span>방문자 (리뉴얼 전후)</span></div><div class="kpi"><b>+81%</b><span>회원가입 (리뉴얼 전후)</span></div></div>
-      <div class="blk"><div class="k">문제</div><div class="v"><p>아트와 라이프 상품이 구분 없이 노출되어 탐색 동선이 부족하고, 가입 및 구매까지의 단계가 많음.</p></div></div>
-      <div class="blk"><div class="k">한 일</div><div class="v"><ul><li>아트, 라이프 카테고리별 메인 페이지 신규 설계</li><li>주간 랭킹, 신상, 트렌딩 섹션 및 랭킹 페이지 추가로 탐색 동선 확장. 아트는 작가, 작품명, 가격 / 라이프는 브랜드, 할인율, 별점으로 카드 정보 차별화</li><li>카카오, 네이버, 아이디 로그인을 한 화면에 제공하는 통합 로그인으로 가입 장벽 완화</li><li>구매하기와 장바구니를 분리해 주문서로 바로 이동하도록 개선</li><li>신규 메인 슬롯별 GA4 이벤트 설정으로 리뉴얼 성과 측정 체계 구축</li></ul></div></div>
-      <div class="blk"><div class="k">결과</div><div class="v"><p>리뉴얼 전후 비교 방문자 107%, 회원가입 81% 증가.</p></div></div>
-      </section>
-      <section class="proj">
-      <h4>통합 데이터 대시보드 구축</h4><div class="meta">통합 데이터 대시보드 | 2026 – 진행 중 | 기여도 100%</div>
-      <div class="kpis"><div class="kpi"><b>121개</b><span>메인 진열 슬롯 성과 추적</span></div><div class="kpi"><b>매일</b><span>Slack 매출 리포트 자동 발송</span></div><div class="kpi"><b>2종</b><span>지표 오염원 분리 (광고·봇)</span></div></div>
-      <div class="blk"><div class="k">문제 상황</div><div class="v"><p>매출(Cafe24)과 행동 데이터(GA4)가 분리되어 한 화면에서 성과 판단 불가. 메인 진열 슬롯별 성과 파악이 어렵고, 일일 매출은 수기로 집계.</p></div></div>
-      <div class="blk"><div class="k">문제 정의</div><div class="v"><p>지표 자체의 신뢰도가 낮음.</p><ul><li>제휴 광고 유입과 해외 봇 트래픽(평균 체류 약 2초)이 섞여 전환율 및 퍼널 왜곡</li><li>구매하기, 장바구니 버튼 구조 변경으로 기존 퍼널 정의와 불일치</li></ul></div></div>
-      <figure class="fig"><div class="flow"><div><b>모으기</b>Cafe24 OAuth API + GA4 연동, 토큰 자동 갱신과 캐싱</div><div><b>걸러내기</b>광고 유입 필터 분리, 봇 트래픽 플래그, 퍼널 재정의</div><div><b>보여주기</b>AARRR 대시보드 + 매일 아침 Slack 매출 리포트</div></div><figcaption>데이터 흐름 설계</figcaption></figure>
-      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>Cafe24 API와 GA4를 연동한 AARRR 통합 대시보드 구축</li><li>아트 61개, 라이프 60개 진열 슬롯 매핑으로 슬롯 단위 클릭 및 매출 추적</li><li>광고 유입 분리, 봇 트래픽 플래그 처리 및 변경된 버튼 구조에 맞춘 퍼널 재정의</li><li>GMV, 매출총액, TOP 5, 목표 달성률 리포트 내부 서버에서 매일 자동 발송</li><li>개발팀 리소스 투입 없이 AI를 활용해 API 연동 구현 및 내부 서버 연동</li></ul></div></div>
-      <div class="blk"><div class="k">결과</div><div class="v"><ul><li>의사결정권자와 운영, MD 담당자가 동일한 데이터로 매일 성과 확인</li><li>통합 데이터를 통해 손익 구조 문제 및 알림 과다로 인한 회원 탈퇴 급증 발견</li><li>탐색 확장(랭킹, 신상, 트렌딩)을 우선 과제로 선정하는 근거로 활용</li></ul></div></div>
-      <div class="blk"><div class="k">배운 것</div><div class="v"><p>대시보드 구축보다 지표 정의가 우선되어야 하며, 데이터 오염 요인을 먼저 제거해야 의사결정에 활용할 수 있다는 점을 배웠습니다.</p></div></div>
-      </section>
-      <section class="proj">
-      <h4>아트 커머스 주문 데이터 처리</h4><div class="meta">운영 데이터 | 2025.12 – 재직 중</div>
-      <div class="blk"><div class="k">문제</div><div class="v"><p>작품마다 사이즈, 액자, 에디션 옵션이 다르고 매입, 위탁 상품이 혼재하며 수장고에서 직접 출고. 일반 커머스보다 주문 데이터가 복잡해 정산 및 분석이 어려움.</p></div></div>
-      <div class="blk"><div class="k">한 일</div><div class="v"><ul><li>Cafe24 상품과 ERP(이카운트) 품목을 맞추는 맵핑 작업을 설계하고 진행</li><li>흩어진 주문 알림 데이터를 분석 가능한 시트로 구조화</li><li>수장고 출발 기준 거리 및 권역별 운송료를 바탕으로 고객 배송비 정책 설계</li><li>자사몰 및 외부 입점 매출 비중, 매입 및 위탁 매출 등 월별 경영 자료 추출</li></ul></div></div>
-      </section>
-    </article>
-    <article class="case" data-id="reclle">
-      <div class="head"><span class="icon" style="background:#03B26C"><span class="co-logo">re</span></span><div><h3>리클</h3><div class="meta">Product Owner | 2025.06 – 2025.12</div></div></div>
-      <p class="co-intro">중고의류 방문 수거 서비스. 사용자 앱, 수거 기사 앱, 어드민, 매장 POS를 담당했습니다.</p>
-      <section class="proj">
-      <h4>비회원 웹 수거 신청</h4><div class="meta">2025 | 기획 및 런칭</div>
-      <div class="kpis"><div class="kpi"><b>50%+</b><span>수거율</span></div></div>
-      <div class="blk"><div class="k">문제</div><div class="v"><p>수거 신청 시 앱 설치 및 회원가입이 필요해 신청 단계 이탈률이 높음.</p></div></div>
-      <div class="blk"><div class="k">한 일</div><div class="v"><p>회원가입 없이 웹에서 수거를 신청할 수 있는 페이지 기획 및 런칭.</p></div></div>
-      <figure class="fig"><div class="mock-row">
-        <div class="mock"><div class="bar"><span>9:41</span><span>리클 웹</span></div><h5>가입 없이<br>수거 신청하기</h5><div class="sub">앱 설치 없이 1분이면 끝나요</div><div class="fld"><b>수거 주소</b>서울시 ○○구 ○○로</div><div class="fld"><b>수거 희망일</b>내일 오전</div><div class="fld"><b>수거 봉투</b>2개</div><div class="cta">신청하기</div></div>
-        <div class="mock"><div class="bar"><span>9:42</span><span>리클 웹</span></div><h5>신청이 완료됐어요</h5><div class="sub">문 앞에 봉투를 놓아 주세요</div><div class="fld"><b>수거 예정</b>내일 오전 9시–12시</div><div class="fld"><b>알림</b>문자로 진행 상황을 보내드려요</div><div class="cta" style="background:var(--g100);color:var(--g700)">앱으로 정산 받기</div></div>
-      </div><figcaption class="mock-note">재구성 화면 · 실제 서비스와 다를 수 있음</figcaption></figure>
-      <div class="blk"><div class="k">결과</div><div class="v"><p>수거율 50% 이상 달성.</p></div></div>
-      </section>
-      <section class="proj">
-      <h4>상품 가격 자동 산정 AI 모델</h4><div class="meta">2025 | 기획 및 배포</div>
-      <div class="blk"><div class="k">문제</div><div class="v"><p>수거한 중고의류 가격을 담당자가 시세를 찾아보며 수작업으로 산정.</p></div></div>
-      <div class="blk"><div class="k">한 일</div><div class="v"><ul><li>중고 거래 시세를 웹 크롤링으로 모으고, 브랜드, 카테고리, 상태 기준으로 가격을 예측하는 모델 기획</li><li>모델을 API로 제공해 어드민과 서비스에서 바로 가격을 조회할 수 있는 구조 설계</li><li>로그인 인증을 거친 요청만 가격 예측을 호출할 수 있도록 접근 제한</li><li>배포 전 응답 속도 부하 테스트로 실제 운영 가능 여부 검증</li></ul></div></div>
-      <figure class="fig"><div class="pipe">
-        <div class="nd"><b>시세 수집</b>중고 거래 시세 크롤링</div><span class="ar">→</span>
-        <div class="nd"><b>정제 및 학습</b>브랜드, 카테고리, 상태별 정리 후 모델 학습</div><span class="ar">→</span>
-        <div class="nd"><b>예측 API</b>FastAPI 기반 컨테이너 배포 (AWS ECS)</div><span class="ar">→</span>
-        <div class="nd"><b>조회</b>어드민, 서비스에서 예상 가격 확인</div>
-      </div><figcaption>가격 산정 흐름</figcaption></figure>
-      <figure class="fig"><table class="perf"><thead><tr><th>요청</th><th>결과</th><th>응답 시간</th></tr></thead><tbody>
-        <tr><td>로그인 (토큰 발급)</td><td class="ok">200 OK</td><td>정상</td></tr>
-        <tr><td>가격 예측</td><td class="ok">200 OK</td><td>약 25–48ms</td></tr>
-      </tbody></table><figcaption>JMeter API 응답 테스트 결과 (전 요청 성공)</figcaption></figure>
-      <figure class="fig"><div class="mock-row">
-        <div class="mock"><div class="bar"><span>9:41</span><span>가격 확인</span></div><h5>이 옷, 얼마일까?</h5><div class="sub">브랜드와 상태만 고르면 돼요</div><div class="fld"><b>브랜드</b>예) 브랜드명 검색</div><div class="fld"><b>카테고리</b>아우터 · 코트</div><div class="seg"><span>새 것</span><span class="on">좋음</span><span>보통</span></div><div class="cta">예상 가격 보기</div></div>
-        <div class="mock"><div class="bar"><span>9:42</span><span>가격 확인</span></div><h5>예상 매입 가격</h5><div class="sub">비슷한 중고 거래 시세를 모아 계산했어요</div><div class="price"><small>예시 값</small><b>○○,○○○원</b></div><div class="fld" style="margin-top:8px"><b>참고한 시세</b>최근 거래 ○○건</div><div class="src">크롤링한 시세 데이터 기반</div></div>
-      </div><figcaption class="mock-note">재구성 화면 · 실제 서비스와 다를 수 있음</figcaption></figure>
-      <div class="blk"><div class="k">결과</div><div class="v"><p>가격 예측 API 배포. 부하 테스트 결과 전 요청 성공 및 예측 응답 50ms 이내로 실시간 조회 가능 확인.</p></div></div>
-      </section>
-    </article>
-    <article class="case" data-id="trip">
-      <div class="head"><span class="icon" style="background:#6B4CF6"><span class="co-logo">tb</span></span><div><h3>트립비토즈</h3><div class="meta">Product Manager | 2021.09 – 2024.06</div></div></div>
-      <p class="co-intro">여행 숏폼과 숙소 예약을 결합한 앱. 커뮤니티팀 PM으로 앱 리뉴얼, 푸시 시스템, 지표 체계, 운영을 담당했습니다.</p>
-      <section class="proj">
-      <h4>앱 리뉴얼 프로젝트</h4><div class="meta">앱 리뉴얼 | 2021.09 – 2022.11 | 기여도 50%</div>
-      <div class="kpis"><div class="kpi"><b>+56.55%</b><span>MAU (목표 +20%)</span></div><div class="kpi"><b>+10%</b><span>리텐션 (6개월)</span></div><div class="kpi"><b>+50%</b><span>체류시간</span></div><div class="kpi"><b>+90%</b><span>매출 (22→23년)</span></div></div>
-      <div class="blk"><div class="k">문제 상황</div><div class="v"><p>메타서치로 최저가를 찾고 앱으로 결제하는 패턴이 고착된 시장. OTA 앱 유지율 10% 미만, 유저 90%가 체크아웃 후 앱 삭제. 숏폼은 쿠폰을 노린 어뷰징 용도로 사용됨.</p></div></div>
-      <div class="blk"><div class="k">문제 정의</div><div class="v"><p>커뮤니티 기능이 없어 숏폼과 예약 간 연결 고리가 부족함. ‘매일은 아니지만 자주 들어오는, 삭제되지 않는 OTA’를 목표로 가설 수립.</p><ul><li>커뮤니티와 게이미피케이션을 넣으면 유입과 리텐션이 늘어난다</li><li>여행 정보를 한곳에 모으면 체류시간이 늘어난다</li><li>숏폼을 커머스와 이으면 매출이 늘어난다</li></ul></div></div>
-      <figure class="fig"><div class="row"><img src="img/shots/rank-board.jpg" alt="랭킹 화면" loading="lazy"><img src="img/shots/rank-mission.jpg" alt="여행 미션 화면" loading="lazy"><img src="img/shots/rank-badge.jpg" alt="활동 배지 화면" loading="lazy"></div><figcaption>가설 1: ‘랭커가 되어 여행을 떠나세요’ 랭킹, 여행 미션, 활동 배지</figcaption></figure>
-      <figure class="fig"><div class="row"><img src="img/shots/con-feed.jpg" alt="피드 화면" loading="lazy"><img src="img/shots/con-record.jpg" alt="여행 기록 화면" loading="lazy"><img src="img/shots/con-triptalk.jpg" alt="트립톡 화면" loading="lazy"><img src="img/shots/con-chat.jpg" alt="지역 채팅 화면" loading="lazy"><img src="img/shots/con-bookmark.jpg" alt="북마크 화면" loading="lazy"></div><figcaption>가설 2: 피드, 여행 기록, 트립톡, 지역 채팅, 북마크</figcaption></figure>
-      <figure class="fig"><div class="row"><img src="img/shots/com-feedcard.jpg" alt="영상에 태그된 숙소" loading="lazy"><img src="img/shots/com-recommend.jpg" alt="지역 추천 숙소" loading="lazy"><img src="img/shots/com-hotel.jpg" alt="숙소 상세" loading="lazy"><img src="img/shots/com-videos.jpg" alt="숙소 영상 리뷰" loading="lazy"></div><figcaption>가설 3: 영상에 태그된 숙소, 지역 추천 숙소, 숙소 페이지 영상 리뷰</figcaption></figure>
-      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>앱 활동으로 랭킹 포인트를 쌓아 리워드를 받는 구조. 포인트는 다른 유저와의 상호작용에서만 쌓이게 설계</li><li>예약 유저에게 랭킹 부스터를 지급해 커머스로의 재유입 유도</li><li>여행 전, 중, 후를 잇는 콘텐츠 구조 및 관리용 어드민 기획</li><li>화면 기획서, 기능 명세서, 정책서, TC 작성</li></ul></div></div>
-      <div class="blk"><div class="k">결과</div><div class="v"><p>KPI(MAU +20%)의 2배 이상 달성, 12개월 기준 인당 평균 재구매율 50% 이상 증가.</p></div></div>
-      </section>
-      <section class="proj">
-      <h4>푸시 시스템 구축 및 개선</h4><div class="meta">푸시 시스템 | 2023.09 – 2023.12 | 기여도 100%</div>
-      <div class="kpis"><div class="kpi"><b>+15%</b><span>유저 재진입율</span></div><div class="kpi"><b>0 → 주 1회+</b><span>마케팅 푸시 발송</span></div><div class="kpi"><b>3종</b><span>동적 알림 추가</span></div></div>
-      <div class="blk"><div class="k">문제 상황</div><div class="v"><p>로컬 발송 방식으로 푸시 오발송이 잦아 유저들이 알림을 오류로 인식. 재진입을 유도할 동적 알림과 마케팅 푸시 부재.</p></div></div>
-      <div class="blk"><div class="k">문제 정의</div><div class="v"><p>로컬 푸시는 정해진 시점, 위치에서만 발송 가능하고 이력이 남지 않음.</p></div></div>
-      <figure class="fig"><div class="row flat"><img src="img/shots/push-booking.jpg" alt="예약·플레이·이벤트 알림" loading="lazy"><img src="img/shots/push-friend.jpg" alt="친구 활동 알림" loading="lazy"></div><figcaption>예약(체크인 전후), 플레이(호텔 키우기), 친구 활동 알림</figcaption></figure>
-      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>화면보다 정책을 우선 설계. 알림 주체를 기기에서 유저로 변경하고, 전송 성공, 실패, 열람 이력을 남기는 테이블 구조 정의</li><li>FCM 서버 발송으로 전환하고 동적 알림 3종 추가</li><li>수신자 조건, 내용, 랜딩을 설정하는 발송 어드민 및 딥링크 관리 페이지 기획</li><li>광고성 정보 수신 동의 약관 정리 및 데이터 마이그레이션</li></ul></div></div>
-      <figure class="fig"><img class="wide" src="img/shots/doc-admin.jpg" alt="푸시 어드민 화면설계서" loading="lazy"><figcaption>푸시 어드민 화면설계서</figcaption></figure>
-      <figure class="fig"><img class="wide" src="img/shots/doc-policy.jpg" alt="광고성 정보 수신 동의 정책서" loading="lazy"><figcaption>광고성 정보 수신 동의 정책서와 데이터 구조 정의</figcaption></figure>
-      <div class="blk"><div class="k">결과</div><div class="v"><p>푸시 오발송 개선 및 성과 측정 가능. 마케팅 푸시 0건에서 주 1회 이상 발송.</p></div></div>
-      </section>
-      <section class="proj">
-      <h4>핵심 지표 대시보드와 GA4</h4><div class="meta">데이터 | 2022.12 – 2023.04 | 기여도 100%</div>
-      <div class="blk"><div class="k">한 일</div><div class="v"><p>MAU/WAU/DAU, 리텐션, 신규 가입, 체류시간 및 영상 지표(업로드 수, 좋아요 수, 시청 시간) 대시보드 구축. GA4 페이지뷰 및 이벤트 셋팅으로 사용자 행동 분석 체계 확립.</p></div></div>
-      </section>
-      <section class="proj">
-      <h4>앱 운영 및 프로젝트 관리</h4><div class="meta">앱 운영 및 프로젝트 관리 | 2022.12 – 2024.06 | 기여도 100%</div>
-      <div class="kpis"><div class="kpi"><b>100%</b><span>버그 처리율</span></div><div class="kpi"><b>90%+</b><span>백로그 처리율</span></div><div class="kpi"><b>매월</b><span>정기 앱 배포</span></div></div>
-      <div class="blk"><div class="k">문제 상황</div><div class="v"><p>신규 기능 런칭이 이어지며 VOC, 버그, 개선건 처리 지연.</p></div></div>
-      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>개선건을 모아 KPI 기준 상, 중, 하 우선순위로 분류</li><li>리소스 파악 후 일정 수립, 기획 후 Jira 티켓으로 개발 요청</li><li>개발 및 QA 완료 후 월별 마이너 업데이트로 배포</li></ul></div></div>
-      <figure class="fig"><img class="wide" src="img/shots/doc-gantt.jpg" alt="월별 마이너 업데이트 일정표" loading="lazy"><figcaption>iOS/AOS 월별 마이너 업데이트 일정표</figcaption></figure>
-      <div class="blk"><div class="k">결과</div><div class="v"><p>버그 처리율 100%, 백로그 처리율 90% 이상.</p></div></div>
-      </section>
-    </article>
-    <article class="case" data-id="wider">
-      <div class="head"><span class="icon" style="background:#3182F6"><span class="co-logo">wp</span></span><div><h3>와이더플래닛</h3><div class="meta">Product Manager | 2021.03 – 2021.09</div></div></div>
-      <p class="co-intro">광고 타게팅 플랫폼 타게팅 게이츠 서비스 기획 및 운영.</p>
-      <section class="proj">
-      <h4>타게팅 게이츠 서비스 기획 및 운영</h4><div class="meta">2021.03 – 2021.09</div>
-      <div class="blk"><div class="k">한 일</div><div class="v"><ul><li>UX 개선과 신규 광고 서비스 도입 기획</li><li>Jira로 일정 관리</li><li>협력사 요구사항 처리와 기능 개선</li></ul></div></div>
-      </section>
-    </article>
-    <div class="case pdfs"><a class="solid" href="pdf/sugim-portfolio.pdf" target="_blank" rel="noopener">포트폴리오 PDF</a></div>
-  </div>
-</div>
 
 <script>
 (function(){
@@ -564,18 +462,8 @@ canvas.ink{position:absolute;inset:0;z-index:3;pointer-events:none}
   wander();setInterval(wander,3200);
   var you=document.getElementById('you');
   document.addEventListener('pointermove',function(e){if(e.pointerType!=='mouse')return;you.style.left=e.clientX+'px';you.style.top=e.clientY+'px'});
-  var sheet=document.getElementById('sheet'),bg=document.getElementById('sheetbg'),cases=[].slice.call(sheet.querySelectorAll('article.case')),lastBtn=null;
-  function openCase(id,push){var ok=false;cases.forEach(function(c){var on=c.dataset.id===id;c.hidden=!on;if(on)ok=true});if(!ok)return;sheet.hidden=false;bg.hidden=false;document.body.style.overflow='hidden';sheet.scrollTop=0;document.getElementById('close').focus();if(push)try{history.replaceState(null,'','#'+id)}catch(e){}}
-  function closeCase(){sheet.hidden=true;bg.hidden=true;document.body.style.overflow='';try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}if(lastBtn)lastBtn.focus()}
-  [].forEach.call(document.querySelectorAll('[data-case]'),function(b){b.addEventListener('click',function(){lastBtn=b;openCase(b.dataset.case,true)})});
-  document.getElementById('close').onclick=closeCase;bg.onclick=closeCase;
-  sheet.addEventListener('click',function(e){if(e.target===sheet)closeCase()});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!sheet.hidden)closeCase()});
-  if(/^#(pbg|reclle|trip|wider)$/.test(location.hash))openCase(location.hash.slice(1),false);
   document.getElementById('copy').addEventListener('click',function(){var b=this,lab=b.textContent,t='iamsucool@gmail.com',em=document.getElementById('email');function sel(){var r=document.createRange();r.selectNodeContents(em);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='주소를 선택했어요. 복사해 주세요';setTimeout(function(){b.textContent=lab},2000)}try{navigator.clipboard.writeText(t).then(function(){b.textContent='복사했어요';setTimeout(function(){b.textContent=lab},1600)},sel)}catch(e){sel()}});
 })();
 </script>
-
-
 </body>
 </html>
