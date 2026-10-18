@@ -1,256 +1,697 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="ko">
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Portfolio</title>
-
-  <!-- Bootstrap Core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom Fonts -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-  <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link href="css/stylish-portfolio.min.css" rel="stylesheet">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta property="og:title" content="Su Gim, Product Maker">
+<meta property="og:description" content="기획부터 런칭, 운영까지 끝까지 책임지는 Product Maker 김수">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 </head>
+<body>
+<title>Su Gim, Product Maker</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="기획부터 런칭, 운영까지 끝까지 책임지는 Product Maker 김수의 포트폴리오">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+<style>
+/* Layout: Toss-style single column (max 760px) of white sections on a grey canvas; the draggable desk stays as the hero. Light theme only, on purpose. */
+:root{
+  --white:#202027; --g50:#2A2A33; --g100:#17171C; --g200:#33333D; --g300:#4D4D59; --g500:#80808F; --g600:#A0A0AE; --g700:#C4C4CF; --g900:#F4F4F6;
+  --blue:#3182F6; --blue-press:#4C93F7; --blue-soft:#1C2B45; --green:#03B26C; --note:#FFF4C2; --pink:#FFE3E8;
+  --f:"Pretendard Variable","Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","IBM Plex Sans KR","Malgun Gothic",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--g100);color:var(--g900);font-family:var(--f);font-size:16px;line-height:1.6;word-break:keep-all;overflow-x:hidden;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:8px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+.press{transition:transform .15s ease,background-color .15s ease}
+.press:active{transform:scale(.98)}
 
-<body id="page-top">
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:rgba(23,23,28,.86);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--g100)}
+.nav-in{max-width:1080px;margin:0 auto;height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.nav b{font-weight:700;font-size:17px}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.nav ul a{display:block;padding:8px 12px;border-radius:8px;font-size:15px;font-weight:500;color:var(--g700)}
+.nav ul a:hover{background:var(--g100)}
+@media (max-width:560px){.nav ul a{padding:8px 8px;font-size:14px}.nav ul li.hide-s{display:none}}
 
-  <!-- Navigation -->
-  <a class="menu-toggle rounded" href="#">
-    <i class="fas fa-bars"></i>
-  </a>
-  <nav id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-      <li class="sidebar-brand">
-        <a class="js-scroll-trigger" href="#page-top">Start Bootstrap</a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#page-top">Home</a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#about">About</a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#services">Services</a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#portfolio">Portfolio</a>
-      </li>
-      <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#contact">Contact</a>
-      </li>
-    </ul>
-  </nav>
+/* desk hero */
+.desk{position:relative;height:min(720px,92svh);min-height:600px;overflow:hidden;background:var(--white);touch-action:pan-y}
+.desk-title{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);text-align:center;z-index:1;pointer-events:none;width:min(600px,88vw)}
+.eyebrow{display:inline-block;font-size:14px;font-weight:600;color:var(--blue);background:var(--blue-soft);padding:6px 12px;border-radius:999px}
+.desk-title h1{font-size:clamp(30px,5vw,46px);font-weight:700;line-height:1.28;letter-spacing:-.03em;margin:18px 0 0}
+.desk-title p{margin:18px auto 0;font-size:17px;line-height:1.6;color:var(--g700);max-width:32em}
+.obj{position:absolute;z-index:2;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none;transition:left .7s cubic-bezier(.2,.8,.2,1),top .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 8px 16px rgba(0,0,0,.35))}
+.obj.dragging{cursor:grabbing;transition:none;filter:drop-shadow(0 16px 28px rgba(2,32,71,.16))}
+.obj img{display:block;pointer-events:none;-webkit-user-drag:none}
+.desk.draw .obj{pointer-events:none}
+.icon-obj svg{display:block;width:100%;height:auto}
+.sticky{width:170px;min-height:130px;background:var(--note);border-radius:4px;padding:16px;font-weight:700;font-size:19px;line-height:1.35;color:#5B4A00}
+.sticky small{display:block;font-size:13.5px;font-weight:500;margin-top:8px;line-height:1.7;color:#6B5A00}
+.sticky.pink{background:var(--pink);min-height:0;width:136px;font-size:17px;color:#A0213A}
+.chat{width:288px;background:var(--white);border-radius:16px;padding:14px 16px;font-size:13px;line-height:1.5;border:1px solid var(--g200)}
+.chat .ch{font-weight:600;font-size:12px;color:var(--g500);margin-bottom:8px}
+.chat .row{display:flex;gap:10px}
+.chat .av{width:32px;height:32px;border-radius:10px;background:var(--g100);text-align:center;line-height:32px;font-size:16px;flex:none}
+.chat b{font-weight:700}.chat small{color:var(--g500);font-size:11px;margin-left:4px}
+.chat .bar{margin-top:8px;height:8px;border-radius:4px;background:var(--g100);overflow:hidden}
+.chat .bar i{display:block;height:100%;width:68%;background:var(--blue);border-radius:4px}
+.chart{width:228px;background:var(--white);border-radius:16px;padding:14px 16px;border:1px solid var(--g200);font-size:12px;color:var(--g600)}
+.chart b{font-weight:700;color:var(--g900)}
+.chart svg{display:block;margin-top:10px;width:100%;height:auto}
+.ticket{width:220px;background:var(--white);border:1px solid var(--g200);border-radius:14px;padding:14px;font-size:13px;line-height:1.5;font-weight:600}
+.ticket .tag{display:inline-block;font-size:11px;background:#3A1E24;color:#FF6B7F;border-radius:6px;padding:1px 7px;font-weight:700;margin-right:4px}
+.ticket .key{font-size:11.5px;color:var(--g500);margin-top:8px;font-weight:500}
+.keycap{width:68px;height:68px;border-radius:16px;background:var(--white);border:1px solid var(--g200);box-shadow:inset 0 -5px 0 var(--g100);display:grid;place-items:center;font-size:28px;color:var(--g900)}
+.prompt{width:300px;display:grid;gap:8px;font-size:13px;line-height:1.45}
+.prompt .pr-q{justify-self:end;max-width:86%;background:var(--blue);color:#fff;padding:10px 14px;border-radius:18px 18px 4px 18px;font-weight:500}
+.prompt .pr-a{max-width:92%;background:var(--white);border:1px solid var(--g200);padding:10px 14px;border-radius:18px 18px 18px 4px;color:var(--g700)}
+.prompt .pr-a b{color:var(--blue);font-weight:700;margin-right:4px}
+canvas.ink{position:absolute;inset:0;z-index:3;pointer-events:none}
+.desk.draw canvas.ink{pointer-events:auto;cursor:crosshair}
+.dock{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:flex;gap:6px;z-index:4;background:var(--white);border:1px solid var(--g200);border-radius:16px;padding:6px;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.dock button{width:40px;height:40px;border-radius:11px;border:0;background:transparent;display:grid;place-items:center;cursor:pointer;position:relative}
+.dock button:hover{background:var(--g100)}
+.dock button[aria-pressed="true"]{background:var(--blue-soft)}
+.dock button[aria-pressed="true"] svg{stroke:var(--blue)}
+.dock svg{width:20px;height:20px;stroke:var(--g700);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.dock .tip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--g900);color:#17171C;font-size:12px;font-weight:500;line-height:1;padding:7px 9px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s}
+.dock button:hover .tip,.dock button:focus-visible .tip{opacity:1}
+.scrollcue{display:none}
+@media (max-width:720px){.m-hide,[data-m="hide"]{display:none}.desk{height:560px;min-height:0}.desk-title{top:42%}.desk-title p{font-size:15px}.obj{scale:.66}}
 
-  <!-- Header -->
-  <header class="masthead d-flex">
-    <div class="container text-center my-auto">
-      <h1 class="mb-1">I am UX Designer, Researcher</h1>
-      <h3 class="mb-5">
-        <em>I could be anyone that I want to be</em>
-      </h3>
-      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Check this</a>
-    </div>
-    <div class="overlay"></div>
-  </header>
+.off{background:var(--white);border-bottom:1px solid var(--g100)}
+.off-in{max-width:1080px;margin:0 auto;display:flex;gap:8px;align-items:center;overflow-x:auto;scrollbar-width:none;padding:10px max(20px,env(safe-area-inset-right,0px)) 10px max(20px,env(safe-area-inset-left,0px))}
+.off-in::-webkit-scrollbar{display:none}
+.off-l{flex:none;font-size:13px;font-weight:600;color:var(--g500);margin-right:4px}
+.off-c{flex:none;font-size:14px;font-weight:500;color:var(--g700);background:var(--g100);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.use .shot{width:100%;border-radius:12px;display:block;border:1px solid var(--g200)}
+.mock-row{display:flex;gap:14px;overflow-x:auto;padding:4px 2px 12px}
+.mock{flex:none;width:220px;border:1px solid var(--g200);border-radius:28px;background:var(--white);padding:18px 16px;font-size:13px;line-height:1.45;box-shadow:0 8px 20px rgba(2,32,71,.06)}
+.mock .bar{display:flex;justify-content:space-between;font-size:11px;font-weight:600;color:var(--g900);margin-bottom:14px}
+.mock h5{font-size:17px;font-weight:700;margin:0 0 4px;line-height:1.35}
+.mock .sub{color:var(--g600);font-size:12.5px;margin-bottom:12px}
+.mock .fld{background:var(--g100);border-radius:10px;padding:9px 10px;margin-bottom:6px;color:var(--g600);font-size:12.5px}
+.mock .fld b{display:block;color:var(--g900);font-weight:600;font-size:13px}
+.mock .cta{margin-top:10px;background:#03B26C;color:#fff;border-radius:12px;text-align:center;padding:11px;font-weight:700;font-size:13.5px}
+.mock .seg{display:flex;gap:4px;margin-bottom:6px}.mock .seg span{flex:1;text-align:center;border-radius:8px;padding:6px 0;background:var(--g100);font-size:12px;color:var(--g600)}.mock .seg span.on{background:#123B2A;color:#3DDC97;font-weight:700}
+.mock .price{background:#123B2A;border-radius:14px;padding:12px;margin-top:8px}
+.mock .price small{display:block;color:#3DDC97;font-weight:600;font-size:11.5px}
+.mock .price b{font-size:20px;font-weight:700;color:var(--g900)}
+.mock .src{font-size:11px;color:var(--g500);margin-top:8px}
+.mock-note{font-size:13px;color:var(--g500);margin:2px 0 28px}
+.sec-box{background:var(--g50);border-radius:16px;padding:16px 18px;margin:0 0 20px;font-size:14.5px;color:var(--g700)}
+.sec-box b{display:block;font-size:15.5px;font-weight:700;color:var(--g900);margin-bottom:6px}
+.sec-box ul{margin:0;padding-left:1.1em;line-height:1.7}
+.about .lead{font-size:19px;font-weight:700;color:var(--g900);line-height:1.5;margin:0 0 10px}
+.strengths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:22px 0 8px}
+@media (max-width:620px){.strengths{grid-template-columns:1fr}}
+.str{display:flex;gap:14px;background:var(--g50);border-radius:18px;padding:18px}
+.str>div{min-width:0}
+.str .ic{flex:none;width:40px;height:40px;border-radius:12px;background:var(--white);display:grid;place-items:center;font-size:19px}
+.str b{display:block;font-size:16.5px;font-weight:700;line-height:1.4;margin-bottom:4px}
+.str p{margin:0 0 8px!important;font-size:14.5px!important;line-height:1.6!important;color:var(--g700)}
+.str .ev{display:block;font-size:13.5px;line-height:1.6;color:var(--g700);border-top:1px solid var(--g200);padding-top:10px;margin-top:2px}
+.str .ev b{display:block;font-size:12.5px;font-weight:700;color:var(--g500);margin-bottom:2px}
+.sub-t{font-size:16px;font-weight:700;margin:26px 0 0}
+.edu{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:10px}
+.edu b{display:block;font-size:15.5px;font-weight:600}
+.edu span{font-size:14px;color:var(--g600)}
+.about .closing{margin:26px 0 0;font-size:15.5px;color:var(--g700)}
+.about .chips{margin-top:12px}
+.use .why,.use .how{font-size:14.5px;line-height:1.65;color:var(--g700)}
+.use .why span,.use .how span{display:block;font-size:12.5px;font-weight:700;color:var(--g500);margin-bottom:2px}
+.use .how{background:var(--g50);border-radius:12px;padding:12px 14px}
+.use .how span{color:var(--blue)}
+.edu .thesis{display:block;font-size:13.5px;color:var(--g700);margin-top:4px;line-height:1.55}
+.research{border:1px solid var(--g200);border-radius:20px;padding:20px;margin:0 0 12px}
+.research>b{display:block;font-size:17.5px;font-weight:700;margin-bottom:14px}
+.research ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 18px}
 
-  <!-- About -->
-  <section class="content-section bg-light" id="about">
-    <div class="container text-center">
-      <div class="row">
-        <div class="col-lg-10 mx-auto">
-          <h2>Who Am I ?</h2>
-          <p class="lead mb-5">I want to show you who I am
-            <a href="https://iamsucool.github.io">Click here</a>!</p>
-          <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">Click me</a>
-        </div>
-      </div>
-    </div>
-  </section>
+@media (max-width:560px){.research ol{grid-template-columns:1fr}}
+.research li{display:flex;gap:10px;font-size:14px;line-height:1.55;color:var(--g700)}
+.research li>div{min-width:0}
+.research li>span{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:12.5px;font-weight:700;display:grid;place-items:center;margin-top:1px}
+.research li b{display:block;font-size:15px;font-weight:700;color:var(--g900);margin-bottom:2px}
+.research .ex{margin-top:16px;padding-top:14px;border-top:1px solid var(--g100);font-size:13.5px;font-weight:600;color:var(--g500);display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.research .ex span{font-weight:500;color:var(--g700);background:var(--g100);border-radius:8px;padding:3px 9px}
+.sub-h{font-size:19px;font-weight:700;margin:32px 0 4px;letter-spacing:-.02em}
+.sub-p{font-size:15px;color:var(--g600);margin:0 0 16px}
+.research{margin-bottom:0!important}
+/* page column */
+.col{max-width:760px;margin:0 auto;padding:12px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px));display:grid;gap:12px;position:relative}
+.card{background:var(--white);border-radius:24px;padding:32px 28px}
+@media (max-width:560px){.card{padding:26px 20px;border-radius:20px}}
+.sec-t{font-size:24px;font-weight:700;letter-spacing:-.02em;margin:0 0 6px;line-height:1.35}
+.sec-s{font-size:16px;color:var(--g600);margin:0 0 24px}
 
-  <!-- Services -->
-  <section class="content-section bg-primary text-white text-center" id="services">
-    <div class="container">
-      <div class="content-section-heading">
-        <h3 class="text-secondary mb-0">Services</h3>
-        <h2 class="mb-5">What We Offer</h2>
-      </div>
-      <div class="row">
-        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-          <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class="icon-screen-smartphone"></i>
-          </span>
-          <h4>
-            <strong>Responsive</strong>
-          </h4>
-          <p class="text-faded mb-0">Looks great on any screen size!</p>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-          <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class="icon-pencil"></i>
-          </span>
-          <h4>
-            <strong>Redesigned</strong>
-          </h4>
-          <p class="text-faded mb-0">Freshly redesigned for Bootstrap 4.</p>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-          <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class="icon-like"></i>
-          </span>
-          <h4>
-            <strong>Favorited</strong>
-          </h4>
-          <p class="text-faded mb-0">Millions of users
-            <i class="fas fa-heart"></i>
-            Start Bootstrap!</p>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class="icon-mustache"></i>
-          </span>
-          <h4>
-            <strong>Question</strong>
-          </h4>
-          <p class="text-faded mb-0">I mustache you a question...</p>
-        </div>
-      </div>
-    </div>
-  </section>
+/* now */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.rowi{display:flex;gap:16px;align-items:flex-start;padding:12px 8px;border-radius:14px}
+.rowi .ic{flex:none;width:44px;height:44px;border-radius:14px;background:var(--g100);display:grid;place-items:center;font-size:21px}
+.rowi>div{min-width:0}
+.rowi b{display:block;font-weight:600;font-size:17px;line-height:1.4}
+.rowi span{display:block;font-size:15px;color:var(--g600);line-height:1.55;margin-top:2px}
 
-  <!-- Callout -->
-  <section class="callout">
-    <div class="container text-center">
-      <h2 class="mx-auto mb-5">Welcome to
-        <em>your</em>
-        next website!</h2>
-      <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/themes/stylish-portfolio/">Download Now!</a>
-    </div>
-  </section>
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 20px}
+.stat{background:var(--g50);border-radius:16px;padding:16px}
+.stat b{display:block;font-size:22px;font-weight:700;color:var(--g900);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stat span{font-size:13px;color:var(--g600)}
+@media (max-width:480px){.stat b{font-size:19px}.stat{padding:14px 12px}}
 
-  <!-- Portfolio -->
-  <section class="content-section" id="portfolio">
-    <div class="container">
-      <div class="content-section-heading text-center">
-        <h3 class="text-secondary mb-0">Portfolio</h3>
-        <h2 class="mb-5">Recent Projects</h2>
-      </div>
-      <div class="row no-gutters">
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="#!">
-            <div class="caption">
-              <div class="caption-content">
-                <div class="h2">Stationary</div>
-                <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
-              </div>
-            </div>
-            <img class="img-fluid" src="img/portfolio-1.jpg" alt="">
-          </a>
-        </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="#!">
-            <div class="caption">
-              <div class="caption-content">
-                <div class="h2">Ice Cream</div>
-                <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
-              </div>
-            </div>
-            <img class="img-fluid" src="img/portfolio-2.jpg" alt="">
-          </a>
-        </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="#!">
-            <div class="caption">
-              <div class="caption-content">
-                <div class="h2">Strawberries</div>
-                <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
-              </div>
-            </div>
-            <img class="img-fluid" src="img/portfolio-3.jpg" alt="">
-          </a>
-        </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="#!">
-            <div class="caption">
-              <div class="caption-content">
-                <div class="h2">Workspace</div>
-                <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
-              </div>
-            </div>
-            <img class="img-fluid" src="img/portfolio-4.jpg" alt="">
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+/* company list */
+.list{display:grid;gap:2px}
+.li{display:flex;align-items:center;gap:16px;width:100%;text-align:left;background:transparent;border:0;border-radius:16px;padding:14px 8px;cursor:pointer}
+.li:hover{background:var(--g50)}
+.li .logo{flex:none;width:48px;height:48px;border-radius:14px;display:grid;place-items:center}
+.co-logo{display:block;font-weight:700;font-size:17px;line-height:1;color:#fff;letter-spacing:-.02em}
+.li .t{min-width:0;flex:1}
+.li b{display:block;font-size:17px;font-weight:600;line-height:1.4}
+.li .d{display:block;font-size:14.5px;color:var(--g600);line-height:1.5}
+.li .m{display:block;font-size:13px;color:var(--g500);margin-top:1px}
+.li .chev{flex:none;width:20px;height:20px;stroke:var(--g300);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-  <!-- Call to Action -->
-  <section class="content-section bg-primary text-white">
-    <div class="container text-center">
-      <h2 class="mb-4">The buttons below are impossible to resist...</h2>
-      <a href="#!" class="btn btn-xl btn-light mr-4">Click Me!</a>
-      <a href="#!" class="btn btn-xl btn-dark">Look at Me!</a>
-    </div>
-  </section>
+/* AI section */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0 0 28px;counter-reset:st}
+.step{background:var(--blue-soft);border-radius:16px;padding:14px;font-size:14px;line-height:1.45;color:var(--g700)}
+.step b{display:block;color:var(--blue);font-weight:700;font-size:15px;margin-bottom:2px}
+@media (max-width:620px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.uses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:620px){.uses{grid-template-columns:1fr}}
+.use{border:1px solid var(--g200);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.use .tag{align-self:flex-start;font-size:12.5px;font-weight:600;color:var(--g700);background:var(--g100);padding:3px 10px;border-radius:8px}
+.use h3{font-size:17.5px;font-weight:700;margin:2px 0 0;line-height:1.4}
+.use p{margin:0;font-size:14.5px;color:var(--g700);line-height:1.6}
+.use .how{font-size:14px;color:var(--g600);background:var(--g50);border-radius:12px;padding:10px 12px;line-height:1.55}
+.use .how b{color:var(--g900);font-weight:600}
+.use .out{display:flex;gap:8px;align-items:baseline;font-size:14.5px;font-weight:600;color:var(--g900);border-top:1px solid var(--g100);padding-top:10px;margin-top:2px}
+.use .out span{flex:none;font-size:12.5px;font-weight:600;color:var(--g500)}
+.uses .use:last-child:nth-child(odd){grid-column:1/-1}
+.use a.go{align-self:flex-start;font-size:14px;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:4px;margin-top:2px}
+.tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
+.tools span{font-size:13px;font-weight:500;color:var(--g700);border:1px solid var(--g200);border-radius:999px;padding:5px 12px}
 
-  <!-- Map -->
-  <div id="contact" class="map">
-    <iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
-    <br />
-    <small>
-      <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
-    </small>
+/* etc */
+.etc{display:flex;gap:14px;align-items:center;padding:4px 8px}
+.etc .ic{flex:none;width:44px;height:44px;border-radius:14px;background:var(--g50);display:grid;place-items:center;font-size:20px}
+.etc b{font-weight:600;font-size:16px;display:block}
+.etc .wip{display:inline-block;font-size:12px;font-weight:600;color:var(--blue);background:var(--blue-soft);border-radius:6px;padding:1px 7px;margin-left:4px;vertical-align:2px}
+.etc span{font-size:14.5px;color:var(--g600)}
+
+/* about */
+.about p{font-size:16px;line-height:1.75;color:var(--g700);margin:0 0 14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 0}
+.chips span{font-size:13.5px;font-weight:500;background:var(--g100);color:var(--g700);border-radius:8px;padding:5px 10px}
+.contact{display:grid;gap:10px;margin-top:28px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:56px;border-radius:16px;font-weight:600;font-size:17px;border:0;cursor:pointer;width:100%}
+.btn.primary{background:var(--blue);color:#fff}
+.btn.primary:hover{background:var(--blue-press)}
+.btn.sub{background:var(--blue-soft);color:var(--blue)}
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mail{font-size:14px;color:var(--g500);text-align:center;margin-top:4px;user-select:all}
+.foot{text-align:center;font-size:13px;color:var(--g500);padding-block:28px 48px}
+
+/* presence cursors */
+.cur{position:absolute;z-index:6;pointer-events:none;display:flex;align-items:flex-start}
+.cur svg{width:16px;height:16px;flex:none;margin-top:-6px;margin-right:-2px}
+.cur span{font-size:13px;font-weight:600;line-height:1;padding:9px 14px;border-radius:999px;background:var(--blue);color:#fff;white-space:nowrap}
+.cur.you span{background:var(--g900);color:#17171C}
+.cur.you svg path{fill:var(--g900)}
+#su{transition:left 2.4s cubic-bezier(.45,.05,.3,1),top 2.4s cubic-bezier(.45,.05,.3,1)}
+#you{position:fixed;left:-200px;top:-200px;transform:translate(6px,6px);z-index:30}
+@media (hover:none){#you{display:none}}
+@media (max-width:900px){#su{display:none}}
+
+/* sheet */
+.sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:20}
+.sheet{position:fixed;inset:0;z-index:21;overflow-y:auto;overscroll-behavior:contain;padding-top:max(32px,env(safe-area-inset-top,0px))}
+.sheet-in{background:var(--white);max-width:820px;margin:0 auto;border-radius:28px 28px 0 0;min-height:100%;padding:20px max(20px,env(safe-area-inset-right,0px)) 80px max(20px,env(safe-area-inset-left,0px));animation:up .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes up{from{transform:translateY(48px);opacity:.5}to{transform:none;opacity:1}}
+.sheet-top{display:flex;justify-content:space-between;align-items:center;max-width:680px;margin:0 auto 28px;position:sticky;top:0;background:var(--white);padding-block:8px;z-index:2}
+.sheet-label{font-size:15px;font-weight:600;color:var(--g500)}
+.sheet-top button{border:0;background:var(--g100);border-radius:10px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer;color:var(--g700)}
+.case{max-width:680px;margin:0 auto}
+.case .head{display:flex;gap:16px;align-items:center;margin-bottom:18px}
+.case .head .icon{width:60px;height:60px;border-radius:18px;flex:none;display:grid;place-items:center;overflow:hidden}
+.case h3{font-weight:700;font-size:26px;line-height:1.3;margin:0;letter-spacing:-.02em}
+.case .meta{font-size:14px;color:var(--g500);margin-top:2px}
+.co-intro{font-size:16.5px;line-height:1.75;margin:0 0 32px;color:var(--g700)}
+.proj{border-top:8px solid var(--g100);margin:0 -20px 0;padding:32px 20px 4px}
+.proj h4{font-size:21px;font-weight:700;margin:0 0 2px;line-height:1.4;letter-spacing:-.02em}
+.proj .meta{margin-bottom:20px}
+.kpis{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}
+.kpi{flex:1 1 130px;background:var(--g50);border-radius:16px;padding:14px 16px}
+.kpi b{display:block;font-weight:700;font-size:22px;line-height:1.25;color:var(--blue);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.kpi span{font-size:13px;color:var(--g600)}
+.blk{display:grid;grid-template-columns:96px 1fr;gap:16px;margin-bottom:24px}
+.blk>*{min-width:0}
+.blk .k{font-size:14px;font-weight:600;color:var(--g500);padding-top:2px}
+.blk .v{font-size:16px;line-height:1.75;color:var(--g700)}
+.blk .v p{margin:0 0 8px}
+.blk .v ul{margin:0;padding-left:1.1em}
+.blk .v li{margin-bottom:4px}
+@media (max-width:600px){.blk{grid-template-columns:1fr;gap:4px}}
+.fig{margin:4px 0 32px}
+.fig .row{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x mandatory}
+.fig .row img{flex:none;width:188px;height:auto;border-radius:24px;border:1px solid var(--g200);scroll-snap-align:start;background:#000}
+.fig .row.flat img{border-radius:16px;width:auto;height:300px;max-width:none;background:#fff}
+.fig .wide{width:100%;border-radius:16px;display:block;border:1px solid var(--g200)}
+.fig figcaption{font-size:13.5px;color:var(--g500);margin-top:6px}
+.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;font-size:14px;line-height:1.55;color:var(--g700)}
+.flow div{background:var(--blue-soft);border-radius:16px;padding:14px}
+.flow b{display:block;font-weight:700;font-size:15px;color:var(--blue);margin-bottom:2px}
+@media (max-width:600px){.flow{grid-template-columns:1fr}}
+.pdfs{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.pdfs a{font-size:15px;font-weight:600;border-radius:12px;padding:12px 16px;background:var(--g100);color:var(--g700)}
+.pdfs a.solid{background:var(--blue);color:#fff}
+.pipe{display:flex;flex-wrap:wrap;gap:6px;align-items:stretch;margin:4px 0 8px}
+.pipe .nd{flex:1 1 120px;background:var(--g100);border:1px solid var(--g200);border-radius:14px;padding:12px 14px;font-size:13.5px;color:var(--g600);line-height:1.5}
+.pipe .nd b{display:block;color:var(--g900);font-size:14.5px;margin-bottom:2px}
+.pipe .ar{align-self:center;color:var(--g400);font-size:14px}
+.perf{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--g100);border-radius:14px;overflow:hidden;font-variant-numeric:tabular-nums}
+.perf th,.perf td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--g200)}
+.perf th{color:var(--g500);font-weight:600}
+.perf td.ok{color:#03B26C;font-weight:600}
+@media(max-width:560px){.pipe .ar{display:none}.pipe .nd{flex-basis:100%}}
+/* Quest layer: pixel Su walks a side rail as you scroll; each section is a checkpoint. */
+.px{font-family:"Press Start 2P",monospace;letter-spacing:0;-webkit-font-smoothing:none}
+.qrail{position:fixed;z-index:30;top:84px;bottom:28px;width:204px;left:max(10px,calc(50% - 380px - 226px));pointer-events:none;display:none;opacity:0;transform:translateX(-12px);transition:opacity .35s,transform .35s}
+.qrail.in{opacity:1;transform:none}
+@media (min-width:1220px){.qrail{display:block}}
+.qhud{margin-left:56px;display:flex;flex-direction:column;gap:7px;background:var(--white);border:1px solid var(--g200);border-radius:16px;padding:12px 12px 11px}
+.qhud .row{display:flex;justify-content:space-between;align-items:center;font-size:8px;color:var(--g500)}
+.qhud .row b{color:var(--g900);font-weight:400}
+.qbar{height:8px;border-radius:2px;background:var(--g100);box-shadow:inset 0 0 0 1px var(--g200);overflow:hidden}
+.qbar i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--blue) 0 6px,#5b9cff 6px 8px);transition:width .2s steps(6)}
+.qpath{position:absolute;left:0;right:0;top:92px;bottom:0}
+.qpath:before{content:"";position:absolute;left:79px;top:14px;bottom:14px;border-left:2px dashed var(--g300)}
+.qnode{position:absolute;left:62px;display:flex;align-items:center;gap:10px;transform:translateY(-50%)}
+.qnode canvas{width:32px;height:32px;image-rendering:pixelated;background:var(--g100);border:2px solid var(--g200);border-radius:8px;padding:2px;box-sizing:content-box;opacity:.45;filter:grayscale(1);transition:opacity .3s,filter .3s,border-color .3s}
+.qnode span{font-size:13px;font-weight:600;color:var(--g500);transition:color .3s}
+.qnode small{display:block;font-size:7px;color:var(--g300);margin-top:3px}
+.qnode.on canvas{opacity:1;filter:none;border-color:var(--g300)}
+.qnode.on span{color:var(--g700)}
+.qnode.done small{color:#03B26C}
+.qnode.qcur canvas{border-color:var(--blue)}
+.hero{position:absolute;left:-30px;width:96px;height:116px;transform:translateY(-62%);transition:top .12s linear;z-index:2}
+.hero canvas,.qmob canvas{width:96px;height:116px;image-rendering:pixelated;display:block}
+.hero:after{content:"";position:absolute;left:24px;right:30px;bottom:-3px;height:5px;border-radius:50%;background:rgba(0,0,0,.45)}
+.bub{position:absolute;left:72px;bottom:96px;z-index:3;width:max-content;max-width:170px;background:var(--g900);color:var(--g100);font-size:12.5px;font-weight:600;line-height:1.45;padding:8px 10px;border-radius:10px 10px 10px 2px;opacity:0;transform:translateY(4px);transition:opacity .25s,transform .25s}
+.bub.show{opacity:1;transform:none}
+.qtoast{position:fixed;z-index:60;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--white);border:2px solid var(--blue);border-radius:12px;padding:12px 16px 12px 12px;display:flex;gap:12px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,.45);transition:opacity .3s,transform .3s cubic-bezier(.2,.8,.2,1);max-width:calc(100vw - 32px)}
+.qtoast.show{opacity:1;transform:translate(-50%,0)}
+.qtoast canvas{width:36px;height:36px;image-rendering:pixelated;flex:none}
+.qtoast .px{font-size:9px;color:var(--blue);display:block;margin-bottom:6px}
+.qtoast b{display:block;font-size:15px;color:var(--g900)}
+.qtoast em{font-style:normal;display:block;font-size:13px;color:var(--g600);margin-top:2px}
+.qmob{position:fixed;z-index:30;left:max(10px,env(safe-area-inset-left,0px));bottom:max(10px,env(safe-area-inset-bottom,0px));pointer-events:none;display:block;opacity:0;transition:opacity .35s}
+.qmob.in{opacity:1}
+.qmob .bub{left:64px;bottom:90px;font-size:12px}
+.qmob .lv{position:absolute;left:4px;top:-12px;font-size:7px;color:var(--g500);background:var(--white);border:1px solid var(--g200);border-radius:4px;padding:3px 4px}
+.qmob canvas{width:72px!important;height:87px!important}
+@media (min-width:1220px){.qmob{display:none}}
+@media (max-width:560px){.qmob canvas{width:72px;height:87px}.qmob .bub{left:52px;bottom:70px}.qtoast{top:66px;bottom:auto;transform:translate(-50%,-16px);padding:8px 12px 8px 8px;gap:10px}.qtoast.show{transform:translate(-50%,0)}.qtoast canvas{width:28px;height:28px}.qtoast .px{font-size:7px;margin-bottom:4px}.qtoast b{font-size:14px}.qtoast em{display:none}}
+.qtag{display:inline-block;font-size:7px;line-height:1;padding:4px 5px;border-radius:4px;margin-left:8px;vertical-align:2px;background:var(--blue-soft);color:#7fb2ff}
+.qtag.clear{background:rgba(3,178,108,.14);color:#2fd38f}
+@media (prefers-reduced-motion:reduce){.hero{transition:none}}
+</style>
+
+<nav class="nav" aria-label="섹션"><div class="nav-in"><b>Su Gim</b><ul><li><a href="#career">경력</a></li><li><a href="#ai">AI로 일하기</a></li><li class="hide-s"><a href="#about">소개</a></li><li><a href="#contact">연락</a></li></ul></div></nav>
+<div class="off"><div class="off-in"><span class="off-l">퇴근 후의 나</span><span class="off-c">🎒 백패킹</span><span class="off-c">⛺ 캠핑</span><span class="off-c">⚽ 풋살</span><span class="off-c">🎧 DJing</span><span class="off-c">🍽️ 맛집 탐방</span><span class="off-c">🚗 테슬라 덕질</span><span class="off-c">📈 투자 공부</span><span class="off-c">🐶 강아지 젤리</span><span class="off-c">🧪 사이드 프로젝트</span></div></div>
+
+<header class="desk" id="desk" aria-label="소개">
+  <div class="desk-title">
+    <span class="eyebrow">Su Gim · Product Maker</span>
+    <h1>기획부터 런칭, 운영까지<br>끝까지 책임집니다</h1>
+    <p>PM·PO 5년. 서비스 기획, 이해관계자 협업, 런칭과 운영까지 공급자와 사용자를 잇는 서비스를 만들어 왔습니다.</p>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer text-center">
-    <div class="container">
-      <ul class="list-inline mb-5">
-        <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white mr-3" href="#!">
-            <i class="icon-social-facebook"></i>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white mr-3" href="#!">
-            <i class="icon-social-twitter"></i>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white" href="#!">
-            <i class="icon-social-github"></i>
-          </a>
-        </li>
-      </ul>
-      <p class="text-muted small mb-0">Copyright &copy; Your Website 2020</p>
+  <div class="obj icon-obj" data-x="9" data-y="14" data-r="-8" style="width:110px"><svg viewBox="0 0 96 96" aria-label="커피 머그"><rect x="14" y="26" width="52" height="58" rx="8" fill="#FFFFFF" stroke="#C4C4CF" stroke-width="3"/><path d="M66 40h8a12 12 0 0 1 0 24h-8" fill="none" stroke="#C4C4CF" stroke-width="3"/><rect x="14" y="44" width="52" height="14" fill="#3182F6"/><path d="M30 8c-4 6 4 8 0 14M44 6c-4 6 4 8 0 14" fill="none" stroke="#D1D6DB" stroke-width="3" stroke-linecap="round"/></svg></div>
+  <div class="obj sticky m-hide" data-x="3" data-y="45" data-r="-4" style="width:200px">오늘 할 일<small>☑ 화면 정의서 리뷰<br>☑ 외주 개발사 일정 체크<br>☐ 정책서 업데이트<br>☐ QA 후 배포 공유</small></div>
+  <div class="obj icon-obj" data-x="20" data-y="38" data-r="24" data-m="hide" style="width:150px"><svg viewBox="0 0 150 30" aria-label="연필"><rect x="18" y="6" width="104" height="18" fill="#FFD15B" stroke="#C4C4CF" stroke-width="2.5"/><rect x="122" y="6" width="18" height="18" rx="3" fill="#FF8FA3" stroke="#C4C4CF" stroke-width="2.5"/><path d="M18 6L2 15l16 9z" fill="#F5E6CF" stroke="#C4C4CF" stroke-width="2.5" stroke-linejoin="round"/><path d="M2 15l6-3v6z" fill="#C4C4CF"/></svg></div>
+  <div class="obj chat m-hide" data-x="69" data-y="8" data-r="3"><div class="ch"># daily-report</div><div class="row"><span class="av">🤖</span><div><b>Report Bot</b><small>오전 9:00</small><div>📊 어제 매출 리포트가 도착했어요<br>GMV · 매출 · TOP 5 · 월 목표</div><div class="bar"><i></i></div></div></div></div>
+  <div class="obj chart m-hide" data-x="72" data-y="36" data-r="-3"><b>화면 정의서</b> · v1.2<svg viewBox="0 0 200 92" aria-hidden="true"><rect x="2" y="2" width="56" height="88" rx="8" fill="none" stroke="#4D4D59" stroke-width="2"/><rect x="10" y="12" width="40" height="18" rx="3" fill="#3182F6" opacity=".7"/><rect x="10" y="36" width="40" height="6" rx="3" fill="#4D4D59"/><rect x="10" y="48" width="28" height="6" rx="3" fill="#4D4D59"/><rect x="10" y="72" width="40" height="10" rx="4" fill="#3182F6"/><path d="M62 46h20" stroke="#80808F" stroke-width="2" marker-end="url(#ah)"/><defs><marker id="ah" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#80808F"/></marker></defs><rect x="88" y="2" width="56" height="88" rx="8" fill="none" stroke="#4D4D59" stroke-width="2"/><rect x="96" y="12" width="40" height="40" rx="4" fill="#4D4D59"/><rect x="96" y="58" width="40" height="6" rx="3" fill="#4D4D59"/><rect x="96" y="72" width="40" height="10" rx="4" fill="#3182F6"/><circle cx="160" cy="18" r="8" fill="#F04452"/><text x="160" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">1</text><rect x="172" y="12" width="26" height="5" rx="2" fill="#80808F"/><rect x="172" y="21" width="20" height="5" rx="2" fill="#4D4D59"/><circle cx="160" cy="44" r="8" fill="#F04452"/><text x="160" y="48" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">2</text><rect x="172" y="38" width="26" height="5" rx="2" fill="#80808F"/><rect x="172" y="47" width="16" height="5" rx="2" fill="#4D4D59"/></svg></div>
+  <div class="obj ticket m-hide" data-x="74" data-y="62" data-r="5" style="width:250px"><span class="tag" style="background:var(--blue-soft);color:var(--blue)">HOW I WORK</span><div style="margin-top:8px;line-height:1.6">문제 정의 → 기획 → 협업·개발<br>→ 런칭 → 운영·개선</div></div>
+  <div class="obj icon-obj" data-x="64" data-y="72" data-r="-12" style="width:84px"><svg viewBox="0 0 92 92" aria-label="돋보기"><circle cx="38" cy="38" r="26" fill="#E3F1F8" stroke="#C4C4CF" stroke-width="5"/><path d="M57 57l26 26" stroke="#C4C4CF" stroke-width="9" stroke-linecap="round"/><path d="M26 30a14 14 0 0 1 12-8" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/></svg></div>
+  <div class="obj keycap" data-x="30" data-y="9" data-r="10">⌘</div>
+  <div class="obj sticky pink" data-x="88" data-y="84" data-r="9">ship it! 🚀</div>
+  <div class="obj icon-obj" data-x="5" data-y="76" data-r="4" style="width:140px"><svg viewBox="0 0 150 116" aria-label="스프린트 달력"><rect x="3" y="12" width="144" height="100" rx="10" fill="#FFFFFF" stroke="#C4C4CF" stroke-width="3"/><rect x="3" y="12" width="144" height="26" rx="10" fill="#3182F6" stroke="#C4C4CF" stroke-width="3"/><path d="M36 4v16M114 4v16" stroke="#C4C4CF" stroke-width="4" stroke-linecap="round"/><text x="75" y="31" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="600" fill="#FFFFFF">SPRINT 12</text><text x="75" y="84" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="30" font-weight="600" fill="#191F28">D-2</text><text x="75" y="102" text-anchor="middle" font-family="IBM Plex Sans KR,sans-serif" font-size="11" fill="#8B95A1">배포까지</text></svg></div>
+
+  <div class="obj prompt m-hide" data-x="22" data-y="70" data-r="-2"><div class="pr-q">통합 로그인 개편안, 경쟁사 사례랑 비교해서 정리해줘</div><div class="pr-a"><b>✦ AI</b> 카카오·네이버·아이디 동시 노출 구조 3가지로 정리했어요.</div></div>
+  <canvas class="ink" id="ink"></canvas>
+  <div class="dock" role="toolbar" aria-label="책상 모드">
+    <button type="button" id="m-chaos" aria-pressed="false" aria-label="흩뜨리기"><svg viewBox="0 0 24 24"><path d="M7 4h10l-1 16H8z"/><path d="M6 8h12"/><path d="M10 12c1 1 3 1 4 0"/></svg><span class="tip">chaos mode</span></button>
+    <button type="button" id="m-tidy" aria-pressed="false" aria-label="정리하기"><svg viewBox="0 0 24 24"><path d="M12 3v9"/><path d="M7 12h10l2 8H5z"/><path d="M9 16v4M12 16v4M15 16v4"/></svg><span class="tip">tidy-up mode</span></button>
+    <button type="button" id="m-draw" aria-pressed="false" aria-label="그리기"><svg viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/></svg><span class="tip">draw mode</span></button>
+  </div>
+  <div class="scrollcue" aria-hidden="true">︾</div>
+</header>
+
+
+<main class="col" id="main">
+  <div class="cur" id="su" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M1 1l13 5-6 2-2 6z" fill="#3182F6"/></svg><span>Su</span></div>
+
+  <section class="card" id="now" aria-labelledby="now-t">
+    <h2 class="sec-t" id="now-t">진행 중인 프로젝트</h2>
+    <p class="sec-s">프린트베이커리</p>
+    <ul class="rows">
+      <li class="rowi"><span class="ic">📡</span><div><b>트렌드 레이더</b><span>리빙·선물·전시 트렌드를 읽고, 소싱할 상품과 지금 밀어야 할 상품을 고르는 리포트 체계</span></div></li>
+      <li class="rowi"><span class="ic">💬</span><div><b>1:1 아트 컨설팅</b><span>고가 작품을 오래 보는 고객에게 상담을 연결해 구매로 이어지게 하는 기능</span></div></li>
+      <li class="rowi"><span class="ic">📊</span><div><b>통합 대시보드</b><span>Cafe24와 GA4 데이터를 한곳에 모으고, 검색어 데이터까지 붙이는 중</span></div></li>
+    </ul>
+  </section>
+
+  <section class="card" id="career" aria-labelledby="career-t">
+    <h2 class="sec-t" id="career-t">경력</h2>
+    <p class="sec-s">회사를 누르면 프로젝트별 상세 내용을 볼 수 있습니다.</p>
+    <div class="stats">
+      <div class="stat"><b>5년+</b><span>PM · PO 경력</span></div>
+      <div class="stat"><b>+56.55%</b><span>리뉴얼 후 MAU</span></div>
+      <div class="stat"><b>+90%</b><span>리뉴얼 후 매출</span></div>
     </div>
-  </footer>
+    <div class="list">
+      <button type="button" class="li press" data-case="pbg"><span class="logo" style="background:#3A3A46"><span class="co-logo">PB</span></span><span class="t"><b>프린트베이커리</b><span class="d">아트와 라이프스타일을 파는 커머스</span><span class="m">Product Owner · 2025.12 –</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      <button type="button" class="li press" data-case="reclle"><span class="logo" style="background:#03B26C"><span class="co-logo">re</span></span><span class="t"><b>리클</b><span class="d">안 입는 옷을 수거하는 앱</span><span class="m">Product Owner · 2025.06 – 2025.12</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      <button type="button" class="li press" data-case="trip"><span class="logo" style="background:#6B4CF6"><span class="co-logo">tb</span></span><span class="t"><b>트립비토즈</b><span class="d">여행 숏폼과 숙소 예약을 잇는 앱</span><span class="m">Product Manager · 2021.09 – 2024.06</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      <button type="button" class="li press" data-case="wider"><span class="logo" style="background:#3182F6"><span class="co-logo">wp</span></span><span class="t"><b>와이더플래닛</b><span class="d">광고 타게팅 플랫폼, 타게팅 게이츠</span><span class="m">Product Manager · 2021.03 – 2021.09</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+  </section>
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+  <section class="card" id="ai" aria-labelledby="ai-t">
+    <h2 class="sec-t" id="ai-t">AI 활용 방식</h2>
+    <p class="sec-s">AI는 자료 조사에 기본으로 쓰고, 반복되는 업무는 간단한 사내 도구로 만들어 효율을 높입니다. 개발자의 일을 대신하는 것이 아니라, 복잡하지 않은 범위 안에서 선을 지켜 활용합니다.</p>
+    <div class="research">
+      <b>자료 조사</b>
+      <ol>
+        <li><span>1</span><div><b>질문 정의</b>결정해야 할 것과 필요한 근거 정리</div></li>
+        <li><span>2</span><div><b>수집</b>공식 문서·공개 통계·경쟁 서비스·검색 트렌드를 AI로 폭넓게 수집</div></li>
+        <li><span>3</span><div><b>검증</b>원문 직접 확인, 수치는 2곳 이상 교차 검증</div></li>
+        <li><span>4</span><div><b>정리</b>표·장표로 정리하고 결론과 다음 액션 도출</div></li>
+      </ol>
+    </div>
+    <h3 class="sub-h">업무 도구 만들기</h3>
+    <p class="sub-p">서비스 개발이 아닌, 팀의 반복 업무를 줄이는 도구만 만듭니다.</p>
+    <div class="steps">
+      <div class="step"><b>1. 정의</b>해결할 문제와 측정 지표 정의</div>
+      <div class="step"><b>2. 구현</b>AI로 코드·문서 초안 작성</div>
+      <div class="step"><b>3. 사내 연동</b>내부 서버·사내 시스템에 연동</div>
+      <div class="step"><b>4. 확인</b>지표로 효과 검증 후 개선</div>
+    </div>
+    <div class="sec-box"><b>원칙</b><ul><li>복잡하지 않은 사내 도구·데이터 정리·리포트까지만 직접 구현</li><li>서비스 핵심 기능과 운영 시스템은 개발팀·외주 개발사가 담당, 저는 요구사항·스펙으로 협업</li><li>공식 공개 API와 오픈소스 범위 안에서만 개발</li><li>인증 키·원본 데이터는 내부 서버에만 보관, 외부 반출 없음</li><li>권한이 있는 인원만 접근 가능하도록 제한</li></ul></div>
+    <div class="uses">
+      <article class="use"><span class="tag">데이터</span><h3>통합 데이터 대시보드</h3><div class="why"><span>배경</span>매출(Cafe24)과 행동 데이터(GA4)가 분리돼 있고 광고·봇 트래픽이 섞여 지표 신뢰도가 낮았음. 서비스 개발 우선순위에 들기 어려운 내부 도구.</div><div class="how"><span>방법</span>AI로 두 데이터 연동을 구현해 내부 서버에 연결. 광고·봇을 제외한 퍼널을 매일 확인하는 사내 대시보드로 운영 중.</div></article>
+      <article class="use"><span class="tag">자동화</span><h3>일일 매출 리포트 자동화</h3><div class="why"><span>배경</span>일일 매출을 매일 수기로 집계·공유하면서 시간이 들고 집계 오류가 발생.</div><div class="how"><span>방법</span>AI로 집계 로직을 만들어 내부 서버에서 매일 실행. GMV·매출·TOP 5·목표 달성률을 매일 아침 사내 메신저로 발송.</div></article>
+      <article class="use"><span class="tag">사내 도구</span><h3>경비환급 자동화</h3><div class="why"><span>배경</span>매월 영수증을 보며 경비환급신청서를 수기로 작성.</div><div class="how"><span>방법</span>무료 OCR과 AI로 영수증을 인식하고 분류 규칙에 따라 엑셀 자동 작성. 전 팀이 로그인 없이 사용.</div></article>
+      <article class="use"><span class="tag">리서치</span><h3>트렌드 레이더</h3><div class="why"><span>배경</span>트렌드 수요에 늦게 대응해 소싱·상품 노출 타이밍을 놓치는 문제.</div><div class="how"><span>방법</span>AI로 리빙·선물·전시 트렌드와 검색·영상 데이터를 수집·정리해 일/주/월 리포트로 제공. 소싱·노출 결정은 담당자가 판단.</div></article>
+      <article class="use"><span class="tag">기획</span><h3>HTML 프로토타입</h3><div class="why"><span>배경</span>정적인 화면만으로는 흐름과 인터랙션 전달이 어려워 리뷰가 길어지고 개발 후 수정이 발생.</div><div class="how"><span>방법</span>AI로 클릭 가능한 HTML 프로토타입을 먼저 만들고 피그마로 옮겨 화면·스펙과 함께 전달.</div></article>
+    </div>
+    <div class="tools" aria-label="자주 쓰는 도구"><span>Claude</span><span>Gemini</span><span>Slack</span><span>GA4</span><span>SQL</span><span>Figma</span><span>Jira</span></div>
+  
+    <h3 class="sub-h">앱 만들기</h3>
+    <p class="sub-p">업무 밖에서는 필요하다고 느낀 서비스를 AI와 함께 직접 앱으로 만들어 봅니다. 기획부터 화면, 기능까지 혼자 끝까지 만들어 보면서 프로덕트 감각을 넓힙니다.</p>
+    <div class="etc"><span class="ic" style="background:var(--blue-soft)">🎒</span><div><b>아웃도어 앱 <span class="wip">개발 중</span></b><span>백패킹·캠핑을 다니며 필요했던 기능을 담은 앱. Claude Code로 개발하고 있습니다.</span></div></div>
+  </section>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <section class="card" id="etc" aria-labelledby="etc-t">
+    <h2 class="sec-t" id="etc-t">프리랜서</h2>
+    <div class="etc" style="margin-top:14px"><span class="ic">✎</span><div><b>웹사이트 기획·제작 프리랜서</b><span>2017–2025 · 미국 브랜드 룩북, 시애틀 무용단·주얼리숍, 국제 학회 웹사이트</span></div></div>
+  </section>
 
-  <!-- Plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <section class="card about" id="about" aria-labelledby="about-t">
+    <h2 class="sec-t" id="about-t">소개</h2>
+    <p class="lead">문제 해결을 통해 사람들에게 더 좋은 서비스를 제공하는 일에 관심이 많은 김수입니다.</p>
+    <p>다양한 이해관계자들과 효율적으로 협업해 빠르게 성장하는 시장에서 프로젝트를 이끌고 프로덕트를 출시했습니다. 유저 피드백과 데이터를 분석해 사용자 중심의 서비스를 지속적으로 개선해 왔으며, 프로덕트 라이프사이클 전반을 경험하며 책임감 있게 프로덕트를 만들어 왔습니다.</p>
+    <div class="strengths">
+      <div class="str"><span class="ic">🔍</span><div><b>데이터 기반 문제 정의</b><p>데이터 분석과 유저 리서치를 기반으로 현상을 파악하고 문제를 정의합니다.</p><span class="ev"><b>사례</b>트립비토즈 리뉴얼: 예약 후 앱 삭제 현상을 데이터로 확인하고, 문제를 재방문할 이유의 부재로 재정의.</span></div></div>
+      <div class="str"><span class="ic">⚡</span><div><b>효율적인 문제 해결</b><p>정해진 리소스 내에서 최대한 효율적으로 문제를 해결합니다.</p><span class="ev"><b>사례</b>프린트베이커리: 개발 우선순위에 들기 어려운 사내 대시보드·매출 리포트를 AI로 구현해 사내 시스템에 연동.</span></div></div>
+      <div class="str"><span class="ic">🎯</span><div><b>오너십</b><p>문제를 파악한 순간부터 해결하는 순간까지 오너십을 가지고 임합니다.</p><span class="ev"><b>사례</b>트립비토즈 푸시: 리뉴얼 때 놓친 데이터 구조 문제를 운영 중 발견, 정책부터 재설계해 완료.</span></div></div>
+      <div class="str"><span class="ic">🤝</span><div><b>협업과 커뮤니케이션</b><p>디자이너·개발자·외주 개발사·의사결정권자와 화면 기획, 기능 명세, 정책서로 소통합니다.</p><span class="ev"><b>사례</b>트립비토즈 운영: KPI 기준 우선순위 설정, 개발·QA와 월별 배포 일정 관리.</span></div></div>
+    </div>
+    <h3 class="sub-t">동료들이 말하는 나</h3>
+    <div class="chips"><span>팀플레이어</span><span>숲을 보는</span><span>외향적인</span><span>실행력</span><span>지식 전도자</span><span>책임감</span><span>도전적인</span><span>소통의 왕</span><span>시간 중시</span><span>융통성</span></div>
+    <h3 class="sub-t">학력</h3>
+    <ul class="edu"><li><b>한양대학교 대학원 아트테크놀로지학과 석사</b><span>2017.03 – 2021.02 · 인지심리학·UX 전공</span><span class="thesis">졸업 논문 「확장된 기술수용이론을 활용한 디지털 리터러시 능력이 키오스크 기술 수용 의도에 미치는 영향에 대한 연구」</span></li><li><b>동국대학교 정보경영학과 학사</b><span>2012.03 – 2017.02</span></li></ul>
+    <p class="closing">앞으로도 오너십을 가지고 더 나은 프로덕트, 더 나아가 효율적인 로드맵 설정으로 비즈니스 목표 달성에 기여하고자 합니다.</p>
+  </section>
 
-  <!-- Custom scripts for this template -->
-  <script src="js/stylish-portfolio.min.js"></script>
+  <section class="card" id="contact" aria-labelledby="contact-t">
+    <h2 class="sec-t" id="contact-t">연락처</h2>
+    <p class="sec-s" style="margin-bottom:0">포트폴리오는 PDF로 받으실 수 있습니다.</p>
+    <div class="contact">
+      <button type="button" class="btn primary press" id="copy">이메일 주소 복사하기</button>
+      <a class="btn sub press" href="pdf/sugim-portfolio.pdf" target="_blank" rel="noopener">포트폴리오 PDF</a>
+      <div class="mail" id="email">iamsucool@gmail.com</div>
+    </div>
+  </section>
+  <div class="foot">© 2026 Su Gim</div>
+</main>
+
+<div class="cur you" id="you" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M1 1l13 5-6 2-2 6z"/></svg><span>You</span></div>
+
+<div class="sheet-bg" id="sheetbg" hidden></div>
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-label="회사별 프로젝트">
+  <div class="sheet-in">
+    <div class="sheet-top"><span class="sheet-label">경력</span><button type="button" id="close">닫기</button></div>
+
+    <article class="case" data-id="pbg">
+      <div class="head"><span class="icon" style="background:#3A3A46"><span class="co-logo">PB</span></span><div><h3>프린트베이커리</h3><div class="meta">Product Owner | 2025.12 – 재직 중</div></div></div>
+      <p class="co-intro">아트 작품과 라이프스타일 상품을 판매하는 커머스. 프로덕트 기획, 데이터 분석, 아트 커머스 특성상 발생하는 주문 데이터 처리를 담당합니다.</p>
+      <section class="proj">
+      <h4>프린트베이커리 리뉴얼</h4><div class="meta">아트·라이프 몰 리뉴얼 | 2026.04 – 2026.08</div>
+      <div class="kpis"><div class="kpi"><b>+107%</b><span>방문자 (리뉴얼 전후)</span></div><div class="kpi"><b>+81%</b><span>회원가입 (리뉴얼 전후)</span></div></div>
+      <div class="blk"><div class="k">문제</div><div class="v"><p>아트·라이프 상품이 한 흐름에 섞여 탐색 동선이 부족하고, 가입·구매까지의 단계가 많음.</p></div></div>
+      <div class="blk"><div class="k">한 일</div><div class="v"><ul><li>아트·라이프 메인을 카테고리별로 나눠 새로 설계</li><li>주간 랭킹·신상·트렌딩 섹션과 랭킹 페이지로 탐색 동선 확장. 아트는 작가·작품명·가격, 라이프는 브랜드·할인율·별점처럼 카드 정보를 다르게 설계</li><li>카카오·네이버·아이디 로그인을 한 화면에 둔 통합 로그인으로 가입 장벽을 낮춤</li><li>구매하기를 장바구니와 분리해 주문서로 바로 가게 개선</li><li>새 메인의 슬롯마다 GA4 이벤트를 심어 리뉴얼 효과를 잴 수 있게 설계</li></ul></div></div>
+      <div class="blk"><div class="k">결과</div><div class="v"><p>리뉴얼 전후 비교 방문자 107%, 회원가입 81% 증가.</p></div></div>
+      </section>
+      <section class="proj">
+      <h4>통합 데이터 대시보드 구축</h4><div class="meta">통합 데이터 대시보드 | 2026 – 진행 중 | 기여도 100%</div>
+      <div class="kpis"><div class="kpi"><b>121개</b><span>메인 진열 슬롯 성과 추적</span></div><div class="kpi"><b>매일</b><span>Slack 매출 리포트 자동 발송</span></div><div class="kpi"><b>2종</b><span>지표 오염원 분리 (광고·봇)</span></div></div>
+      <div class="blk"><div class="k">문제 상황</div><div class="v"><p>매출(Cafe24)과 행동 데이터(GA4)가 분리돼 한 화면에서 성과 판단 불가. 메인 진열 슬롯별 성과를 알 수 없고, 일일 매출은 수기로 집계.</p></div></div>
+      <div class="blk"><div class="k">문제 정의</div><div class="v"><p>지표 자체의 신뢰도가 낮음.</p><ul><li>제휴 광고 유입과 해외 봇 트래픽(평균 체류 약 2초)이 섞여 전환율과 퍼널이 왜곡됨</li><li>구매하기·장바구니 버튼 구조가 바뀌면서 퍼널 정의가 어긋남</li></ul></div></div>
+      <figure class="fig"><div class="flow"><div><b>모으기</b>Cafe24 OAuth API + GA4 연동, 토큰 자동 갱신과 캐싱</div><div><b>걸러내기</b>광고 유입 필터 분리, 봇 트래픽 플래그, 퍼널 재정의</div><div><b>보여주기</b>AARRR 대시보드 + 매일 아침 Slack 매출 리포트</div></div><figcaption>데이터 흐름 설계</figcaption></figure>
+      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>Cafe24 API와 GA4를 연동한 AARRR 통합 대시보드 구축</li><li>아트 61개·라이프 60개 진열 슬롯을 매핑해 슬롯 단위 클릭·매출 추적</li><li>광고 유입 분리와 봇 트래픽 플래그, 바뀐 버튼 구조에 맞춘 퍼널 재정의</li><li>GMV·매출총액·TOP 5·목표 달성률 리포트를 내부 서버에서 매일 자동 발송</li><li>개발팀 리소스를 쓰지 않는 범위에서 AI로 API 연동을 구현해 내부 서버에 연동</li></ul></div></div>
+      <div class="blk"><div class="k">결과</div><div class="v"><ul><li>의사결정권자와 운영·MD 담당자가 매일 같은 숫자로 성과를 확인</li><li>통합 데이터로 손익 구조의 문제와 알림 과다로 인한 회원 탈퇴 급증을 발견</li><li>탐색 확장(랭킹·신상·트렌딩)을 우선 과제로 정하는 근거가 됨</li></ul></div></div>
+      <div class="blk"><div class="k">배운 것</div><div class="v"><p>대시보드 구축보다 지표 정의가 먼저라는 것. 데이터 오염 요인을 먼저 제거해야 의사결정에 쓰일 수 있습니다.</p></div></div>
+      </section>
+      <section class="proj">
+      <h4>아트 커머스 주문 데이터 처리</h4><div class="meta">운영 데이터 | 2025.12 – 재직 중</div>
+      <div class="blk"><div class="k">문제</div><div class="v"><p>작품마다 사이즈·액자·에디션 옵션이 다르고, 매입·위탁 상품이 혼재하며, 수장고에서 직접 출고. 일반 커머스보다 주문 데이터가 복잡해 정산·분석이 어려움.</p></div></div>
+      <div class="blk"><div class="k">한 일</div><div class="v"><ul><li>Cafe24 상품과 ERP(이카운트) 품목을 맞추는 맵핑 작업을 설계하고 진행</li><li>흩어진 주문 알림 데이터를 분석 가능한 시트로 구조화</li><li>수장고 출발 기준 거리·권역별 운송료를 바탕으로 고객 배송비 정책 설계</li><li>자사몰·외부 입점 매출 비중, 매입·위탁 매출 같은 월별 경영 자료 추출</li></ul></div></div>
+      </section>
+    </article>
+    <article class="case" data-id="reclle">
+      <div class="head"><span class="icon" style="background:#03B26C"><span class="co-logo">re</span></span><div><h3>리클</h3><div class="meta">Product Owner | 2025.06 – 2025.12</div></div></div>
+      <p class="co-intro">중고의류 방문 수거 서비스. 사용자 앱, 수거 기사 앱, 어드민, 매장 POS를 담당했습니다.</p>
+      <section class="proj">
+      <h4>비회원 웹 수거 신청</h4><div class="meta">2025 | 기획·런칭</div>
+      <div class="kpis"><div class="kpi"><b>50%+</b><span>수거율</span></div></div>
+      <div class="blk"><div class="k">문제</div><div class="v"><p>수거 신청에 앱 설치·회원가입이 필요해 신청 단계 이탈이 많음.</p></div></div>
+      <div class="blk"><div class="k">한 일</div><div class="v"><p>회원가입 없이 웹에서 수거를 신청하는 페이지 기획·런칭.</p></div></div>
+      <figure class="fig"><div class="mock-row">
+        <div class="mock"><div class="bar"><span>9:41</span><span>리클 웹</span></div><h5>가입 없이<br>수거 신청하기</h5><div class="sub">앱 설치 없이 1분이면 끝나요</div><div class="fld"><b>수거 주소</b>서울시 ○○구 ○○로</div><div class="fld"><b>수거 희망일</b>내일 오전</div><div class="fld"><b>수거 봉투</b>2개</div><div class="cta">신청하기</div></div>
+        <div class="mock"><div class="bar"><span>9:42</span><span>리클 웹</span></div><h5>신청이 완료됐어요</h5><div class="sub">문 앞에 봉투를 놓아 주세요</div><div class="fld"><b>수거 예정</b>내일 오전 9시–12시</div><div class="fld"><b>알림</b>문자로 진행 상황을 보내드려요</div><div class="cta" style="background:var(--g100);color:var(--g700)">앱으로 정산 받기</div></div>
+      </div><figcaption class="mock-note">재구성 화면 · 실제 서비스와 다를 수 있음</figcaption></figure>
+      <div class="blk"><div class="k">결과</div><div class="v"><p>수거율 50% 이상 달성.</p></div></div>
+      </section>
+      <section class="proj">
+      <h4>상품 가격 자동 산정 AI 모델</h4><div class="meta">2025 | 기획·배포</div>
+      <div class="blk"><div class="k">문제</div><div class="v"><p>수거한 중고의류 가격을 담당자가 시세를 찾아보며 수작업으로 산정.</p></div></div>
+      <div class="blk"><div class="k">한 일</div><div class="v"><ul><li>중고 거래 시세를 웹 크롤링으로 모으고, 브랜드·카테고리·상태 기준으로 가격을 예측하는 모델 기획</li><li>모델을 API로 감싸 어드민과 서비스에서 바로 가격을 조회하는 구조 설계</li><li>로그인 인증을 거친 요청만 가격 예측을 호출할 수 있도록 접근 제한</li><li>배포 전 응답 속도 부하 테스트로 실제 운영 가능 여부 검증</li></ul></div></div>
+      <figure class="fig"><div class="pipe">
+        <div class="nd"><b>시세 수집</b>중고 거래 시세 크롤링</div><span class="ar">→</span>
+        <div class="nd"><b>정제·학습</b>브랜드·카테고리·상태별 정리 후 모델 학습</div><span class="ar">→</span>
+        <div class="nd"><b>예측 API</b>FastAPI로 감싸 컨테이너 배포 (AWS ECS)</div><span class="ar">→</span>
+        <div class="nd"><b>조회</b>어드민·서비스에서 예상 가격 확인</div>
+      </div><figcaption>가격 산정 흐름</figcaption></figure>
+      <figure class="fig"><table class="perf"><thead><tr><th>요청</th><th>결과</th><th>응답 시간</th></tr></thead><tbody>
+        <tr><td>로그인 (토큰 발급)</td><td class="ok">200 OK</td><td>정상</td></tr>
+        <tr><td>가격 예측</td><td class="ok">200 OK</td><td>약 25–48ms</td></tr>
+      </tbody></table><figcaption>JMeter API 응답 테스트 · 전 요청 성공</figcaption></figure>
+      <figure class="fig"><div class="mock-row">
+        <div class="mock"><div class="bar"><span>9:41</span><span>가격 확인</span></div><h5>이 옷, 얼마일까?</h5><div class="sub">브랜드와 상태만 고르면 돼요</div><div class="fld"><b>브랜드</b>예) 브랜드명 검색</div><div class="fld"><b>카테고리</b>아우터 · 코트</div><div class="seg"><span>새 것</span><span class="on">좋음</span><span>보통</span></div><div class="cta">예상 가격 보기</div></div>
+        <div class="mock"><div class="bar"><span>9:42</span><span>가격 확인</span></div><h5>예상 매입 가격</h5><div class="sub">비슷한 중고 거래 시세를 모아 계산했어요</div><div class="price"><small>예시 값</small><b>○○,○○○원</b></div><div class="fld" style="margin-top:8px"><b>참고한 시세</b>최근 거래 ○○건</div><div class="src">크롤링한 시세 데이터 기반</div></div>
+      </div><figcaption class="mock-note">재구성 화면 · 실제 서비스와 다를 수 있음</figcaption></figure>
+      <div class="blk"><div class="k">결과</div><div class="v"><p>가격 예측 API 배포. 부하 테스트에서 전 요청 성공, 예측 응답 50ms 이내로 실시간 조회 가능 확인.</p></div></div>
+      </section>
+    </article>
+    <article class="case" data-id="trip">
+      <div class="head"><span class="icon" style="background:#6B4CF6"><span class="co-logo">tb</span></span><div><h3>트립비토즈</h3><div class="meta">Product Manager | 2021.09 – 2024.06</div></div></div>
+      <p class="co-intro">여행 숏폼과 숙소 예약을 결합한 앱. 커뮤니티팀 PM으로 앱 리뉴얼, 푸시 시스템, 지표 체계, 운영을 담당했습니다.</p>
+      <section class="proj">
+      <h4>앱 리뉴얼 프로젝트</h4><div class="meta">앱 리뉴얼 | 2021.09 – 2022.11 | 기여도 50%</div>
+      <div class="kpis"><div class="kpi"><b>+56.55%</b><span>MAU (목표 +20%)</span></div><div class="kpi"><b>+10%</b><span>리텐션 (6개월)</span></div><div class="kpi"><b>+50%</b><span>체류시간</span></div><div class="kpi"><b>+90%</b><span>매출 (22→23년)</span></div></div>
+      <div class="blk"><div class="k">문제 상황</div><div class="v"><p>메타서치로 최저가를 찾고 앱으로 결제하는 패턴이 고착된 시장. OTA 앱 유지율 10% 미만, 유저 90%가 체크아웃 후 앱 삭제. 숏폼은 쿠폰을 노린 어뷰징 용도로 사용됨.</p></div></div>
+      <div class="blk"><div class="k">문제 정의</div><div class="v"><p>커뮤니티 기능의 부재로 숏폼과 예약을 잇는 고리가 없음. ‘매일은 아니지만 자주 들어오는, 삭제되지 않는 OTA’를 목표로 가설 수립.</p><ul><li>커뮤니티와 게이미피케이션을 넣으면 유입과 리텐션이 늘어난다</li><li>여행 정보를 한곳에 모으면 체류시간이 늘어난다</li><li>숏폼을 커머스와 이으면 매출이 늘어난다</li></ul></div></div>
+      <figure class="fig"><div class="row"><img src="img/shots/rank-board.jpg" alt="랭킹 화면" loading="lazy"><img src="img/shots/rank-mission.jpg" alt="여행 미션 화면" loading="lazy"><img src="img/shots/rank-badge.jpg" alt="활동 배지 화면" loading="lazy"></div><figcaption>가설 1 · ‘랭커가 되어 여행을 떠나세요’ 랭킹, 여행 미션, 활동 배지</figcaption></figure>
+      <figure class="fig"><div class="row"><img src="img/shots/con-feed.jpg" alt="피드 화면" loading="lazy"><img src="img/shots/con-record.jpg" alt="여행 기록 화면" loading="lazy"><img src="img/shots/con-triptalk.jpg" alt="트립톡 화면" loading="lazy"><img src="img/shots/con-chat.jpg" alt="지역 채팅 화면" loading="lazy"><img src="img/shots/con-bookmark.jpg" alt="북마크 화면" loading="lazy"></div><figcaption>가설 2 · 피드, 여행 기록, 트립톡, 지역 채팅, 북마크</figcaption></figure>
+      <figure class="fig"><div class="row"><img src="img/shots/com-feedcard.jpg" alt="영상에 태그된 숙소" loading="lazy"><img src="img/shots/com-recommend.jpg" alt="지역 추천 숙소" loading="lazy"><img src="img/shots/com-hotel.jpg" alt="숙소 상세" loading="lazy"><img src="img/shots/com-videos.jpg" alt="숙소 영상 리뷰" loading="lazy"></div><figcaption>가설 3 · 영상에 태그된 숙소, 지역 추천 숙소, 숙소 페이지 영상 리뷰</figcaption></figure>
+      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>앱 활동으로 랭킹 포인트를 쌓아 리워드를 받는 구조. 포인트는 다른 유저와의 상호작용에서만 쌓이게 설계</li><li>예약 유저에게 랭킹 부스터를 줘서 커머스로 되돌아오게 연결</li><li>여행 전·중·후를 잇는 콘텐츠 구조와 관리용 어드민 기획</li><li>화면 기획·기능 명세·정책서·TC 작성</li></ul></div></div>
+      <div class="blk"><div class="k">결과</div><div class="v"><p>KPI(MAU +20%)의 2배 이상 달성, 12개월 기준 인당 평균 재구매율 50% 이상 증가.</p></div></div>
+      </section>
+      <section class="proj">
+      <h4>푸시 시스템 구축 및 개선</h4><div class="meta">푸시 시스템 | 2023.09 – 2023.12 | 기여도 100%</div>
+      <div class="kpis"><div class="kpi"><b>+15%</b><span>유저 재진입율</span></div><div class="kpi"><b>0 → 주 1회+</b><span>마케팅 푸시 발송</span></div><div class="kpi"><b>3종</b><span>동적 알림 추가</span></div></div>
+      <div class="blk"><div class="k">문제 상황</div><div class="v"><p>로컬 발송 방식으로 푸시 오발송이 잦아 유저들이 알림을 오류로 인식. 재진입을 유도할 동적 알림과 마케팅 푸시 부재.</p></div></div>
+      <div class="blk"><div class="k">문제 정의</div><div class="v"><p>로컬 푸시는 정해진 시점·위치에서만 발송 가능하고 이력이 남지 않음.</p></div></div>
+      <figure class="fig"><div class="row flat"><img src="img/shots/push-booking.jpg" alt="예약·플레이·이벤트 알림" loading="lazy"><img src="img/shots/push-friend.jpg" alt="친구 활동 알림" loading="lazy"></div><figcaption>예약(체크인 전후), 플레이(호텔 키우기), 친구 활동 알림</figcaption></figure>
+      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>화면보다 정책부터 설계. 알림의 주체를 기기가 아닌 유저로, 전송 성공·실패·열람을 남기는 테이블 구조 정의</li><li>FCM 서버 발송으로 전환하고 동적 알림 3종 추가</li><li>수신자 조건·내용·랜딩을 설정하는 발송 어드민과 딥링크 관리 페이지</li><li>광고성 정보 수신 동의 약관 정리와 데이터 마이그레이션</li></ul></div></div>
+      <figure class="fig"><img class="wide" src="img/shots/doc-admin.jpg" alt="푸시 어드민 화면설계서" loading="lazy"><figcaption>푸시 어드민 화면설계서</figcaption></figure>
+      <figure class="fig"><img class="wide" src="img/shots/doc-policy.jpg" alt="광고성 정보 수신 동의 정책서" loading="lazy"><figcaption>광고성 정보 수신 동의 정책서와 데이터 구조 정의</figcaption></figure>
+      <div class="blk"><div class="k">결과</div><div class="v"><p>푸시 오발송 개선, 성과 측정 가능. 마케팅 푸시 0건에서 주 1회 이상 발송.</p></div></div>
+      </section>
+      <section class="proj">
+      <h4>핵심 지표 대시보드와 GA4</h4><div class="meta">데이터 | 2022.12 – 2023.04 | 기여도 100%</div>
+      <div class="blk"><div class="k">한 일</div><div class="v"><p>MAU·WAU·DAU, 리텐션, 신규 가입, 체류시간과 영상 지표(업로드·좋아요·시청 시간) 대시보드 구축, GA4 페이지뷰·이벤트 설계로 행동 분석 체계 확립.</p></div></div>
+      </section>
+      <section class="proj">
+      <h4>앱 운영 및 프로젝트 관리</h4><div class="meta">앱 운영·프로젝트 관리 | 2022.12 – 2024.06 | 기여도 100%</div>
+      <div class="kpis"><div class="kpi"><b>100%</b><span>버그 처리율</span></div><div class="kpi"><b>90%+</b><span>백로그 처리율</span></div><div class="kpi"><b>매월</b><span>정기 앱 배포</span></div></div>
+      <div class="blk"><div class="k">문제 상황</div><div class="v"><p>신규 기능 런칭이 이어지며 VOC·버그·개선건 처리 지연.</p></div></div>
+      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>개선건을 모아 KPI 기준 상·중·하 우선순위로 분류</li><li>리소스를 파악해 일정을 잡고, 기획 후 Jira 티켓으로 개발 요청</li><li>개발·QA를 마치면 월별 마이너 업데이트로 배포</li></ul></div></div>
+      <figure class="fig"><img class="wide" src="img/shots/doc-gantt.jpg" alt="월별 마이너 업데이트 일정표" loading="lazy"><figcaption>iOS·AOS 월별 마이너 업데이트 일정표</figcaption></figure>
+      <div class="blk"><div class="k">결과</div><div class="v"><p>버그 처리율 100%, 백로그 처리율 90% 이상.</p></div></div>
+      </section>
+    </article>
+    <article class="case" data-id="wider">
+      <div class="head"><span class="icon" style="background:#3182F6"><span class="co-logo">wp</span></span><div><h3>와이더플래닛</h3><div class="meta">Product Manager | 2021.03 – 2021.09</div></div></div>
+      <p class="co-intro">광고 타게팅 플랫폼 타게팅 게이츠 서비스 기획·운영.</p>
+      <section class="proj">
+      <h4>타게팅 게이츠 서비스 기획·운영</h4><div class="meta">2021.03 – 2021.09</div>
+      <div class="blk"><div class="k">한 일</div><div class="v"><ul><li>UX 개선과 신규 광고 서비스 도입 기획</li><li>Jira로 일정 관리</li><li>협력사 요구사항 처리와 기능 개선</li></ul></div></div>
+      </section>
+    </article>
+    <div class="case pdfs"><a class="solid" href="pdf/sugim-portfolio.pdf" target="_blank" rel="noopener">포트폴리오 PDF</a></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var desk=document.getElementById('desk'), objs=[].slice.call(desk.querySelectorAll('.obj'));
+  var z=10;
+  function place(o,x,y,r){o.style.left=x+'%';o.style.top=y+'%';o.style.transform='rotate('+r+'deg)';}
+  objs.forEach(function(o){place(o,+o.dataset.x,+o.dataset.y,+o.dataset.r)});
+  objs.forEach(function(o){
+    o.addEventListener('pointerdown',function(e){
+      if(desk.classList.contains('draw'))return;
+      e.preventDefault();o.setPointerCapture(e.pointerId);o.classList.add('dragging');o.style.zIndex=++z;
+      var rect=desk.getBoundingClientRect(), sx=e.clientX, sy=e.clientY, ox=o.offsetLeft, oy=o.offsetTop;
+      function mv(ev){o.style.left=((ox+ev.clientX-sx)/rect.width*100)+'%';o.style.top=((oy+ev.clientY-sy)/rect.height*100)+'%'}
+      function up(){o.classList.remove('dragging');o.removeEventListener('pointermove',mv);o.removeEventListener('pointerup',up);o.removeEventListener('pointercancel',up)}
+      o.addEventListener('pointermove',mv);o.addEventListener('pointerup',up);o.addEventListener('pointercancel',up);
+    });
+  });
+  var bChaos=document.getElementById('m-chaos'),bTidy=document.getElementById('m-tidy'),bDraw=document.getElementById('m-draw');
+  function press(b){[bChaos,bTidy,bDraw].forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')})}
+  var cv=document.getElementById('ink'),ctx=cv.getContext('2d'),drawing=false;
+  function size(){var r=desk.getBoundingClientRect(),d=window.devicePixelRatio||1;cv.width=r.width*d;cv.height=r.height*d;cv.style.width=r.width+'px';cv.style.height=r.height+'px';ctx.setTransform(d,0,0,d,0,0);ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=3;ctx.strokeStyle='#3182F6'}
+  size();window.addEventListener('resize',size);
+  function setDraw(on){desk.classList.toggle('draw',on);if(!on)ctx.clearRect(0,0,cv.width,cv.height)}
+  bChaos.onclick=function(){setDraw(false);press(bChaos);objs.forEach(function(o){var left=Math.random()<.5;place(o,left?Math.random()*30-4:58+Math.random()*32,Math.random()*82-4,Math.random()*36-18)})};
+  bTidy.onclick=function(){setDraw(false);press(bTidy);var n=objs.length,h=Math.ceil(n/2);objs.forEach(function(o,i){var left=i<h,k=left?i:i-h;place(o,left?2+(k%2)*14:70+(k%2)*14,5+Math.floor(k/2)*30,0)})};
+  bDraw.onclick=function(){var on=!desk.classList.contains('draw');setDraw(on);press(on?bDraw:null)};
+  cv.addEventListener('pointerdown',function(e){drawing=true;cv.setPointerCapture(e.pointerId);var r=cv.getBoundingClientRect();ctx.beginPath();ctx.moveTo(e.clientX-r.left,e.clientY-r.top)});
+  cv.addEventListener('pointermove',function(e){if(!drawing)return;var r=cv.getBoundingClientRect();ctx.lineTo(e.clientX-r.left,e.clientY-r.top);ctx.stroke()});
+  cv.addEventListener('pointerup',function(){drawing=false});
+  var su=document.getElementById('su'),main=document.getElementById('main');
+  function wander(){var w=main.clientWidth,h=main.clientHeight;su.style.left=Math.min(w*(.6+Math.random()*.3),w-90)+'px';su.style.top=(220+Math.random()*Math.max(200,h-600))+'px'}
+  wander();setInterval(wander,3200);
+  var you=document.getElementById('you');
+  document.addEventListener('pointermove',function(e){if(e.pointerType!=='mouse')return;you.style.left=e.clientX+'px';you.style.top=e.clientY+'px'});
+  var sheet=document.getElementById('sheet'),bg=document.getElementById('sheetbg'),cases=[].slice.call(sheet.querySelectorAll('article.case')),lastBtn=null;
+  function openCase(id,push){var ok=false;cases.forEach(function(c){var on=c.dataset.id===id;c.hidden=!on;if(on)ok=true});if(!ok)return;sheet.hidden=false;bg.hidden=false;document.body.style.overflow='hidden';sheet.scrollTop=0;document.getElementById('close').focus();if(push)try{history.replaceState(null,'','#'+id)}catch(e){}}
+  function closeCase(){sheet.hidden=true;bg.hidden=true;document.body.style.overflow='';try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}if(lastBtn)lastBtn.focus()}
+  [].forEach.call(document.querySelectorAll('[data-case]'),function(b){b.addEventListener('click',function(){lastBtn=b;openCase(b.dataset.case,true)})});
+  document.getElementById('close').onclick=closeCase;bg.onclick=closeCase;
+  sheet.addEventListener('click',function(e){if(e.target===sheet)closeCase()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!sheet.hidden)closeCase()});
+  if(/^#(pbg|reclle|trip|wider)$/.test(location.hash))openCase(location.hash.slice(1),false);
+  document.getElementById('copy').addEventListener('click',function(){var b=this,lab=b.textContent,t='iamsucool@gmail.com',em=document.getElementById('email');function sel(){var r=document.createRange();r.selectNodeContents(em);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='주소를 선택했어요. 복사해 주세요';setTimeout(function(){b.textContent=lab},2000)}try{navigator.clipboard.writeText(t).then(function(){b.textContent='복사했어요';setTimeout(function(){b.textContent=lab},1600)},sel)}catch(e){sel()}});
+})();
+</script>
+<aside class="qrail" id="qrail" aria-hidden="true">
+  <div class="qhud"><div class="row px"><b id="q-lv">LV.1</b><span id="q-cnt">0/7</span></div><div class="qbar"><i id="q-exp"></i></div><div class="row px"><span>EXP</span><span id="q-pct">0%</span></div></div>
+  <div class="qpath" id="qpath"><div class="hero" id="qhero"><canvas width="48" height="58"></canvas><div class="bub" id="qbub"></div></div></div>
+</aside>
+<div class="qmob" id="qmob" aria-hidden="true"><span class="lv px" id="q-lv2">LV.1</span><canvas width="48" height="58"></canvas><div class="bub" id="qbub2"></div></div>
+<div class="qtoast" id="qtoast" role="status" aria-live="polite"><canvas width="12" height="12"></canvas><div><span class="px">QUEST CLEAR</span><b id="qt-t"></b><em id="qt-s"></em></div></div>
+<script>
+(function(){
+const SPR={"pal":{"A":"#0e1222","B":"#22305a","C":"#e7ecf4","D":"#34477e","E":"#a6b0c2","F":"#ffffff","G":"#7a4728","H":"#a5683a","I":"#4d2a16","J":"#16203f","K":"#dfa57d","L":"#2a1610","M":"#7b4423","N":"#c27c45","O":"#ec8f86","P":"#8f4337","Q":"#3182f6","R":"#1d5ccc","S":"#1d1f30","T":"#2b2d42","U":"#3b3e59","V":"#f2c14e","W":"#b8861f","X":"#6e4528","Y":"#4a2d18","Z":"#c08159","a":"#5b3a22","b":"#37314c","c":"#7a5032","d":"#4f3220"},"frames":{"idle0":["................................................","....................AAAAAAAA...........A........",".................AAABBBBBBBBAAA.......ACAA......","...............AABBBBBBBBBBBBBBAA....ACCCCA.....","..............ABDDDDDDDDBBBBBBBBBA...ACCCCA.....","...........AAADDDDDDDDDDDDBBBBBBBBA.ACCCCCCA....",".........AABDDDDDDDDBBBBBBDDBBBBBBBAACCCEEEEA...","........ABBDDDDDDDBBBBBBBBBBDBBBBBBBCCCCEEEEA...",".......ABBDDDDDDBBBBBBBBBBBBBBBBBBBBBCCFEEEEA...","......ABBDDDDDDBBBBBBBBBBBBBBBBBBBBBBBCFEEEEA...","......ABBDDDDDBBBBBBGGGGGGGGBBBBBBBBBBCFEEEEA...",".....ABBBDDDDDBBGGGGGGGGGGGGGGGGBBBBBBBFEEEEA...",".....ABBBDDDDBBGGGGGGHGGGGGGGGGGGBBBBBBBEEEEA...","....ABBBBDDDDBGGGHGGGHGGGGGHGGGGGGBBBBBBEEEEA...","....ABBBBBDDBGGGGHGGGHGGGGGHGGHGGGGBBBBBEEEEA...","....ABBBBBBDGGGGGHGGGGHGGGGHGGHGGGGGBBBBBEEEA...","....ABBBBBBBGGGGGGHGGGHGIGGGHGHGGGGGBBBBBEEEA...","....ABBBBBBBGGGGGGHIGGHGIGGGHIGHGGGGBBBBBEEEA...","....ABBBBBBGGGGGGGHIGGGGIGGGHIGHGGGGGBBBBEEEA...","....ABBBBBBGGGGGGGGIGGGGIGGGGIGHGGGGGBBBBEEEA...",".....ABBBBBBGGGGGGGIGGGGIGGGGIGGHGGGBBBBJEEEA...",".....ABBBBBBGGGGGGGIGGGGGGGGGIGGGGGGBBBBJEEEA...","......AJBBBBGGGKGGGGGGGGGGGGGKGGGGGGBBBJJEEEA...","......AJBBBBGGGKGKGGGKKKKGKKKKGGGGGGBBBJJEEEA...","......AJJBBBGGGGLLLLKKKKKGLLLLKGGGGGBBBJJJEEA...","......AJJBBBGGGLLFFMKKKKKKMFFMLLGGGGBBJJJJEEA...",".....AJJJJBBGGGGLFMMKKKKKKMFMMLKGGGGBBJJJJEEA...",".....AJJJJBBGGGKLMMMKKKKKKMMMMLKKGGGBBJJJJEEA...",".....AJJJJJBGGGKLNNFKKKKKKMNNFLKKGGGBJJJJJEEA...",".....AJJJJJBGGGKLNNNKKKKKKMNNNLKKGGGBJJJJJEEA...",".....AJJJJJJGGGKKKKKKKKKKKKKKKKKKGGGJJJJJJJEA...",".....AJJJJJJGGOOKKKKKKKKKKKKKKKOOGGGJJJJJJJEA...","....AJJJJJJJJGBJKKKKKKKPPKKKKKKKJBGAJJJJJJJEA...","....AJJJJJJJJGBBJKKKKKKKKKKKKKKJBBGJJJJFEEEEA...","....AJJJJJJJJJQBBKKKKKKKKKKKKKKBBQQJCCCFEEEEA...",".....AAAAAAAAQQQQBKKKKKKKKKKKKBQQQAACCCFEEEEA...","..........ARQQRRRRRKKKKKKKKKKQQQRRAACCCFEEEEA...",".........ARQSSRRRRRRRKKKKKKQQRRQRRAACCCFEEEEA...",".......AAQQQSSSSSSSSTTTTUUTQQRRQTTTACCCCEEEEA...","......ARQQQQSSSSSSSSTTTTUUTQQRRTTTTTCCCCEEEEAAAA",".....ARQQQQQSSSSSSSSTTTTUUTQQRRTTTTTTVVVVVWWWWWW",".....ARQQQQQSSSSSSSTTTTTUUTTTRRTTTTTTVVVVVWWWWWW","....ARRQQQQQSSSSXXXXXXXVVXXXXXXXTTTTKKKKKAAAAAAA","....ARQQQQQRKKKKYYYYYYYVVYYXXXXYYTTTKKKKKA......","....ARQQQRRRKKKKSSSTTTTTUUTXXXXTTTTTKKKKKA......","....ARQRRRRRKKKKSSSTTTTTTTTXXXXTTTAAZZZZZA......","...ARRRAARRRAASSSSSTTTTTTTTYYYYTTTA.AAaaaA......","...ARAA.ARRA..AAAbbbbbbAAbbbbbbAAA...AaaaA......","....A....ARA....AbbbbbbAAbbbbbbA.....AaaaA......","..........A.....AbbbbbbAAbbbbbbA.....AVVVA......","...............AcccccccAAcccccccA....AVVVA......","...............AcccccccAAcccccccA.....AAA.......","...............AcccccccAAcccccccA...............","...............AdddddddAAdddddddA...............","...............AdddddddAAdddddddA...............","................AAAAAAA..AAAAAAA................","................................................","................................................"],"idle1":["....................AAAAAAAA...........A........",".................AAABBBBBBBBAAA.......ACAA......","...............AABBBBBBBBBBBBBBAA....ACCCCA.....","..............ABDDDDDDDDBBBBBBBBBA...ACCCCA.....","...........AAADDDDDDDDDDDDBBBBBBBBA.ACCCCCCA....",".........AABDDDDDDDDBBBBBBDDBBBBBBBAACCCEEEEA...","........ABBDDDDDDDBBBBBBBBBBDBBBBBBBCCCCEEEEA...",".......ABBDDDDDDBBBBBBBBBBBBBBBBBBBBBCCFEEEEA...","......ABBDDDDDDBBBBBBBBBBBBBBBBBBBBBBBCFEEEEA...","......ABBDDDDDBBBBBBGGGGGGGGBBBBBBBBBBCFEEEEA...",".....ABBBDDDDDBBGGGGGGGGGGGGGGGGBBBBBBBFEEEEA...",".....ABBBDDDDBBGGGGGGHGGGGGGGGGGGBBBBBBBEEEEA...","....ABBBBDDDDBGGGHGGGHGGGGGHGGGGGGBBBBBBEEEEA...","....ABBBBBDDBGGGGHGGGHGGGGGHGGHGGGGBBBBBEEEEA...","....ABBBBBBDGGGGGHGGGGHGGGGHGGHGGGGGBBBBBEEEA...","....ABBBBBBBGGGGGGHGGGHGIGGGHGHGGGGGBBBBBEEEA...","....ABBBBBBBGGGGGGHIGGHGIGGGHIGHGGGGBBBBBEEEA...","....ABBBBBBGGGGGGGHIGGGGIGGGHIGHGGGGGBBBBEEEA...","....ABBBBBBGGGGGGGGIGGGGIGGGGIGHGGGGGBBBBEEEA...",".....ABBBBBBGGGGGGGIGGGGIGGGGIGGHGGGBBBBJEEEA...",".....ABBBBBBGGGGGGGIGGGGGGGGGIGGGGGGBBBBJEEEA...","......AJBBBBGGGKGGGGGGGGGGGGGKGGGGGGBBBJJEEEA...","......AJBBBBGGGKGKGGGKKKKGKKKKGGGGGGBBBJJEEEA...","......AJJBBBGGGGLLLLKKKKKGLLLLKGGGGGBBBJJJEEA...","......AJJBBBGGGLLFFMKKKKKKMFFMLLGGGGBBJJJJEEA...",".....AJJJJBBGGGGLFMMKKKKKKMFMMLKGGGGBBJJJJEEA...",".....AJJJJBBGGGKLMMMKKKKKKMMMMLKKGGGBBJJJJEEA...",".....AJJJJJBGGGKLNNFKKKKKKMNNFLKKGGGBJJJJJEEA...",".....AJJJJJBGGGKLNNNKKKKKKMNNNLKKGGGBJJJJJEEA...",".....AJJJJJJGGGKKKKKKKKKKKKKKKKKKGGGJJJJJJJEA...",".....AJJJJJJGGOOKKKKKKKKKKKKKKKOOGGGJJJJJJJEA...","....AJJJJJJJJGBJKKKKKKKPPKKKKKKKJBGAJJJJJJJEA...","....AJJJJJJJJGBBJKKKKKKKKKKKKKKJBBGJJJJFEEEEA...","....AJJJJJJJJJQBBKKKKKKKKKKKKKKBBQQJCCCFEEEEA...",".....AAAAAAAAQQQQBKKKKKKKKKKKKBQQQAACCCFEEEEA...","..........ARQQRRRRRKKKKKKKKKKQQQRRAACCCFEEEEA...",".........ARQSSRRRRRRRKKKKKKQQRRQRRAACCCFEEEEA...",".......AAQQQSSSSSSSSTTTTUUTQQRRQTTTACCCCEEEEA...","......ARQQQQSSSSSSSSTTTTUUTQQRRTTTTTCCCCEEEEAAAA",".....ARQQQQQSSSSSSSSTTTTUUTQQRRTTTTTTVVVVVWWWWWW",".....ARQQQQQSSSSSSSTTTTTUUTTTRRTTTTTTVVVVVWWWWWW","....ARRQQQQQSSSSXXXXXXXVVXXXXXXXTTTTKKKKKAAAAAAA","....ARQQQQQRKKKKYYYYYYYVVYYXXXXYYTTTKKKKKA......","....ARQQQRRRKKKKSSSTTTTTUUTXXXXTTTTTKKKKKA......","....ARQRRRRRKKKKSSSTTTTTTTTXXXXTTTAAZZZZZA......","...ARRRAARRRAASSSSSTTTTTTTTYYYYTTTA.AAaaaA......","...ARAA.ARRA..AAAbbbbbbAAbbbbbbAAA...AaaaA......","....A....ARA....AbbbbbbAAbbbbbbA.....AaaaA......","..........A.....AbbbbbbAAbbbbbbA.....AVVVA......","................AbbbbbbAAbbbbbbA.....AVVVA......","...............AcccccccAAcccccccA.....AAA.......","...............AcccccccAAcccccccA...............","...............AcccccccAAcccccccA...............","...............AdddddddAAdddddddA...............","...............AdddddddAAdddddddA...............","................AAAAAAA..AAAAAAA................","................................................","................................................"],"walk0":["................................................","....................AAAAAAAA...........A........",".................AAABBBBBBBBAAA.......ACAA......","...............AABBBBBBBBBBBBBBAA....ACCCCA.....","..............ABDDDDDDDDBBBBBBBBBA...ACCCCA.....","...........AAADDDDDDDDDDDDBBBBBBBBA.ACCCCCCA....",".........AABDDDDDDDDBBBBBBDDBBBBBBBAACCCEEEEA...","........ABBDDDDDDDBBBBBBBBBBDBBBBBBBCCCCEEEEA...",".......ABBDDDDDDBBBBBBBBBBBBBBBBBBBBBCCFEEEEA...","......ABBDDDDDDBBBBBBBBBBBBBBBBBBBBBBBCFEEEEA...","......ABBDDDDDBBBBBBGGGGGGGGBBBBBBBBBBCFEEEEA...",".....ABBBDDDDDBBGGGGGGGGGGGGGGGGBBBBBBBFEEEEA...",".....ABBBDDDDBBGGGGGGHGGGGGGGGGGGBBBBBBBEEEEA...","....ABBBBDDDDBGGGHGGGHGGGGGHGGGGGGBBBBBBEEEEA...","....ABBBBBDDBGGGGHGGGHGGGGGHGGHGGGGBBBBBEEEEA...","....ABBBBBBDGGGGGHGGGGHGGGGHGGHGGGGGBBBBBEEEA...","....ABBBBBBBGGGGGGHGGGHGIGGGHGHGGGGGBBBBBEEEA...","....ABBBBBBBGGGGGGHIGGHGIGGGHIGHGGGGBBBBBEEEA...","....ABBBBBBGGGGGGGHIGGGGIGGGHIGHGGGGGBBBBEEEA...","....ABBBBBBGGGGGGGGIGGGGIGGGGIGHGGGGGBBBBEEEA...",".....ABBBBBBGGGGGGGIGGGGIGGGGIGGHGGGBBBBJEEEA...",".....ABBBBBBGGGGGGGIGGGGGGGGGIGGGGGGBBBBJEEEA...","......AJBBBBGGGKGGGGGGGGGGGGGKGGGGGGBBBJJEEEA...","......AJBBBBGGGKGKGGGKKKKGKKKKGGGGGGBBBJJEEEA...","......AJJBBBGGGGLLLLKKKKKGLLLLKGGGGGBBBJJJEEA...","......AJJBBBGGGLLFFMKKKKKKMFFMLLGGGGBBJJJJEEA...",".....AJJJJBBGGGGLFMMKKKKKKMFMMLKGGGGBBJJJJEEA...",".....AJJJJBBGGGKLMMMKKKKKKMMMMLKKGGGBBJJJJEEA...",".....AJJJJJBGGGKLNNFKKKKKKMNNFLKKGGGBJJJJJEEA...",".....AJJJJJBGGGKLNNNKKKKKKMNNNLKKGGGBJJJJJEEA...",".....AJJJJJJGGGKKKKKKKKKKKKKKKKKKGGGJJJJJJJEA...",".....AJJJJJJGGOOKKKKKKKKKKKKKKKOOGGGJJJJJJJEA...","....AJJJJJJJJGBJKKKKKKKPPKKKKKKKJBGAJJJJJJJEA...","....AJJJJJJJJGBBJKKKKKKKKKKKKKKJBBGJJJJFEEEEA...","....AJJJJJJJJJQBBKKKKKKKKKKKKKKBBQQJCCCFEEEEA...",".....AAAAAAAAQQQQBKKKKKKKKKKKKBQQQAACCCFEEEEA...","..........ARQQRRRRRKKKKKKKKKKQQQRRAACCCFEEEEA...",".........ARQSSRRRRRRRKKKKKKQQRRQRRAACCCFEEEEA...",".......AAQQQSSSSSSSSTTTTUUTQQRRQTTTACCCCEEEEA...","......ARQQQQSSSSSSSSTTTTUUTQQRRTTTTTCCCCEEEEAAAA",".....ARQQQQQSSSSSSSSTTTTUUTQQRRTTTTTTVVVVVWWWWWW",".....ARQQQQQSSSSSSSTTTTTUUTTTRRTTTTTTVVVVVWWWWWW",".....ARQQQQQSSSSXXXXXXXVVXXXXXXXTTTTKKKKKAAAAAAA","....ARRQQQQRKKKKYYYYYYYVVYYXXXXYYTTTKKKKKA......","....ARQQQQRRKKKKSSSTTTTTUUTXXXXTTTTTKKKKKA......","....ARQQRRRRKKKKSSSTTTTTTTTXXXXTTTAAZZZZZA......","....ARQRARRRAASSSSSTTTTTTTTYYYYTTTA.AAaaaA......","...ARRAAARRA..AAAbbbbbbAAbbbbbbAAA...AaaaA......","...ARA...ARA....AbbbbbbAAbbbbbbA.....AaaaA......","....A.....A....AcccccccAAbbbbbbA.....AVVVA......","...............AcccccccAAbbbbbbA.....AVVVA......","...............AcccccccAAcccccccA.....AAA.......","...............AdddddddAAcccccccA...............","...............AdddddddAAcccccccA...............","................AAAAAAA.AdddddddA...............","........................AdddddddA...............",".........................AAAAAAA................","................................................"],"walk1":["................................................","....................AAAAAAAA...........A........",".................AAABBBBBBBBAAA.......ACAA......","...............AABBBBBBBBBBBBBBAA....ACCCCA.....","..............ABDDDDDDDDBBBBBBBBBA...ACCCCA.....","...........AAADDDDDDDDDDDDBBBBBBBBA.ACCCCCCA....",".........AABDDDDDDDDBBBBBBDDBBBBBBBAACCCEEEEA...","........ABBDDDDDDDBBBBBBBBBBDBBBBBBBCCCCEEEEA...",".......ABBDDDDDDBBBBBBBBBBBBBBBBBBBBBCCFEEEEA...","......ABBDDDDDDBBBBBBBBBBBBBBBBBBBBBBBCFEEEEA...","......ABBDDDDDBBBBBBGGGGGGGGBBBBBBBBBBCFEEEEA...",".....ABBBDDDDDBBGGGGGGGGGGGGGGGGBBBBBBBFEEEEA...",".....ABBBDDDDBBGGGGGGHGGGGGGGGGGGBBBBBBBEEEEA...","....ABBBBDDDDBGGGHGGGHGGGGGHGGGGGGBBBBBBEEEEA...","....ABBBBBDDBGGGGHGGGHGGGGGHGGHGGGGBBBBBEEEEA...","....ABBBBBBDGGGGGHGGGGHGGGGHGGHGGGGGBBBBBEEEA...","....ABBBBBBBGGGGGGHGGGHGIGGGHGHGGGGGBBBBBEEEA...","....ABBBBBBBGGGGGGHIGGHGIGGGHIGHGGGGBBBBBEEEA...","....ABBBBBBGGGGGGGHIGGGGIGGGHIGHGGGGGBBBBEEEA...","....ABBBBBBGGGGGGGGIGGGGIGGGGIGHGGGGGBBBBEEEA...",".....ABBBBBBGGGGGGGIGGGGIGGGGIGGHGGGBBBBJEEEA...",".....ABBBBBBGGGGGGGIGGGGGGGGGIGGGGGGBBBBJEEEA...","......AJBBBBGGGKGGGGGGGGGGGGGKGGGGGGBBBJJEEEA...","......AJBBBBGGGKGKGGGKKKKGKKKKGGGGGGBBBJJEEEA...","......AJJBBBGGGGLLLLKKKKKGLLLLKGGGGGBBBJJJEEA...","......AJJBBBGGGLLFFMKKKKKKMFFMLLGGGGBBJJJJEEA...",".....AJJJJBBGGGGLFMMKKKKKKMFMMLKGGGGBBJJJJEEA...",".....AJJJJBBGGGKLMMMKKKKKKMMMMLKKGGGBBJJJJEEA...",".....AJJJJJBGGGKLNNFKKKKKKMNNFLKKGGGBJJJJJEEA...",".....AJJJJJBGGGKLNNNKKKKKKMNNNLKKGGGBJJJJJEEA...",".....AJJJJJJGGGKKKKKKKKKKKKKKKKKKGGGJJJJJJJEA...",".....AJJJJJJGGOOKKKKKKKKKKKKKKKOOGGGJJJJJJJEA...","....AJJJJJJJJGBJKKKKKKKPPKKKKKKKJBGAJJJJJJJEA...","....AJJJJJJJJGBBJKKKKKKKKKKKKKKJBBGJJJJFEEEEA...","....AJJJJJJJJJQBBKKKKKKKKKKKKKKBBQQJCCCFEEEEA...",".....AAAAAAAAQQQQBKKKKKKKKKKKKBQQQAACCCFEEEEA...","...........AQQRRRRRKKKKKKKKKKQQQRRAACCCFEEEEA...",".........AAQSSRRRRRRRKKKKKKQQRRQRRAACCCFEEEEA...","........ARQQSSSSSSSSTTTTUUTQQRRQTTTACCCCEEEEA...",".......ARQQQSSSSSSSSTTTTUUTQQRRTTTTTCCCCEEEEAAAA","......ARQQQQSSSSSSSSTTTTUUTQQRRTTTTTTVVVVVWWWWWW","......ARQQQQSSSSSSSTTTTTUUTTTRRTTTTTTVVVVVWWWWWW","......ARQQQQSSSSXXXXXXXVVXXXXXXXTTTTKKKKKAAAAAAA",".....ARRQQQRKKKKYYYYYYYVVYYXXXXYYTTTKKKKKA......",".....ARQQQRRKKKKSSSTTTTTUUTXXXXTTTTTKKKKKA......",".....ARQQRRRKKKKSSSTTTTTTTTXXXXTTTAAZZZZZA......",".....ARQRRRRAASSSSSTTTTTTTTYYYYTTTA.AAaaaA......","....ARRAAARA..AAAbbbbbbAAbbbbbbAAA...AaaaA......","....ARA..ARA....AbbbbbbAAbbbbbbA.....AaaaA......",".....A....A.....AbbbbbbAAcccccccA....AVVVA......","................AbbbbbbAAcccccccA....AVVVA......","...............AcccccccAAcccccccA.....AAA.......","...............AcccccccAAdddddddA...............","...............AcccccccAAdddddddA...............","...............AdddddddA.AAAAAAA................","...............AdddddddA........................","................AAAAAAA.........................","................................................"]}};const ICO={"pal":{"K":"#0d0d12","T":"#3182F6","t":"#1b5bd0","Y":"#f2c14e","y":"#c7922a","R":"#f0654a","r":"#c2402b","W":"#e9ecf2","w":"#aab0bd","G":"#6b7184","g":"#4a4f60","N":"#8a5f35","n":"#5e3f22","F":"#ffd76a","O":"#ff9a3c","L":"#03B26C","l":"#028a54","C":"#e8d4a8","c":"#bfa577"},"icons":{"tent":["............",".....KK.....","....KTTK....","...KTTttK...","...KTTKtK...","..KTTKKKtK..","..KTTKnKtK..",".KTTTKnKttK.",".KTTKKnKKtK.","KKKKKKKKKKKK","............","............"],"scroll":["............",".KKKKKKKKK..","KCCCCCCCCcK.","KcKCCCCCCcK.",".KCKKKKKCcK.",".KCCCCCCCcK.",".KCKKKKCCcK.",".KCCCCCCCcK.",".KCKKKKKCcK.",".KCCCCCCCCcK","..KKKKKKKcCK","..........K."],"sword":["..........KK",".........KWK","........KWwK",".......KWwK.","......KWwK..","..K..KWwK...","..KKKWwK....","...KyKK.....","..KyYK......",".KnKKyK.....","KnnK.KK.....","KKK........."],"hammer":["............","..KKKKKK....",".KGGGGGgK...",".KGGGGGgKK..",".KgggggKnK..","..KKKKKnK...","......KnK...",".....KnK....","....KnK.....","...KnK......","...KK.......","............"],"coin":["............","....KKKK....","...KYYYYK...","..KYFYYYyK..","..KFYYYYyK..","..KFYYYYyK..","..KYYYYYyK..","..KYYYYyyK..","...KyyyyK...","....KKKK....","............","............"],"fire":["............",".....K......","....KOK.....","....KOOK.K..","...KORFOKOK.","...KRFFROOK.","..KORFFFROK.","..KORFFFROK.","...KKKKKKK..",".KNNnKKNNnK.","KnNNNNNNNnnK",".KKKKKKKKKK."],"flag":["..KK........","..KWKKKKK...","..KWTTTTTK..","..KWTTTTTTK.","..KWTTTTTK..","..KWKKKKK...","..KWK.......","..KWK.......","..KWK.......",".KKgKK......","KGGGGGK.....","KKKKKKK....."]}};
+  var Q=[
+    {sel:'#desk',icon:'tent',name:'출발',say:'모험을 시작합니다',clear:'출발 준비 완료',sub:'PM·PO 5년 차 Product Maker'},
+    {sel:'#now',icon:'scroll',name:'진행 중 퀘스트',say:'프린트베이커리에서 퀘스트 3개 진행 중',clear:'진행 중 퀘스트 확인',sub:'트렌드 레이더 · 1:1 아트 컨설팅 · 통합 대시보드'},
+    {sel:'#career',icon:'sword',name:'경력',say:'4개 회사, 10개 프로젝트를 지나왔습니다',clear:'경력 던전 클리어',sub:'보상 · MAU +56.55%, 매출 +90%'},
+    {sel:'#ai',icon:'hammer',name:'AI 공방',say:'AI로 생산성을 높이기 위한 다양한 시도를 합니다',clear:'AI 공방 입장',sub:'공개 API·오픈소스만, 데이터는 내부에'},
+    {sel:'#etc',icon:'coin',name:'프리랜서',say:'웹사이트 기획·제작 의뢰도 받아 왔습니다',clear:'프리랜서 의뢰 완료',sub:'2017–2025 · 웹사이트 기획·제작'},
+    {sel:'#about',icon:'fire',name:'캠프',say:'잠깐 쉬어 갑니다. 캠핑 중',clear:'캠프 도착',sub:'Product Maker 김수 소개'},
+    {sel:'#contact',icon:'flag',name:'다음 파티',say:'함께할 파티를 찾고 있습니다',clear:'마지막 지점 도착',sub:'이메일로 연락 주세요'}
+  ];
+  function hex(h){return[parseInt(h.substr(1,2),16),parseInt(h.substr(3,2),16),parseInt(h.substr(5,2),16)]}
+  function paint(cv,rows,pal,rim){var w=rows[0].length,h=rows.length,c=cv.getContext('2d'),im=c.createImageData(w,h),d=im.data;
+    function at(x,y){return y>=0&&y<h&&x>=0&&x<w&&rows[y][x]!=='.'}
+    for(var y=0;y<h;y++)for(var x=0;x<w;x++){var ch=rows[y][x],i=(y*w+x)*4;
+      if(ch!=='.'){var p=hex(pal[ch]);d[i]=p[0];d[i+1]=p[1];d[i+2]=p[2];d[i+3]=255}
+      else if(rim&&(at(x+1,y)||at(x-1,y)||at(x,y+1)||at(x,y-1))){d[i]=70;d[i+1]=73;d[i+2]=88;d[i+3]=150}}
+    c.putImageData(im,0,0)}
+  var heroCv=[document.querySelector('#qhero canvas'),document.querySelector('#qmob canvas')];
+  var F=SPR.frames,curF='';
+  function frame(n){if(n===curF)return;curF=n;heroCv.forEach(function(cv){cv.getContext('2d').clearRect(0,0,48,58);paint(cv,F[n],SPR.pal,true)})}
+  frame('idle0');
+  var path=document.getElementById('qpath'),hero=document.getElementById('qhero'),secs=[],nodes=[];
+  Q.forEach(function(q,i){var s=document.querySelector(q.sel);secs.push(s);
+    var n=document.createElement('div');n.className='qnode';n.style.top=(6+i*(88/(Q.length-1)))+'%';
+    var cv=document.createElement('canvas');cv.width=12;cv.height=12;paint(cv,ICO.icons[q.icon],ICO.pal,false);
+    var t=document.createElement('span');t.innerHTML=q.name+'<small class="px">'+(i===0?'START':'STAGE '+i)+'</small>';
+    n.appendChild(cv);n.appendChild(t);path.appendChild(n);nodes.push(n)});
+  var bub=[document.getElementById('qbub'),document.getElementById('qbub2')],bt;
+  function say(txt){bub.forEach(function(b){b.textContent=txt;b.classList.add('show')});clearTimeout(bt);bt=setTimeout(function(){bub.forEach(function(b){b.classList.remove('show')})},3200)}
+  var toast=document.getElementById('qtoast'),tcv=toast.querySelector('canvas'),tt;
+  function clearToast(q){tcv.getContext('2d').clearRect(0,0,12,12);paint(tcv,ICO.icons[q.icon],ICO.pal,false);
+    document.getElementById('qt-t').textContent=q.clear;document.getElementById('qt-s').textContent=q.sub;
+    toast.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('show')},2400)}
+  var reached=0,stage=-1,walkT=0,idleT,lastY=scrollY,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function tops(){return secs.map(function(s){return s.getBoundingClientRect().top+scrollY})}
+  function update(){
+    var T=tops(),probe=scrollY+innerHeight*.45,max=document.documentElement.scrollHeight-innerHeight;
+    var atEnd=scrollY>=max-4,i=0;for(var k=0;k<T.length;k++)if(probe>=T[k])i=k;
+    var t=i<T.length-1?Math.min(1,(probe-T[i])/(T[i+1]-T[i])):0;
+    if(atEnd){i=T.length-1;t=0}
+    var p=6+(i+t)*(88/(Q.length-1));hero.style.top=p+'%';
+    var dk=secs[0].getBoundingClientRect().bottom,inn=dk<innerHeight*.35;document.getElementById('qrail').classList.toggle('in',inn);document.getElementById('qmob').classList.toggle('in',inn);
+    var pct=Math.round(max>0?scrollY/max*100:100);
+    document.getElementById('q-exp').style.width=pct+'%';document.getElementById('q-pct').textContent=pct+'%';
+    if(i!==stage){
+      if(i>reached){for(var r=reached+1;r<=i;r++)nodes[r-1]&&nodes[r-1].classList.add('done');if(i>0)clearToast(Q[i-1]);reached=i}
+      stage=i;say(Q[i].say)}
+    nodes.forEach(function(n,k){n.classList.toggle('on',k<=reached);n.classList.toggle('qcur',k===i);
+      n.querySelector('small').textContent=n.classList.contains('done')?'CLEAR':(k===0?'START':'STAGE '+k)});
+    var lv='LV.'+(reached+1);document.getElementById('q-lv').textContent=lv;document.getElementById('q-lv2').textContent=lv;
+    document.getElementById('q-cnt').textContent=(reached+(atEnd?1:0))+'/'+Q.length;
+    if(atEnd&&!nodes[Q.length-1].classList.contains('done')){nodes[Q.length-1].classList.add('done');clearToast(Q[Q.length-1])}
+  }
+  var raf=0;
+  addEventListener('scroll',function(){
+    if(!reduce){var dy=Math.abs(scrollY-lastY);walkT+=dy;if(walkT>28){walkT=0;frame(curF==='walk0'?'walk1':'walk0')}
+      clearTimeout(idleT);idleT=setTimeout(function(){frame('idle0')},160)}
+    lastY=scrollY;if(!raf)raf=requestAnimationFrame(function(){raf=0;update()})},{passive:true});
+  addEventListener('resize',update);
+  if(!reduce)setInterval(function(){if(curF==='idle0')frame('idle1');else if(curF==='idle1')frame('idle0')},600);
+  update();setTimeout(function(){say(Q[0].say)},700);
+  /* chapter tags on the company list: oldest first */
+  var ch={wider:['CH.1','clear'],trip:['CH.2','clear'],reclle:['CH.3','clear'],pbg:['CH.4 진행 중','']};
+  Object.keys(ch).forEach(function(k){var m=document.querySelector('[data-case="'+k+'"] .m');if(!m)return;var s=document.createElement('span');
+    s.className='qtag px'+(ch[k][1]?' clear':'');s.textContent=ch[k][1]?ch[k][0]+' CLEAR':ch[k][0].replace(' 진행 중','')+' NOW';m.appendChild(s)});
+})();
+</script>
 
 </body>
-
 </html>
