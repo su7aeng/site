@@ -330,7 +330,7 @@ a.li{color:inherit}
 <a class="back" href="./#ai">‹ 메인으로</a>
 <section class="card" id="ai-detail" aria-labelledby="ai-t">
     <h2 class="sec-t" id="ai-t">AI 활용 방식</h2>
-    <p class="sec-s">자료 조사와 반복되는 사내 업무 자동화에 AI를 활용하고 있습니다. 서비스 핵심 기능은 개발팀, 외주 개발사와 협업하며, 사내 도구는 보안 원칙을 지키는 범위 내에서 직접 구현합니다.</p>
+    <p class="sec-s">자료 조사와 반복되는 사내 업무 자동화에 AI를 활용하고 있습니다. 사내 도구는 보안 원칙을 지키는 범위 내에서 직접 구현하고, 서비스 기능은 테스트, PR 리뷰, 개발 서버 검증을 거쳐 반영합니다.</p>
     <div class="research">
       <b>자료 조사</b>
       <ol>
@@ -341,19 +341,20 @@ a.li{color:inherit}
       </ol>
     </div>
     <h3 class="sub-h">생산성 높이기</h3>
-    <p class="sub-p">반복 업무를 줄이는 사내 도구를 만들어 팀의 생산성을 높이고 있습니다. 매출 집계, 경비환급서 작성 등 시간이 많이 드는 업무부터 자동화했습니다.</p>
+    <p class="sub-p">반복 업무를 줄이는 사내 도구를 만들어 팀의 생산성을 높이고 있습니다. 매출 집계, 정산, 업무 기록 등 시간이 많이 드는 업무부터 자동화했습니다.</p>
     <div class="steps">
       <div class="step"><b>1. 정의</b>해결할 문제와 측정 지표 정의</div>
       <div class="step"><b>2. 구현</b>AI를 활용해 코드, 문서 초안 작성</div>
       <div class="step"><b>3. 사내 연동</b>내부 서버 및 사내 시스템 연동</div>
       <div class="step"><b>4. 확인</b>지표로 효과 검증 후 개선</div>
     </div>
-    <div class="sec-box"><b>원칙</b><ul><li>사내 도구, 데이터 정리, 리포트 등 복잡하지 않은 범위까지만 직접 구현</li><li>서비스 핵심 기능 및 운영 시스템은 개발팀, 외주 개발사가 담당하며 요구사항과 스펙 정의로 협업</li><li>공식 공개 API 및 오픈소스 범위 내에서만 개발</li><li>인증 키와 원본 데이터는 내부 서버에만 보관</li><li>권한이 있는 인원만 접근 가능하도록 제한</li></ul></div>
+    <div class="sec-box"><b>원칙</b><ul><li>사내 도구, 데이터 정리, 리포트는 직접 구현</li><li>서비스 기능은 테스트, PR 리뷰, 개발 서버 검증을 거친 뒤 상용에 반영하며, 결제 및 주문 등 핵심 시스템은 개발팀과 협업</li><li>공식 공개 API 및 오픈소스 범위 내에서만 개발</li><li>인증 키와 원본 데이터는 내부 서버에만 보관</li><li>권한이 있는 인원만 접근 가능하도록 제한</li></ul></div>
     <div class="uses">
       <article class="use"><span class="tag">데이터</span><h3>통합 데이터 대시보드</h3><div class="why"><span>배경</span>매출(Cafe24)과 행동 데이터(GA4)가 분리되어 있고, 광고 및 봇 트래픽이 섞여 지표 신뢰도가 낮음. 서비스 개발 우선순위에서 밀리는 내부 도구.</div><div class="how"><span>방법</span>필요한 지표를 정의하고 AI를 활용해 두 데이터를 연동해 내부 서버에 연결. 광고, 봇 트래픽을 제외한 퍼널과 매출 예측을 매일 확인.</div><div class="how"><span>결과</span>2026년 7월 도입 이후 3개월 월평균 거래액(GMV) 45% 증가 (도입 전 4개월 대비).</div></article>
       <article class="use"><span class="tag">자동화</span><h3>일일 매출 리포트 자동화</h3><div class="why"><span>배경</span>매일 오전 1시간 이상 매출을 수기로 집계해 보고. 시간 소요와 집계 오류 발생.</div><div class="how"><span>방법</span>AI를 활용해 집계 로직을 구현하고 내부 서버에서 매일 실행. GMV, 매출, TOP 5, 목표 달성률을 매일 아침 사내 메신저로 발송.</div><div class="how"><span>결과</span>매일 오전 수기 집계 및 보고 업무 제거.</div></article>
       <article class="use"><span class="tag">정산</span><h3>정산 기간 단축</h3><div class="why"><span>배경</span>작품별 옵션과 매입, 위탁 구분이 달라 정산 데이터를 사람이 정리하는 데 일주일 소요.</div><div class="how"><span>방법</span>AI를 활용해 주문 데이터 정리 및 정산 집계 과정을 자동화.</div><div class="how"><span>결과</span>정산 기간 7일에서 3일로 단축.</div></article>
-      <article class="use"><span class="tag">사내 도구</span><h3>경비환급 자동화</h3><div class="why"><span>배경</span>매월 영수증을 보며 경비환급신청서를 수기로 작성.</div><div class="how"><span>방법</span>무료 OCR과 AI를 활용해 영수증 인식 후 분류 규칙에 따라 엑셀 자동 작성. 전 팀에서 별도 로그인 없이 사용.</div></article>
+      <article class="use"><span class="tag">서비스 기능</span><h3>할인율 진열</h3><div class="why"><span>배경</span>분류 페이지에서 상품을 할인율 순으로 볼 수 없고, 쿠폰을 적용한 가격은 주문서에서만 확인 가능.</div><div class="how"><span>방법</span>Claude Code를 활용해 API와 어드민 화면을 직접 구현. 테스트, PR 리뷰, 개발 서버 검증을 거쳐 상용 배포.</div><div class="how"><span>결과</span>2026년 11월 라이프 8개 분류에 상용 적용.</div></article>
+      <article class="use"><span class="tag">사내 도구</span><h3>업무 기록 자동화</h3><div class="why"><span>배경</span>여러 저장소에 흩어진 작업 내역을 한눈에 확인하기 어려움.</div><div class="how"><span>방법</span>GitHub 작업 기록을 모아 요약한 뒤 매일 사내 메신저로 자동 발송.</div></article>
       <article class="use"><span class="tag">리서치</span><h3>트렌드 레이더</h3><div class="why"><span>배경</span>트렌드 수요에 대한 대응이 늦어 소싱 및 상품 노출 시점을 놓치는 문제 발생.</div><div class="how"><span>방법</span>AI를 활용해 리빙, 선물, 전시 트렌드와 검색, 영상 데이터를 수집 및 정리해 일/주/월 리포트로 제공. 소싱 및 노출 여부는 담당자가 최종 판단.</div></article>
       <article class="use"><span class="tag">기획</span><h3>HTML 프로토타입</h3><div class="why"><span>배경</span>정적인 화면만으로는 흐름과 인터랙션 전달이 어려워 리뷰 기간이 길어지고, 개발 이후 수정 사항 발생.</div><div class="how"><span>방법</span>AI를 활용해 클릭 가능한 HTML 프로토타입을 먼저 제작한 후 피그마로 옮겨 화면, 스펙과 함께 전달.</div><div class="how"><span>결과</span>기획부터 리뷰까지 기능별로 최대 2일 이상 단축.</div></article>
     </div>
@@ -362,6 +363,7 @@ a.li{color:inherit}
     <h3 class="sub-h">앱 만들기</h3>
     <p class="sub-p">업무 외적으로는 필요하다고 느낀 서비스를 AI를 활용해 앱으로 만들고 있습니다. 기획부터 기능 구현까지 직접 진행하며 개발 범위와 일정에 대한 이해를 넓히고 있습니다.</p>
     <div class="etc"><span class="ic" style="background:var(--blue-soft)">🎒</span><div><b>아웃도어 앱 <span class="wip">개발 중</span></b><span>백패킹, 캠핑을 다니며 필요했던 기능을 담은 앱으로, Claude Code를 활용해 개발 중입니다.</span></div></div>
+    <div class="etc"><span class="ic" style="background:var(--blue-soft)">🧩</span><div><b>스킬집</b><span>깃허브에 흩어진 AI 에이전트 스킬을 모아 용도별로 분류하고 한국어 사용법을 제공하는 사이트. <a href="https://skillzip-mu.vercel.app" target="_blank" rel="noopener" style="text-decoration:underline">skillzip-mu.vercel.app</a></span></div></div>
   </section>
 <section class="card"><div class="cta"><p>더 궁금한 점은 메일로 연락 주세요.<br><b style="color:var(--g900)">iamsucool@gmail.com</b></p><a class="btn primary press" href="mailto:iamsucool@gmail.com">메일 보내기</a></div></section>
 <div class="foot">© 2026 Su Gim</div>

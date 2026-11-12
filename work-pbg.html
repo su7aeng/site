@@ -331,7 +331,7 @@ a.li{color:inherit}
 <nav class="subnav" aria-label="회사"><a href="work-pbg.html" aria-current="page">프린트베이커리</a><a href="work-reclle.html">리클</a><a href="work-trip.html">트립비토즈</a><a href="work-wider.html">와이더플래닛</a></nav>
 <section class="card"><article class="case" data-id="pbg">
       <div class="head"><span class="icon" style="background:#3A3A46"><span class="co-logo">PB</span></span><div><h3>프린트베이커리</h3><div class="meta">Product Owner | 2025.12 – 재직 중</div></div></div>
-      <p class="co-intro">아트 작품과 라이프스타일 상품을 판매하는 커머스. 프로덕트 기획, 데이터 분석, 아트 커머스 특성상 발생하는 주문 데이터 처리를 담당합니다.</p><div class="toc"><a href="#renewal">프린트베이커리 리뉴얼</a><a href="#dashboard">통합 데이터 대시보드 구축</a><a href="#orders">아트 커머스 주문 데이터 처리</a><a href="#now">진행 중인 프로젝트</a></div>
+      <p class="co-intro">아트 작품과 라이프스타일 상품을 판매하는 커머스. 프로덕트 기획, 데이터 분석, 아트 커머스 특성상 발생하는 주문 데이터 처리를 담당합니다. 2026년 11월부터는 AI를 활용해 서비스 기능도 직접 구현하고 있습니다.</p><div class="toc"><a href="#renewal">프린트베이커리 리뉴얼</a><a href="#dashboard">통합 데이터 대시보드 구축</a><a href="#discount">할인율 진열</a><a href="#orders">아트 커머스 주문 데이터 처리</a><a href="#now">진행 중인 프로젝트</a></div>
       <section class="proj" id="renewal">
       <h4>프린트베이커리 리뉴얼</h4><div class="meta">아트, 라이프 몰 리뉴얼 | 2026.04 – 2026.08</div>
       <div class="kpis"><div class="kpi"><b>+107%</b><span>방문자 (리뉴얼 전후)</span></div><div class="kpi"><b>+81%</b><span>회원가입 (리뉴얼 전후)</span></div></div>
@@ -345,9 +345,16 @@ a.li{color:inherit}
       <div class="blk"><div class="k">문제 상황</div><div class="v"><p>매출(Cafe24)과 행동 데이터(GA4)가 분리되어 한 화면에서 성과 판단 불가. 메인 진열 슬롯별 성과 파악이 어렵고, 일일 매출은 수기로 집계.</p></div></div>
       <div class="blk"><div class="k">문제 정의</div><div class="v"><p>지표 자체의 신뢰도가 낮음.</p><ul><li>제휴 광고 유입과 해외 봇 트래픽(평균 체류 약 2초)이 섞여 전환율 및 퍼널 왜곡</li><li>구매하기, 장바구니 버튼 구조 변경으로 기존 퍼널 정의와 불일치</li></ul></div></div>
       <figure class="fig"><div class="flow"><div><b>모으기</b>Cafe24 OAuth API + GA4 연동, 토큰 자동 갱신과 캐싱</div><div><b>걸러내기</b>광고 유입 필터 분리, 봇 트래픽 플래그, 퍼널 재정의</div><div><b>보여주기</b>AARRR 대시보드 + 매일 아침 Slack 매출 리포트</div></div><figcaption>데이터 흐름 설계</figcaption></figure>
-      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>Cafe24 API와 GA4를 연동한 AARRR 통합 대시보드 구축</li><li>아트 61개, 라이프 60개 진열 슬롯 매핑으로 슬롯 단위 클릭 및 매출 추적</li><li>광고 유입 분리, 봇 트래픽 플래그 처리 및 변경된 버튼 구조에 맞춘 퍼널 재정의</li><li>GMV, 매출총액, TOP 5, 목표 달성률 리포트 내부 서버에서 매일 자동 발송</li><li>개발팀 리소스 투입 없이 AI를 활용해 API 연동 구현 및 내부 서버 연동</li></ul></div></div>
+      <div class="blk"><div class="k">해결 과정</div><div class="v"><ul><li>Cafe24 API와 GA4를 연동한 AARRR 통합 대시보드 구축</li><li>아트 61개, 라이프 60개 진열 슬롯 매핑으로 슬롯 단위 클릭 및 매출 추적</li><li>광고 유입 분리, 봇 트래픽 플래그 처리 및 변경된 버튼 구조에 맞춘 퍼널 재정의</li><li>GMV, 매출총액, TOP 5, 목표 달성률 리포트 내부 서버에서 매일 자동 발송</li><li>개발팀 리소스 투입 없이 AI를 활용해 API 연동 구현 및 내부 서버 연동</li><li>2026년 11월부터 대시보드를 백오피스로 이관 중. 로그인한 사용자만 데이터를 볼 수 있도록 비공개 저장소로 전환하고, 결론 문장과 근거 차트를 함께 보여주는 인사이트 카드와 분류, 공급사, 담당자별 판매 분석 화면 추가</li></ul></div></div>
       <div class="blk"><div class="k">결과</div><div class="v"><ul><li>대시보드 도입(2026.07) 이후 3개월 월평균 거래액(GMV) 45% 증가 (도입 전 4개월 대비)</li><li>필요한 지표를 정의하고 매출을 수치화해 목표 대비 예측 가능</li><li>의사결정권자와 운영, MD 담당자가 동일한 데이터로 매일 성과 확인</li><li>통합 데이터를 통해 손익 구조 문제 및 알림 과다로 인한 회원 탈퇴 급증 발견</li><li>탐색 확장(랭킹, 신상, 트렌딩)을 우선 과제로 선정하는 근거로 활용</li></ul></div></div>
       <div class="blk"><div class="k">배운 것</div><div class="v"><p>대시보드 구축보다 지표 정의가 우선되어야 하며, 데이터 오염 요인을 먼저 제거해야 의사결정에 활용할 수 있다는 점을 배웠습니다.</p></div></div>
+      </section>
+      <section class="proj" id="discount">
+      <h4>할인율 진열</h4><div class="meta">라이프 분류 진열 | 2026.11 – 진행 중 | 기획, 구현</div>
+      <div class="kpis"><div class="kpi"><b>8개</b><span>라이프 분류 상용 적용</span></div><div class="kpi"><b>2단계</b><span>순서 미리보기 후 쇼핑몰 적용</span></div></div>
+      <div class="blk"><div class="k">문제</div><div class="v"><p>분류 페이지에서 상품을 할인율 순으로 볼 수 없고, 쿠폰을 적용한 가격은 주문서에서만 확인 가능.</p></div></div>
+      <div class="blk"><div class="k">한 일</div><div class="v"><ul><li>MD가 어드민에서 분류를 선택해 할인율 순서를 미리 확인한 뒤 쇼핑몰에 적용하는 2단계 흐름 설계</li><li>상품 목록에 쿠폰 적용가와 할인율을 함께 노출. 누구나 받을 수 있는 쿠폰 기준으로 최대 2장까지 합산</li><li>쿠폰 중복 적용이 불가능한 혜택 상품은 주문서에서 실제 적용 여부를 확인한 뒤 쿠폰가 표시에서 제외</li><li>기존 진열 순서와 다른 화면, 배치에 영향이 없도록 별도 순서 데이터를 읽어 재배치하는 방식으로 설계</li><li>정기 배치가 실행되는 시간에는 적용을 예약해 자동으로 이어서 진행하도록 처리</li><li>Claude Code를 활용해 API와 어드민 화면을 직접 구현하고, 테스트, PR 리뷰, 개발 서버 검증 후 상용 배포</li><li>작업 중 발견한 카테고리 동기화 배치의 데이터 유실 문제 수정 (외부 API 조회 실패 시 기존 데이터 유지)</li></ul></div></div>
+      <div class="blk"><div class="k">결과</div><div class="v"><ul><li>2026년 11월 라이프 8개 분류에 상용 적용. 분류 페이지에서 할인율 순 정렬과 쿠폰 적용가 확인 가능</li><li>하위 분류 일괄 적용 및 예약 적용은 개발 서버에서 검증 중</li></ul></div></div>
       </section>
       <section class="proj" id="orders">
       <h4>아트 커머스 주문 데이터 처리</h4><div class="meta">운영 데이터 | 2025.12 – 재직 중</div>
@@ -357,7 +364,9 @@ a.li{color:inherit}
     <section class="proj" id="now"><h4>진행 중인 프로젝트</h4><div class="meta">2026 – 진행 중</div><ul class="rows">
       <li class="rowi"><span class="ic">📡</span><div><b>트렌드 레이더</b><span>리빙, 선물, 전시 트렌드를 기반으로 소싱 및 노출 상품을 선정하기 위한 리포트 구축</span></div></li>
       <li class="rowi"><span class="ic">💬</span><div><b>1:1 아트 컨설팅</b><span>고가 작품 구매를 고민하는 고객에게 1:1 상담을 연결해 구매 전환을 높이기 위한 기능 기획</span></div></li>
-      <li class="rowi"><span class="ic">📊</span><div><b>통합 대시보드</b><span>Cafe24, GA4 데이터 통합 및 검색어 데이터 연동 진행 중</span></div></li>
+      <li class="rowi"><span class="ic">📊</span><div><b>통합 대시보드</b><span>백오피스 이관 및 인사이트 카드, 판매 분석 화면을 개발 서버에서 검증 중</span></div></li>
+      <li class="rowi"><span class="ic">🔎</span><div><b>검색 개선</b><span>상품 검색어 설정을 검색 인덱스에 반영하고 가중치 조정. 평가 세트 기반 개선 준비 중</span></div></li>
+      <li class="rowi"><span class="ic">🗒️</span><div><b>업무 기록 자동화</b><span>GitHub 작업 기록을 모아 매일 사내 메신저로 자동 보고</span></div></li>
     </ul></section></article></section>
 <div class="pager"><a class="nx" href="work-reclle.html"><small>다음 경력 ›</small><b>리클</b></a></div>
 <section class="card"><div class="cta"><p>더 궁금한 점은 메일로 연락 주세요.<br><b style="color:var(--g900)">iamsucool@gmail.com</b></p><a class="btn primary press" href="mailto:iamsucool@gmail.com">메일 보내기</a></div></section>
